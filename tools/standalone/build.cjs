@@ -1,35 +1,32 @@
 const fs = require('fs');
 const path = require('path');
-const { execFileSync } = require('child_process');
-const postcss = require('../../uploads/flolabs-library1/node_modules/postcss');
-const tailwind = require('../../uploads/flolabs-library1/node_modules/@tailwindcss/postcss');
+const { createRequire } = require('module');
 
 const root = path.resolve(__dirname, '../..');
 const app = path.join(root, 'uploads', 'flolabs-library1');
+const appRequire = createRequire(path.join(app, 'package.json'));
+const postcss = appRequire('postcss');
+const tailwind = appRequire('@tailwindcss/postcss');
+
 const outDir = path.join(root, 'tools', 'standalone', 'dist');
 fs.mkdirSync(outDir, { recursive: true });
 
-const esbuild = path.join(app, 'node_modules', 'esbuild', 'bin', 'esbuild');
-const esbuildCmd = fs.existsSync(esbuild) ? esbuild : 'npx';
-const esbuildArgs = fs.existsSync(esbuild)
-  ? []
-  : ['--yes', 'esbuild'];
+const esbuild = appRequire('esbuild');
 
-execFileSync(
-  esbuildCmd,
-  [
-    ...esbuildArgs,
-    path.join(__dirname, 'entry.tsx'),
-    '--bundle',
-    '--format=iife',
-    '--jsx=automatic',
-    '--outfile=' + path.join(outDir, 'app.js'),
-    '--alias:next/navigation=' + path.join(__dirname, 'next-shim.tsx'),
-    '--alias:next/link=' + path.join(__dirname, 'next-shim.tsx'),
-    '--define:process.env.NODE_ENV="production"',
-  ],
-  { cwd: app, stdio: 'inherit', shell: true }
-);
+esbuild.buildSync({
+  absWorkingDir: app,
+  entryPoints: [path.join(__dirname, 'entry.tsx')],
+  bundle: true,
+  format: 'iife',
+  jsx: 'automatic',
+  outfile: path.join(outDir, 'app.js'),
+  alias: {
+    'next/navigation': path.join(__dirname, 'next-shim.tsx'),
+    'next/link': path.join(__dirname, 'next-shim.tsx'),
+  },
+  define: { 'process.env.NODE_ENV': '"production"' },
+  nodePaths: [path.join(app, 'node_modules')],
+});
 
 const cssSource = fs.readFileSync(path.join(app, 'src', 'index.css'), 'utf8');
 postcss([tailwind()])
