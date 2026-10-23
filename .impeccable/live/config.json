@@ -1,0 +1,6 @@
+{
+  "files": ["uploads/flolabs-library1/app/layout.tsx"],
+  "insertBefore": "</body>",
+  "commentSyntax": "jsx",
+  "cspChecked": true
+}

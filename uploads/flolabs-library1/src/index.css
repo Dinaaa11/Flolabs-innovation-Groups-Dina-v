@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+}
+
+:root {
+  --background: #f2f2f2;
+  --foreground: #00080d;
+  --card: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(30, 70, 130, 0.28);
+  --glass-shadow: 0 14px 36px rgba(0, 52, 155, 0.16);
+  --glass-tint-primary: rgba(0, 52, 155, 0.26);
+  --glass-tint-secondary: rgba(4, 118, 217, 0.24);
+  --glass-tint-accent: rgba(217, 156, 43, 0.2);
+  --glass-highlight: rgba(255, 255, 255, 0.64);
+  --glass-gradient-start: rgba(4, 118, 217, 0.22);
+  --glass-gradient-end: rgba(217, 156, 43, 0.08);
+  --muted: #2f3f52;
+  --border: #cdd3dc;
+  --primary: #00349b;
+  --flo-blue: #00349b;
+  --flo-blue-dark: #002775;
+  --flo-blue-light: #e6f0ff;
+  --secondary: #0476d9;
+  --accent: #d99c2b;
+  --font-inter: "Inter", sans-serif;
+  --font-display: "Barlow Condensed", sans-serif;
+}
+
+.dark {
+  --background: #00080d;
+  --foreground: #f2f2f2;
+  --card: #061626;
+  --glass-bg: rgba(6, 22, 38, 0.85);
+  --glass-border: rgba(60, 120, 200, 0.22);
+  --glass-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+  --glass-tint-primary: rgba(0, 52, 155, 0.35);
+  --glass-tint-secondary: rgba(4, 118, 217, 0.3);
+  --glass-tint-accent: rgba(217, 156, 43, 0.25);
+  --glass-highlight: rgba(255, 255, 255, 0.1);
+  --glass-gradient-start: rgba(4, 118, 217, 0.28);
+  --glass-gradient-end: rgba(217, 156, 43, 0.12);
+  --muted: #8899aa;
+  --border: #1e3a5a;
+  --primary: #3a82e0;
+  --secondary: #4ea8f0;
+  --accent: #e8b84b;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.projects-scene-bg {
+  background-color: #c8d4e4;
+  background-image: linear-gradient(165deg, #e8eef5 0%, #c8d4e4 42%, #8fa8c4 100%);
+}
+.dark .projects-scene-bg {
+  background-color: #00080d;
+  background-image: linear-gradient(165deg, #00080d 0%, #061626 48%, #0a1a2e 100%);
+}
+.home-projects-marquee-viewport { overflow: hidden visible; }
+.home-projects-marquee-track {
+  width: max-content;
+  animation: home-projects-marquee-scroll var(--home-marquee-duration, 52s) linear infinite;
+  will-change: transform;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.home-projects-marquee-group {
+  flex-shrink: 0;
+  align-self: stretch;
+  align-items: stretch;
+  display: flex;
+}
+@keyframes home-projects-marquee-scroll {
+  0% { transform: translate(0); }
+  to { transform: translate(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-projects-marquee-track { animation: none !important; }
+  .home-projects-marquee-viewport { overflow-x: auto; }
+}
+
+.glass-nav {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* ==================== 3D Cylindrical Carousel: Selected Card Stroke & Glow ==================== */
+.cyl-card {
+  transition: opacity 0.35s ease-out;
+}
+
+.cyl-card .pcard {
+  border-width: 1.5px;
+  border-style: solid;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+              border-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Dark Mode - Inactive Cards */
+.dark .cyl-card:not(.is-active) .pcard {
+  border-color: rgba(var(--ar), var(--ag), var(--ab), 0.22);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
+}
+
+/* Dark Mode - Selected / Active Card: Glowing Stroke & Diffuse Colored Shadow */
+.dark .cyl-card.is-active .pcard,
+.dark .pcard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(var(--ar), var(--ag), var(--ab), 0.85) !important;
+  box-shadow: 0 42px 92px rgba(0, 0, 0, 0.6),
+              0 0 65px rgba(var(--ar), var(--ag), var(--ab), 0.38) !important;
+}
+
+/* Light Mode - Inactive Cards */
+:root:not(.dark) .cyl-card:not(.is-active) .pcard {
+  border-color: rgba(var(--ar), var(--ag), var(--ab), 0.24);
+  box-shadow: 0 18px 42px rgba(14, 42, 56, 0.08);
+}
+
+/* Light Mode - Selected / Active Card: Clean Accent Stroke & Ambient Glow */
+:root:not(.dark) .cyl-card.is-active .pcard,
+:root:not(.dark) .pcard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(var(--ar), var(--ag), var(--ab), 0.65) !important;
+  box-shadow: 0 32px 72px rgba(14, 42, 56, 0.16),
+              0 0 60px rgba(var(--ar), var(--ag), var(--ab), 0.28) !important;
+}
+
+/* Media elevation on active card */
+.cyl-card.is-active .pcard-media,
+.pcard:hover .pcard-media {
+  transform: translateY(-8px);
+}
+
+/* Button & Arrow animation on active card */
+.cyl-card.is-active .pcard-panel,
+.pcard:hover .pcard-panel {
+  filter: brightness(1.08);
+}
+
+.cyl-card.is-active .pcard-panel svg,
+.pcard:hover .pcard-panel svg {
+  transform: translateX(4px);
+}

@@ -1,0 +1,16 @@
+<div className="ctd-bg absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+  {/* The animated WebGL Canvas */}
+  <canvas
+    ref={canvasRef}
+    className="faulty-terminal-container absolute inset-0 w-full h-full object-cover opacity-75"
+  />
+
+  {/* Protective gradient scrim preventing text contrast interference */}
+  <div
+    className="ctd-scrim absolute inset-0 pointer-events-none"
+    style={{
+      background:
+        'radial-gradient(120% 90% at 28% 46%, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.88) 55%, rgba(5,5,5,0.96) 100%), linear-gradient(180deg, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.35) 40%, rgba(5,5,5,0.7) 100%)',
+    }}
+  />
+</div>
