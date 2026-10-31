@@ -29,6 +29,17 @@ jobs:
           mkdir -p _site
           cp flolabs-standalone.html _site/index.html
           cp flolabs-standalone.html _site/flolabs-standalone.html
+          # Fallback for any relative public asset paths still referenced by the app
+          mkdir -p _site/uploads/flolabs-library1/public
+          cp -R uploads/flolabs-library1/public/logos _site/uploads/flolabs-library1/public/logos
+          cp -R uploads/flolabs-library1/public/logos _site/logos
+          cp -R uploads/flolabs-library1/public/verticals _site/verticals
+          cp -R uploads/flolabs-library1/public/about _site/about
+          cp -R uploads/flolabs-library1/public/projects _site/projects
+          cp uploads/flolabs-library1/public/flolabs-logo.svg _site/flolabs-logo.svg
+          cp -R uploads/flolabs-library1/public/about _site/uploads/flolabs-library1/public/about
+          cp -R uploads/flolabs-library1/public/verticals _site/uploads/flolabs-library1/public/verticals
+          cp -R uploads/flolabs-library1/public/projects _site/uploads/flolabs-library1/public/projects
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
