@@ -105,7 +105,8 @@ export const Header: React.FC<HeaderProps> = ({ activeNav = 'home', onNavClick, 
   };
 
   const mediaActive = onMeetings || MEDIA_ITEMS.some((m) => m.id === activeNav);
-  const light = overHero;
+  const homeLightHero = !isDark && (pathname === '/' || pathname === '');
+  const light = overHero && !homeLightHero;
   const txt = light ? 'text-white' : 'text-foreground';
   const dim = light ? 'text-white/75 hover:text-white' : 'text-muted hover:text-foreground';
   const activeTxt = light ? 'text-white font-semibold' : 'text-foreground font-semibold';
@@ -160,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({ activeNav = 'home', onNavClick, 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 border-b ${
-        light ? 'border-transparent bg-transparent' : 'glass-nav border-border'
+        overHero ? 'border-transparent bg-transparent' : 'glass-nav border-border'
       }`}
     >
       <div className="mx-auto w-full max-w-6xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8">

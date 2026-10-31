@@ -73,8 +73,15 @@ export function MeetingsExperience({ meetings, selected }: Props) {
   }, 0);
   const totalHours = Math.floor(totalSeconds / 3600);
   const totalMinutes = Math.floor((totalSeconds % 3600) / 60);
+  const localFile = typeof window !== 'undefined' && window.location.protocol === 'file:';
+  const origin = typeof window !== 'undefined' && window.location.protocol.startsWith('http')
+    ? `&origin=${encodeURIComponent(window.location.origin)}`
+    : '';
   const embed = selected.youtubeId
-    ? `https://www.youtube.com/embed/${selected.youtubeId}?start=${start}&rel=0`
+    ? `https://www.youtube.com/embed/${selected.youtubeId}?start=${start}&rel=0${origin}`
+    : '';
+  const watchUrl = selected.youtubeId
+    ? `https://www.youtube.com/watch?v=${selected.youtubeId}${start ? `&t=${start}s` : ''}`
     : '';
 
   return (
@@ -125,13 +132,21 @@ export function MeetingsExperience({ meetings, selected }: Props) {
         <div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(260px,0.85fr)]">
           <div>
             <div className="overflow-hidden rounded-3xl border border-border bg-black shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
-              {embed ? (
+              {embed && localFile ? (
+                <a href={watchUrl} target="_blank" rel="noreferrer" className="relative block">
+                  <img src={thumb(selected.youtubeId)} alt="" className="aspect-video w-full object-cover" />
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="rounded-full bg-[#ff0000] px-4 py-2 text-sm font-semibold text-white">Watch on YouTube</span>
+                  </span>
+                </a>
+              ) : embed ? (
                 <iframe
                   key={`${selected.id}-${start}`}
                   title={selected.title}
                   src={embed}
                   className="aspect-video w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
               ) : (

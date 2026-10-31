@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { AimSection, FutureSection } from './InternationalAbout';
 
 const FACTS: [string, string][] = [
   ['Full name', 'John Hazlewood'],
@@ -30,7 +31,7 @@ const FAQ: [string, string][] = [
 ];
 
 function P({ children }: { children: React.ReactNode }) {
-  return <p className="story-p text-base leading-[1.75] text-foreground/90">{children}</p>;
+  return <p className="mb-6 w-full max-w-none text-base leading-[1.75] text-foreground/90">{children}</p>;
 }
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
@@ -45,19 +46,40 @@ function H3({ children }: { children: React.ReactNode }) {
   return <h3 className="mb-3 mt-8 text-xl font-semibold tracking-tight sm:text-2xl">{children}</h3>;
 }
 
-function PhotoRow({ cards, still }: { cards: { text: string; image: string; title?: string }[]; still?: boolean }) {
+function PhotoRow({ cards, still, veil = 'bg-gradient-to-t from-black/85 via-black/45 to-black/15' }: { cards: { text: string; image: string; title?: string }[]; still?: boolean; veil?: string }) {
   const loop = still ? cards : [...cards, ...cards];
   return (
     <div className={still ? 'my-8' : 'card-viewport my-8 overflow-hidden'}>
       <ul className={still ? 'grid list-none grid-cols-2 gap-4 p-0 lg:grid-cols-4' : 'card-track'}>
         {loop.map((card, i) => (
-          <li key={`${card.text}-${i}`} data-clone={!still && i >= cards.length ? '' : undefined} aria-hidden={!still && i >= cards.length ? true : undefined} className={`relative h-80 overflow-hidden rounded-[28px] bg-[#1a1b1e] shadow-lg ${still ? '' : 'w-72 shrink-0'}`}>
+          <li key={`${card.text}-${i}`} data-clone={!still && i >= cards.length ? '' : undefined} aria-hidden={!still && i >= cards.length ? true : undefined} className={`photo-card relative h-80 overflow-hidden rounded-[28px] bg-[#1a1b1e] shadow-lg ${still ? '' : 'w-72 shrink-0'}`}>
             <img src={card.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
-            <div className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent ${still ? 'h-28' : 'h-full bg-gradient-to-b from-transparent via-black/10 to-black/80'}`} />
-            <div className="relative flex h-full flex-col justify-end p-6 text-white">
-              {card.title ? <h3 className="text-xl font-semibold">{card.title}</h3> : null}
-              <p className="mt-1 text-sm font-medium leading-snug">{card.text}</p>
+            <div className={`absolute inset-0 ${veil}`} />
+            <div className="relative flex h-full flex-col justify-end p-6">
+              {card.title ? <h3 className="card-title text-xl font-semibold text-white" style={{ color: '#ffffff' }}>{card.title}</h3> : null}
+              <p className="mt-1 !text-white text-sm font-medium leading-snug">{card.text}</p>
             </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function BenefitRail({ items }: { items: string[] }) {
+  const loop = [...items, ...items];
+  return (
+    <div className="about-bleed benefit-viewport my-8 overflow-hidden bg-white py-8 text-[#122033] dark:bg-black dark:text-white">
+      <ul className="benefit-track m-0 list-none p-0">
+        {loop.map((item, index) => (
+          <li
+            key={`${item}-${index}`}
+            data-clone={index >= items.length ? '' : undefined}
+            aria-hidden={index >= items.length ? true : undefined}
+            className="w-72 shrink-0 px-6 sm:w-80"
+          >
+            <span className="mb-5 block h-px bg-[#122033]/25 dark:bg-white/30" />
+            <span className="block text-center text-sm font-semibold leading-snug sm:text-base">{item}</span>
           </li>
         ))}
       </ul>
@@ -77,14 +99,14 @@ function TextRail({ items, onPhoto }: { items: string[]; onPhoto?: boolean }) {
 
 function Section({ id, children, alt, image, paper }: { id?: string; children: React.ReactNode; alt?: boolean; image?: string; paper?: boolean }) {
   return (
-    <section id={id} className={`relative overflow-hidden border-t border-border ${paper ? 'bg-white text-[#122033] dark:bg-black dark:text-white [&_a]:!text-[#00349b] dark:[&_a]:!text-[#7eb6ff] [&_h2]:!text-[#122033] dark:[&_h2]:!text-white [&_h3]:!text-[#122033] dark:[&_h3]:!text-white [&_p]:!text-[#122033]/90 dark:[&_p]:!text-white/90 [&_.card-track_p]:!text-white' : image ? 'text-white [&_a]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_p]:!text-white/90' : alt ? 'bg-primary/5 dark:bg-card' : 'bg-background'}`}>
+    <section id={id} className={`relative overflow-hidden ${paper ? 'bg-white text-[#122033] dark:bg-black dark:text-white [&_a]:!text-[#00349b] dark:[&_a]:!text-[#7eb6ff] [&_h2]:!text-[#122033] dark:[&_h2]:!text-white [&_h3:not(.card-title)]:!text-[#122033] dark:[&_h3]:!text-white [&_p]:!text-[#122033]/90 dark:[&_p]:!text-white/90 [&_.card-track_p]:!text-white [&_.photo-card_h3]:!text-white [&_.photo-card_p]:!text-white' : image ? 'text-white [&_a]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_p]:!text-white/90' : alt ? 'bg-primary/5 dark:bg-card' : 'bg-background'}`}>
       {image ? (
         <>
           <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-black/45 dark:bg-black/65" />
         </>
       ) : null}
-      <div className="about-in relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">{children}</div>
+      <div className="about-in relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8">{children}</div>
     </section>
   );
 }
@@ -99,6 +121,47 @@ export function AboutExperience() {
   const [open, setOpen] = useState<number | null>(0);
 
   useEffect(() => {
+    const el = document.querySelector<HTMLElement>('.quote-ambient');
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.style.setProperty('--quote-ambient-expand', '1');
+      return;
+    }
+    let lastY = window.scrollY;
+    let dir: 'up' | 'down' = 'down';
+    let max = 0;
+    let frame = 0;
+    const tick = () => {
+      const y = window.scrollY;
+      dir = y > lastY ? 'down' : y < lastY ? 'up' : dir;
+      lastY = y;
+      const rect = el.getBoundingClientRect();
+      const visible = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+      const ratio = rect.height > 0 ? visible / rect.height : 0;
+      let progress = ratio <= 0 ? 0 : ratio >= 0.3 ? 1 : ratio / 0.3;
+      if (dir === 'up' && rect.bottom > window.innerHeight) max = progress;
+      else progress = Math.max(progress, max);
+      if (progress > max) max = progress;
+      el.style.setProperty('--quote-ambient-expand', String(progress));
+    };
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        tick();
+      });
+    };
+    tick();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
     const id = window.location.hash.replace('#', '');
     if (!id) return;
     const el = document.getElementById(decodeURIComponent(id));
@@ -111,46 +174,114 @@ export function AboutExperience() {
   return (
     <article className="bg-background text-foreground">
       <style>{`
-        .story-p { max-width: 68ch; margin-bottom: 1.5rem; }
-        .about-in { display: flex; flex-wrap: wrap; align-items: stretch; column-gap: 1.25rem; row-gap: 1.25rem; }
-        .about-in > * { flex: 1 0 100%; min-width: 0; }
-        .about-in > h2 { margin-bottom: 0.25rem; }
-        .about-in > .story-p { max-width: none; margin-bottom: 0; }
-        .about-in > h2 + .story-p { max-width: 68ch; margin-bottom: 1.75rem; font-size: 1.25rem; line-height: 1.55; }
-        .about-in > h2 ~ .story-p:not(h2 + .story-p) {
-          border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-          padding-top: 1rem;
+        .about-bleed { width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); }
+        section .photo-card h3, section .photo-card p { color: #fff !important; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65); }
+        .thrive-veil { background: rgba(0, 0, 0, 0.72); }
+        .john-quote { background: #f4f6fb; border-radius: 28px; opacity: var(--quote-ambient-expand, 0); transform: translateY(calc((1 - var(--quote-ambient-expand, 0)) * 40px)); }
+        @media (prefers-reduced-motion: reduce) {
+          .john-quote { opacity: 1; transform: none; }
         }
-        @media (min-width: 800px) {
-          .about-in > h2 ~ .story-p:not(h2 + .story-p) {
-            flex: 1 1 calc(50% - 0.75rem);
-            max-width: calc(50% - 0.75rem);
-            border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-            padding: 1.25rem 1.15rem 1.35rem;
-          }
+        .dark .john-quote { background: #14181f; }
+        .john-quote blockquote { color: #122033; font-family: Outfit, sans-serif; font-size: clamp(2.25rem, 4vw, 3.75rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
+        .dark .john-quote blockquote { color: #fff; }
+        .john-quote .quote-name { color: #3c4a5a; font-size: 0.875rem; }
+        .dark .john-quote .quote-name { color: rgba(255,255,255,.8); }
+        .john-quote .quote-role { color: #7b8794; font-size: 0.875rem; }
+        .dark .john-quote .quote-role { color: rgba(255,255,255,.55); }
+        .approach-card { position: sticky; top: 5.5rem; display: flex; flex-direction: column; margin-bottom: 28vh; overflow: visible; border-radius: 20px; background: #f4f6fb; color: #122033; padding: 4.5rem 2.5rem 1.5rem; }
+        .approach-watermark { position: absolute; top: 0.15rem; left: 1.5rem; right: 0; overflow: hidden; white-space: nowrap; font-family: Outfit, sans-serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: rgba(18, 32, 51, 0.06); pointer-events: none; }
+        .approach-card h3 { position: relative; max-width: min(36rem, calc(100% - 20rem)); font-family: Outfit, sans-serif; font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; color: #122033; }
+        .approach-copy { position: relative; max-width: min(36rem, calc(100% - 20rem)); margin-top: 1.25rem; }
+        .approach-card:nth-child(3) h3, .approach-card:nth-child(3) .approach-copy { max-width: calc(100% - 20rem); }
+        .approach-copy p { margin: 0 0 0.85rem; font-size: 1rem; line-height: 1.6; color: rgba(18, 32, 51, 0.8); }
+        .approach-bottom { position: sticky; bottom: 1.25rem; z-index: 2; display: flex; align-items: end; margin-top: 2rem; pointer-events: none; }
+        .approach-num { font-family: Outfit, sans-serif; font-size: clamp(4.5rem, 8vw, 8rem); font-weight: 500; line-height: 0.8; color: rgba(18, 32, 51, 0.12); }
+        .approach-photo { position: absolute; top: 50%; right: 2.5rem; z-index: 1; width: 18rem; height: 14rem; transform: translateY(-50%); }
+        .approach-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .approach-card:nth-child(5) .approach-photo { height: 16rem; width: 20rem; }
+        .approach-card:nth-child(5) .approach-photo img { object-fit: contain; object-position: center; }
+        .approach-card:last-child .approach-photo { height: 22rem; }
+        .approach-card:last-child .approach-photo img { object-fit: contain; object-position: center; }
+        @media (max-width: 760px) {
+          .approach-card { top: 4.25rem; padding: 3.25rem 1.25rem 1.25rem; }
+          .approach-card h3, .approach-copy, .approach-card:nth-child(3) h3, .approach-card:nth-child(3) .approach-copy { max-width: 100%; }
+          .approach-photo { position: relative; top: auto; right: auto; width: 100%; margin-top: 1.25rem; transform: none; }
+          .approach-card:nth-child(5) .approach-photo { width: 100%; height: 14rem; }
+          .approach-card:last-child .approach-photo { height: 18rem; }
         }
-        @media (min-width: 1100px) {
-          .about-in > h2 ~ .story-p:not(h2 + .story-p) {
-            flex: 1 1 calc(33.333% - 0.9rem);
-            max-width: calc(33.333% - 0.9rem);
-          }
+        @media (prefers-reduced-motion: reduce) {
+          .approach-card { position: relative; top: auto; margin-bottom: 1rem; }
         }
+        .expect-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 2.5rem 0; }
+        .expect-card { display: flex; align-items: flex-start; min-height: 20rem; padding: 4.5rem 3.25rem; border-radius: 4.8rem; }
+        .expect-card .expect-copy { display: block; font-family: Outfit, sans-serif; font-size: clamp(1.2rem, 1.9vw, 1.55rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.3; }
+        .expect-card.is-black { background: #000; }
+        .expect-card.is-dark { background: #122033; }
+        .expect-card.is-light { background: #eceff4; }
+        .expect-card.is-black .expect-copy { color: #fff; }
+        .expect-card.is-dark .expect-copy { color: #f4f6fb; }
+        .expect-card.is-light .expect-copy { color: #122033; }
+        html.dark .expect-card.is-black, .dark .expect-card.is-black { background: #fff; }
+        html.dark .expect-card.is-dark, .dark .expect-card.is-dark { background: #eceff4; }
+        html.dark .expect-card.is-black .expect-copy, .dark .expect-card.is-black .expect-copy { color: #000; }
+        html.dark .expect-card.is-dark .expect-copy, .dark .expect-card.is-dark .expect-copy { color: #122033; }
+        .expect-card.is-corner { border-radius: 4.8rem 4.8rem 4.8rem 12rem; }
+        @media (min-width: 900px) {
+          .expect-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; column-gap: 1.5rem; row-gap: 1.5rem; }
+          .expect-card:nth-child(3n+1) { margin-top: 6rem; }
+          .expect-card:nth-child(3n+2) { margin-top: 0; }
+          .expect-card:nth-child(3n) { margin-top: 12rem; }
+        }
+        .why-bryhel { position: relative; background: #1c1c1c; color: #f4f6fb; }
+        .why-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: 0; pointer-events: none; }
+        .why-veil { position: absolute; inset: 0; background: rgba(16,16,16,0.62); z-index: 0; pointer-events: none; }
+        .why-bryhel > .about-in { position: relative; z-index: 1; }
+        .why-bryhel p { color: rgba(244,246,251,0.9); }
+        .why-card.is-light p { color: inherit; }
+        .why-stage { position: relative; margin-top: 0; padding-bottom: clamp(8rem, 18vw, 12rem); }
+        .why-pin { position: sticky; top: 5.5rem; z-index: 0; margin: 0 0 2rem; max-width: 16ch; font-family: Outfit, sans-serif; font-size: clamp(2.75rem, 7vw, 6.5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.92; color: #efe7d6; pointer-events: none; }
+        .why-close { position: relative; z-index: 2; margin-top: 0; padding-top: 3rem; background: linear-gradient(to bottom, rgba(16,16,16,0.72) 0%, rgba(16,16,16,0.88) 40%, rgba(16,16,16,0.92) 100%); }
+        .why-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        .why-card { display: flex; flex-direction: column; min-height: 18rem; padding: 3.25rem 2.75rem; border-radius: 2.9rem; }
+        .why-card h3 { margin: 0; font-family: Outfit, sans-serif; font-size: clamp(1.6rem, 2.4vw, 2.15rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
+        .why-card h3::before { content: ''; display: inline-block; width: 0.55rem; height: 0.55rem; margin-right: 0.7rem; margin-bottom: 0.15rem; border-radius: 999px; background: currentColor; vertical-align: middle; }
+        .why-card p { margin: 1.1rem 0 0; font-size: 1rem; line-height: 1.55; opacity: 0.88; }
+        .why-card.is-dark { background: #111; color: #efe7d6; }
+        .why-card.is-light { background: #efe7d6; color: #1c1c1c; }
+        .why-card.is-corner { border-radius: 2.9rem 2.9rem 2.9rem 10.8rem; }
+        .why-lead { position: relative; z-index: 1; width: 100%; min-height: 0; margin: 0 0 1.5rem; }
+        .why-lead p { margin: 0; font-size: 1.05rem; line-height: 1.7; opacity: 0.92; }
+        .why-lead p + p { margin-top: 1.15rem; }
+        @media (min-width: 900px) {
+          .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+          .why-card:nth-child(3n+1) { margin-top: 6rem; }
+          .why-card:nth-child(3n+2) { margin-top: 0; }
+          .why-card:nth-child(3n) { margin-top: 11rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .why-pin { position: relative; top: auto; margin-bottom: 1.5rem; }
+          .why-stage { padding-bottom: 0; }
+          .why-close { padding-top: 1.5rem; }
+        }
+        .about-in p { max-width: none; }
         @media (prefers-reduced-motion: no-preference) {
           .about-in { animation: aboutFade .65s ease both; }
+          .why-bryhel > .about-in { animation: none; opacity: 1; transform: none; }
           @keyframes aboutFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
           .card-track { display: flex; gap: 1rem; width: max-content; animation: cardSlide 42s linear infinite; }
-          .card-viewport:hover .card-track { animation-play-state: paused; }
+          .card-viewport:hover .card-track, .benefit-viewport:hover .benefit-track { animation-play-state: paused; }
+          .benefit-track { display: flex; width: max-content; animation: cardSlide 110s linear infinite; }
           @keyframes cardSlide { to { transform: translateX(-50%); } }
           @media (prefers-reduced-motion: reduce) {
             .about-in, .card-track { animation: none; }
-            .card-track { flex-wrap: wrap; width: 100%; }
-            .card-track [data-clone] { display: none; }
+            .card-track, .benefit-track { flex-wrap: wrap; width: 100%; }
+            .card-track [data-clone], .benefit-track [data-clone] { display: none; }
           }
         }
       `}</style>
 
-      <header className="border-y border-border bg-white text-foreground dark:bg-black">
-        <div className="mx-auto max-w-6xl space-y-8 px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-36">
+      <header className="bg-white text-foreground dark:bg-black">
+        <div className="mx-auto w-full max-w-none space-y-8 px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-36">
           <div className="grid gap-6 md:grid-cols-2 md:gap-12">
             <h1 className="font-['Outfit',sans-serif] text-3xl font-medium leading-snug tracking-[-0.03em] md:text-5xl">
               John Hazlewood <span className="text-muted">Founder, CEO and founding intern.</span>
@@ -187,7 +318,7 @@ export function AboutExperience() {
         </div>
       </header>
 
-      <section aria-labelledby="quick-facts-heading" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section aria-labelledby="quick-facts-heading" className="mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <h2 id="quick-facts-heading" className="font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl">Quick facts about John Hazlewood</h2>
         <dl className="mt-8 divide-y divide-border border-y border-border">
           {FACTS.map(([term, detail]) => (
@@ -199,8 +330,8 @@ export function AboutExperience() {
         </dl>
       </section>
 
-      <section aria-labelledby="latest-work-heading" className="border-t border-border bg-white text-[#122033] dark:bg-black dark:text-white">
-        <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
+      <section aria-labelledby="latest-work-heading" className="bg-white text-[#122033] dark:bg-black dark:text-white">
+        <div className="mx-auto grid w-full max-w-none items-start gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
           <article className="lg:sticky lg:top-24 lg:self-start">
             <h2 id="latest-work-heading" className="font-['Outfit',sans-serif] text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl">
               <a href="#from-caipo-to-flobrain-embodied-ai-and-robotics" className="hover:underline">John's Journey</a>
@@ -235,7 +366,7 @@ export function AboutExperience() {
       </section>
 
       <Section id="a-founder-shaped-by-austin-alexandria-sofia-and-the-island-of-lemnos">
-        <div className="relative -mx-4 -mt-16 overflow-hidden px-4 py-16 text-white sm:-mx-6 sm:px-6 sm:-mt-24 lg:-mx-8 lg:px-8 [&_h2]:!text-white [&_p]:!text-white/90">
+        <div className="about-bleed relative -mt-16 overflow-hidden px-4 py-16 text-white sm:px-6 sm:-mt-24 lg:px-8 [&_h2]:!text-white [&_p]:!text-white/90">
           <img src="/about/life-of-global-experience.png" alt="" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-black/45 dark:bg-black/65" />
           <div className="relative">
@@ -244,7 +375,7 @@ export function AboutExperience() {
             <P>Today, he brings those lessons, both the successes and the difficult reinventions, to FloLabs and its global community of students, career changers, developers, researchers, citizen scientists, designers, entrepreneurs, subject matter experts and lifelong learners.</P>
           </div>
         </div>
-        <div className="-mx-4 bg-primary/10 px-4 py-12 dark:bg-card sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div className="about-bleed bg-primary/10 px-4 py-12 dark:bg-card sm:px-6 lg:px-8">
           <h2 className="font-['Outfit',sans-serif] text-3xl font-medium tracking-[-0.03em] text-foreground sm:text-5xl">Roots and Values</h2>
           <div className="mt-6 grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(15rem,0.7fr)]">
             <div>
@@ -324,7 +455,7 @@ export function AboutExperience() {
         <P>The travel technology years showed John how quickly new infrastructure, customer needs, investor priorities and outside events can change a business.</P>
       </Section>
 
-      <Section id="setbacks-reinvention-and-the-value-of-changing-direction" image="/about/photo-coast.png">
+      <Section id="setbacks-reinvention-and-the-value-of-changing-direction" image="/about/austin.jpg">
         <H2 id="setbacks-heading">Setbacks, reinvention and the value of changing direction</H2>
         <P>John does not present entrepreneurship as a sequence of victories. He speaks openly about layoffs, failed fundraising efforts, difficult pivots and the emotional weight of watching a business contract.</P>
         <P>Around 2011, as major customers changed direction and the travel technology market evolved, he had to reduce the size of the Sofia team. Letting go of colleagues he had worked with for years was one of the most difficult periods of his career.</P>
@@ -349,71 +480,88 @@ export function AboutExperience() {
         <P>That insight became both a product philosophy and an educational philosophy.</P>
       </Section>
 
-      <Section id="from-caipo-to-flobrain-embodied-ai-and-robotics" image="https://www.flostudios.ai/assets/caipo-card.webp">
+      <Section id="from-caipo-to-flobrain-embodied-ai-and-robotics" paper>
         <H2 id="ai-heading">From CAIPO to FloBrain, embodied AI and robotics</H2>
         <P>John’s first concept in this new chapter was <A href="https://www.caipo.ai/">CAIPO</A>, originally derived from “Chief AI and Productivity Officer.” He envisioned an AI layer that could help organizations connect fragmented information, understand meetings and conversations, make knowledge usable and help people become more productive.</P>
         <P>The idea expanded into an AI wearable with a microphone, speaker, camera and sensors, an interface intended to provide context aware assistance in the physical world. John then returned to his roots in travel, imagining a conversational AI travel planner and travel companion that could understand preferences, build itineraries and eventually power a robotic hotel concierge.</P>
         <P>Those ideas led to FloBrain, a multimodal AI and contextual intelligence platform that brings together language models, voice, vision, sensor data, memory, tools and specialized AI buddies. FloLabs is developing it as a shared intelligence layer for software, wearables and robots.</P>
         <P><A href="https://cosmosintelligence.org/">Cosmos Intelligence</A> is one example. FloLabs is developing this conversational Space Buddy to combine NASA and other open data with artificial intelligence so people can explore the universe and ask questions naturally. John wants it to make the knowledge, discovery and wonder of space available to people everywhere, including those who may never travel there physically.</P>
         <P>From that core, FloLabs teams have explored and developed initiatives in areas including:</P>
-        <PhotoRow cards={[
-          { text: 'Conversational and multimodal artificial intelligence.', image: 'https://www.flostudios.ai/assets/robocollective-card.png' },
-          { text: 'AI wearables and human computer interfaces.', image: 'https://www.flostudios.ai/assets/caipo-card.webp' },
-          { text: 'Assistive, hospitality and humanoid robotics.', image: 'https://www.flostudios.ai/assets/carousel/tarrl.png' },
-          { text: 'Travel planning and robotic concierge services.', image: 'https://www.flostudios.ai/assets/carousel/flotravel.png' },
-          { text: 'Health, mood and human performance intelligence.', image: 'https://www.flostudios.ai/assets/carousel/moodchanger.png' },
-          { text: 'Animal health and pet technology.', image: 'https://www.flostudios.ai/assets/pets-card.png' },
-          { text: 'Space imagery, citizen science and space intelligence.', image: 'https://www.flostudios.ai/assets/carousel/cosmos.png' },
-          { text: 'Open source research, advanced computing and emerging technologies.', image: 'https://www.flostudios.ai/assets/carousel/hepheastus.png' },
-          { text: 'Entrepreneurship, venture creation and future of work education.', image: 'https://www.flostudios.ai/assets/carousel/bootcamp.png' },
+        <BenefitRail items={[
+          'Conversational and multimodal artificial intelligence.',
+          'AI wearables and human computer interfaces.',
+          'Assistive, hospitality and humanoid robotics.',
+          'Travel planning and robotic concierge services.',
+          'Health, mood and human performance intelligence.',
+          'Animal health and pet technology.',
+          'Space imagery, citizen science and space intelligence.',
+          'Open source research, advanced computing and emerging technologies.',
+          'Entrepreneurship, venture creation and future of work education.',
         ]} />
         <P>John also spent several months living in China, including time in Hangzhou, Shanghai, Shenzhen, and Hong Kong meeting robotics companies and studying the supply chain, commercialization and rapid development of humanoids and other robotic systems. One experience made that transition tangible: a hotel service robot rode the elevator to John’s floor, rang his doorbell and delivered a room key. For John, it was a small but revealing example of AI and robotics moving beyond demonstrations and into everyday hospitality. The broader experience strengthened his view that the most valuable learning happens when software, hardware, research, operations and market reality meet.</P>
       </Section>
 
-      <Section id="why-john-created-flolabs" image="/about/future-background.png">
-        <H2 id="why-heading">Why John created FloLabs</H2>
-        <P>FloLabs began with a practical startup problem: ambitious AI and robotics projects required a team.</P>
-        <P>John initially considered a conventional internship model. But an earlier experience recruiting interns at a university career event had shown him the limitations of unstructured internships. Many people joined enthusiastically, few continued, and some later listed months of experience without having completed meaningful work.</P>
-        <P>He wanted to build something more serious for the participant and for the organization.</P>
-        <P>FloLabs started with a small group of approximately 10 interns and grew into a global community spanning more than 20 countries. What began as a way to form project teams now combines:</P>
-        <TextRail onPhoto items={[
-          'Experiential learning, where participants learn through relevant work.',
-          'Structured masterclasses, aligned with the tools and knowledge a team actually uses.',
-          'Applied research, connecting emerging ideas with practical experiments.',
-          'A startup and venture studio, where ideas move from research and design toward development, testing and launch.',
-          'International collaboration, bringing together people across disciplines, cultures and experience levels.',
-          'Longer term pathways, including apprenticeship, fellowship, scholar, Masters, PhD and entrepreneurship tracks for participants who want to continue.',
-        ]} />
-        <P>FloLabs is designed to help as many people as possible move their careers forward. Participants gain practical experience, build portfolios and work with people from other fields and countries. The program is also FloLabs’ primary talent acquisition platform. FloLabs plans to fill future roles with people who have completed the internship and demonstrated through their work that they are a strong fit. The company does not plan to hire anyone who has not first completed the internship. Completion does not guarantee a job, but it gives participants the opportunity to be evaluated through real contributions instead of only a résumé or interview.</P>
-        <P>Participants learn the full working cycle, from ideation and research through planning, design, development, testing, launch, user feedback and revision. They encounter ambiguity, work with teammates, adjust when an idea fails and see how technical decisions affect customers and society.</P>
-        <P>FloLabs combines structured learning with real work inside a venture building environment. Education and production support each other. It can complement university study or provide another path for career changers, independent learners and people whose talent has not yet been matched with opportunity. Participants may also qualify for paid work as they advance through the program, with plans to offer stock options in the future.</P>
-      </Section>
+      <section id="why-john-created-flolabs" className="why-bryhel">
+        <img src="/about/thrive-builders.jpg" alt="" className="why-bg" />
+        <div className="why-veil" aria-hidden="true" />
+        <div className="about-in relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="why-stage">
+            <h2 id="why-heading" className="why-pin">Why John created FloLabs</h2>
+            <article className="why-card why-lead is-dark">
+              <p>FloLabs began with a practical startup problem: ambitious AI and robotics projects required a team.</p>
+              <p>John initially considered a conventional internship model. But an earlier experience recruiting interns at a university career event had shown him the limitations of unstructured internships. Many people joined enthusiastically, few continued, and some later listed months of experience without having completed meaningful work.</p>
+              <p>He wanted to build something more serious for the participant and for the organization.</p>
+              <p>FloLabs started with a small group of approximately 10 interns and grew into a global community spanning more than 20 countries. What began as a way to form project teams now combines:</p>
+            </article>
+            <div className="why-grid">
+              {([
+                ['Experiential learning', 'Participants learn through relevant work. Education and production support each other.', 'is-dark'],
+                ['Structured masterclasses', 'Structured learning aligned with the tools and knowledge a team actually uses.', 'is-light is-corner'],
+                ['Applied research', 'connecting emerging ideas with practical experiments.', 'is-dark'],
+                ['Startup and venture studio', 'Inside a venture building environment, ideas move from research and design toward development, testing and launch.', 'is-dark'],
+                ['International collaboration', 'bringing together people across disciplines, cultures and experience levels.', 'is-light is-corner'],
+                ['Longer term pathways', 'Including apprenticeship, fellowship, scholar, Masters, PhD and entrepreneurship tracks for participants who want to continue. It can complement university study or provide another path for career changers, independent learners and people whose talent has not yet been matched with opportunity. Participants may also qualify for paid work as they advance through the program, with plans to offer stock options in the future.', 'is-light'],
+              ] as [string, string, string][]).map(([title, text, tone]) => (
+                <article key={title} className={`why-card ${tone}`}>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="why-close">
+            <P>FloLabs is designed to help as many people as possible move their careers forward. Participants gain practical experience, build portfolios and work with people from other fields and countries. The program is also FloLabs’ primary talent acquisition platform. FloLabs plans to fill future roles with people who have completed the internship and demonstrated through their work that they are a strong fit. The company does not plan to hire anyone who has not first completed the internship. Completion does not guarantee a job, but it gives participants the opportunity to be evaluated through real contributions instead of only a résumé or interview.</P>
+            <P>Participants learn the full working cycle, from ideation and research through planning, design, development, testing, launch, user feedback and revision. They encounter ambiguity, work with teammates, adjust when an idea fails and see how technical decisions affect customers and society.</P>
+          </div>
+        </div>
+      </section>
 
-      <section id="johns-approach-to-learning-and-leadership" className="border-t border-white/10 bg-black text-white">
-        <div className="about-in mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section id="johns-approach-to-learning-and-leadership" className="bg-black text-white">
+        <div className="about-in mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
           <h2 id="philosophy-heading" className="mb-8 font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] text-white sm:text-6xl">John’s approach to learning and leadership</h2>
-          <div className="space-y-3">
-            {[
+          <div className="approach-stack">
+            {([
               ['Learn only what you can connect to action', 'https://www.flostudios.ai/assets/caipo-card.webp', ['FloLabs masterclasses are aligned with the work of each team. A participant learning AWS, Figma, data engineering, multimodal perception, automation or AI assisted development should have an opportunity to apply that knowledge to a relevant task.', 'The goal is to build evidence of ability rather than collect certificates.']],
-              ['Work with a buddy', '/about/photo-sofia.png', ['FloLabs uses a buddy system because people generally learn faster and produce stronger work when they plan, build and review together. Participants break projects into tasks, agree on responsibilities, document the process and bring results back to the wider team.', 'The buddy system builds technical skill while improving communication, reliability, project planning, peer learning and accountability.']],
-              ['Develop integrity and reliability alongside technical ability', '/about/photo-coast.png', ['John believes education should develop character and professional habits as deliberately as it develops technical ability. FloLabs therefore places a strong emphasis on hard work, integrity and reliability, qualities that build trust and remain valuable in every industry, role and stage of a career.', 'At FloLabs, integrity means being honest about what you know and do not know, giving others appropriate credit, representing your work accurately, acknowledging mistakes and allowing evidence to guide conclusions. In research, it also means stating uncertainty clearly and never exaggerating a result or making a claim before the evidence supports it.', 'Reliability means showing up prepared, honoring commitments, communicating early when something is delayed or blocked, supporting teammates and completing agreed work to an appropriate standard. Intelligence and technical skill may create an opportunity, but integrity and reliability determine whether other people will trust someone with greater responsibility.', 'Participants practice these values through documented work, transparent collaboration, the buddy system, peer accountability and consistent follow through. John tells participants to focus on hard work, integrity and reliability because all else will follow.']],
+              ['Work with a buddy', '/about/approach-buddy.jpg', ['FloLabs uses a buddy system because people generally learn faster and produce stronger work when they plan, build and review together. Participants break projects into tasks, agree on responsibilities, document the process and bring results back to the wider team.', 'The buddy system builds technical skill while improving communication, reliability, project planning, peer learning and accountability.']],
+              ['Develop integrity and reliability alongside technical ability', '/about/approach-integrity.jpg', ['John believes education should develop character and professional habits as deliberately as it develops technical ability. FloLabs therefore places a strong emphasis on hard work, integrity and reliability, qualities that build trust and remain valuable in every industry, role and stage of a career.', 'At FloLabs, integrity means being honest about what you know and do not know, giving others appropriate credit, representing your work accurately, acknowledging mistakes and allowing evidence to guide conclusions. In research, it also means stating uncertainty clearly and never exaggerating a result or making a claim before the evidence supports it.', 'Reliability means showing up prepared, honoring commitments, communicating early when something is delayed or blocked, supporting teammates and completing agreed work to an appropriate standard. Intelligence and technical skill may create an opportunity, but integrity and reliability determine whether other people will trust someone with greater responsibility.', 'Participants practice these values through documented work, transparent collaboration, the buddy system, peer accountability and consistent follow through. John tells participants to focus on hard work, integrity and reliability because all else will follow.']],
               ['See how a startup really works', 'https://www.flostudios.ai/assets/carousel/bootcamp.png', ['John wants participants to see how a startup works beyond their own department. When appropriate, they may join conversations with advisers, partners, prospective customers and domain experts. They see how ideas are evaluated, why priorities change and what happens after a product launches.']],
               ['Build in public and connect the dots', 'https://www.flostudios.ai/assets/carousel/flotravel.png', ['FloLabs works in the open whenever it can. Its approach combines open source software, open science and open learning. Participants see how ideas are researched, challenged, built, tested and improved. The Connecting the Dots podcast shares selected team discussions so others can follow the work.']],
               ['Remain a learner at every level', '/about/john-hazlewood.png', ['Calling himself the founding intern is John’s reminder that leadership does not place someone above the learning process. The technologies FloLabs works with change too quickly for static expertise. Curiosity, humility, discernment and the ability to learn continuously are strategic advantages.']],
               ['Pursue work with meaning and purpose', 'https://www.flostudios.ai/assets/robocollective-card.png', ['John focuses on AI and robotics because he believes they can expand human capability, improve health, increase access, create opportunity and solve useful problems.']],
-            ].map(([title, image, paragraphs]) => (
-              <details key={title as string} className="group relative overflow-hidden rounded-2xl border border-white/15">
-                <img src={image as string} alt="" className="absolute inset-0 h-full w-full object-cover object-top" />
-                <div className="absolute inset-0 bg-black/60 group-open:bg-black/50" />
-                <summary className="relative flex min-h-24 cursor-pointer list-none items-end justify-between gap-4 px-5 py-4 text-xl font-semibold [&::-webkit-details-marker]:hidden">
-                  {title}
-                  <span aria-hidden="true" className="text-white/70 group-open:hidden">+</span>
-                  <span aria-hidden="true" className="hidden text-white/70 group-open:inline">–</span>
-                </summary>
-                <div className="relative space-y-3 px-5 pb-5 text-base leading-relaxed text-white/90">
-                  {(paragraphs as string[]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            ] as [string, string, string[]][]).map(([title, image, paragraphs], index) => (
+              <article key={title} className="approach-card">
+                <p className="approach-watermark" aria-hidden="true">{title}</p>
+                <h3>{title}</h3>
+                <div className="approach-copy">
+                  {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 </div>
-              </details>
+                <div className="approach-photo">
+                  <img src={image} alt="" />
+                </div>
+                <div className="approach-bottom">
+                  <p className="approach-num" aria-hidden="true">({String(index + 1).padStart(2, '0')})</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
@@ -424,17 +572,23 @@ export function AboutExperience() {
         <P>FloLabs gives participants direct access to its leadership. During the company’s early growth, John participates in meetings across all technical, design, data, research, marketing, legal, space and operations teams. He also meets all new participants, learns about their backgrounds and asks what they want to become capable of doing.</P>
         <P>Participants are expected to contribute, communicate and follow through. The program is flexible and primarily remote, but the work still carries responsibilities and deadlines. Outcomes are not guaranteed.</P>
         <P>Participants can expect:</P>
-        <TextRail items={[
-          'Exposure to ambitious, multidisciplinary AI, robotics, research and venture projects.',
-          'Pathways based on interests, readiness and demonstrated commitment.',
-          'Work with international teammates from different cultures and disciplines.',
-          'A culture that deliberately develops integrity, reliability, accountability and professional follow through.',
-          'Project specific learning resources and masterclasses.',
-          'Experience with modern AI, collaboration, design, development and research tools.',
-          'Opportunities to build a portfolio and documented evidence of contribution.',
-          'An honest view of startup uncertainty, iteration and product development.',
-          'Consideration for future roles when there is a strong mutual fit. FloLabs intends to recruit future hires from people who have completed the internship, but completion does not guarantee employment.',
-        ]} />
+        <div className="expect-grid">
+          {[
+            ['Exposure to ambitious, multidisciplinary AI, robotics, research and venture projects.', 'is-black'],
+            ['Pathways based on interests, readiness and demonstrated commitment.', 'is-light is-corner'],
+            ['Work with international teammates from different cultures and disciplines.', 'is-dark'],
+            ['A culture that deliberately develops integrity, reliability, accountability and professional follow through.', 'is-dark'],
+            ['Project specific learning resources and masterclasses.', 'is-black'],
+            ['Experience with modern AI, collaboration, design, development and research tools.', 'is-light is-corner'],
+            ['Opportunities to build a portfolio and documented evidence of contribution.', 'is-light is-corner'],
+            ['An honest view of startup uncertainty, iteration and product development.', 'is-dark'],
+            ['Consideration for future roles when there is a strong mutual fit. FloLabs intends to recruit future hires from people who have completed the internship, but completion does not guarantee employment.', 'is-black'],
+          ].map(([text, tone]) => (
+            <article key={text} className={`expect-card ${tone}`}>
+              <span className="expect-copy">{text}</span>
+            </article>
+          ))}
+        </div>
         <P>John wants applicants to understand both the opportunity and the expectations so they can decide whether FloLabs is the right fit.</P>
       </Section>
 
@@ -442,26 +596,21 @@ export function AboutExperience() {
         <H2 id="thrive-heading">Who is likely to thrive at FloLabs?</H2>
         <P>John built FloLabs for people with relentless curiosity who want to take part in shaping the future.</P>
         <P>That can include:</P>
-        <PhotoRow cards={[
-          { text: 'University students seeking substantial experience beyond the classroom.', image: 'https://www.flostudios.ai/assets/carousel/bootcamp.png' },
-          { text: 'Career changers who need credible, applied work rather than another isolated course.', image: 'https://www.flostudios.ai/assets/carousel/flotravel.png' },
-          { text: 'Developers, engineers, researchers and designers who want to work across disciplines.', image: 'https://www.flostudios.ai/assets/robocollective-card.png' },
-          { text: 'PhD candidates, postdoctoral researchers and subject matter experts seeking ambitious collaborative projects.', image: 'https://www.flostudios.ai/assets/carousel/hepheastus.png' },
-          { text: 'Prospective founders who want to understand how ideas become ventures.', image: 'https://www.flostudios.ai/assets/caipo-card.webp' },
-          { text: 'Citizen scientists and open source contributors motivated by discovery and impact.', image: 'https://www.flostudios.ai/assets/carousel/cosmos.png' },
-          { text: 'Lifelong learners who want community, challenge, meaning and purpose.', image: '/about/about-header-background.png' },
+        <PhotoRow veil="thrive-veil" cards={[
+          { title: 'University students', text: 'University students seeking substantial experience beyond the classroom.', image: '/about/thrive-students.jpg' },
+          { title: 'Career changers', text: 'Career changers who need credible, applied work rather than another isolated course.', image: '/about/thrive-career.jpg' },
+          { title: 'Builders', text: 'Developers, engineers, researchers and designers who want to work across disciplines.', image: '/about/thrive-builders.jpg' },
+          { title: 'Researchers', text: 'PhD candidates, postdoctoral researchers and subject matter experts seeking ambitious collaborative projects.', image: '/about/thrive-research.jpg' },
+          { title: 'Prospective founders', text: 'Prospective founders who want to understand how ideas become ventures.', image: '/about/thrive-founders.jpg' },
+          { title: 'Citizen scientists', text: 'Citizen scientists and open source contributors motivated by discovery and impact.', image: '/about/thrive-opensource.jpg' },
+          { title: 'Lifelong learners', text: 'Lifelong learners who want community, challenge, meaning and purpose.', image: '/about/thrive-learners.jpg' },
         ]} />
         <P>People join from many countries, schools and career stages. What matters is their willingness to learn, contribute, collaborate and take responsibility for their development.</P>
       </Section>
 
-      <Section id="the-flolabs-mission" paper>
-        <H2 id="mission-heading">The FloLabs mission</H2>
-        <P>FloLabs’ mission is:</P>
-        <P>We aspire to inspire, help as many people as possible, live long and prosper.</P>
-        <P>The Vulcan salute appears in the FloLabs identity because John believes technology and entrepreneurship should improve life.</P>
-        <P>John defines prosperity broadly to include health, knowledge, meaningful work, community, personal agency and the ability to contribute something valuable.</P>
-        <P>That is why FloLabs connects education with research and venture creation. Learning should lead somewhere. Research should inform action. Technology should serve people. Entrepreneurship should create pathways for others, not only rewards for founders.</P>
-      </Section>
+      <FutureSection />
+
+      <AimSection />
 
       <Section id="a-personal-invitation-from-john" paper>
         <H2 id="invite-heading">A personal invitation from John</H2>
@@ -472,15 +621,24 @@ export function AboutExperience() {
         <P>We are building a global community where serious learners can work with one another on ideas at the frontier of AI, robotics, research and entrepreneurship. Some participants will use the experience to strengthen a university education. Some will change careers. Some will become researchers, engineers or founders. Others will join because they want to contribute to projects that give them meaning and purpose.</P>
         <P>The program requires real work and does not guarantee a job. It offers a place to develop practical ability and join a community building useful technology.</P>
         <P>If you are relentlessly curious, willing to contribute and ready to learn by doing, I invite you to explore FloLabs.</P>
-        <p className="mt-8 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-2xl leading-snug sm:text-3xl">Talent is everywhere. Opportunity should be too.</p>
-        <p className="mt-6 text-lg">Live long and prosper. 🖖</p>
-        <p className="mt-2 font-semibold">John Hazlewood</p>
-        <p>Founder and CEO, FloLabs Innovations Group</p>
-        <p>Founding Intern, FloLabs</p>
       </Section>
 
-      <section id="frequently-asked-questions" aria-labelledby="faq-heading" className="border-t border-border bg-white text-[#122033] dark:bg-black dark:text-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section aria-label="John Hazlewood" className="bg-white px-4 py-16 text-[#122033] dark:bg-black dark:text-white sm:px-6 sm:py-24 lg:px-8">
+        <figure className="john-quote quote-ambient mx-auto max-w-5xl px-8 py-12 sm:px-14 sm:py-16" data-animation="quote-ambient">
+          <blockquote>
+            <p>“Talent is everywhere. Opportunity should be too.”</p>
+            <p className="mt-8">“Live long and prosper.”</p>
+          </blockquote>
+          <figcaption className="mt-10">
+            <p className="quote-name">John Hazlewood</p>
+            <p className="quote-role">Founder and CEO, FloLabs Innovations Group</p>
+            <p className="quote-role">Founding Intern, FloLabs</p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="frequently-asked-questions" aria-labelledby="faq-heading" className="bg-white text-[#122033] dark:bg-black dark:text-white">
+        <div className="mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
           <h2 id="faq-heading" className="font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl">Frequently asked questions</h2>
           <div className="mt-8 divide-y divide-black/15 border-y border-black/15 dark:divide-white/20 dark:border-white/20">
             {FAQ.map(([question, answer], index) => {
@@ -500,7 +658,7 @@ export function AboutExperience() {
                   </h3>
                   <div className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                     <div className="overflow-hidden">
-                      <p className="max-w-[68ch] pb-4 leading-[1.75] text-[#122033]/90 dark:text-white/90">{answer}</p>
+                      <p className="w-full max-w-none pb-4 leading-[1.75] text-[#122033]/90 dark:text-white/90">{answer}</p>
                     </div>
                   </div>
                 </div>
@@ -510,17 +668,16 @@ export function AboutExperience() {
         </div>
       </section>
 
-      <section aria-labelledby="final-cta-heading" className="border-t border-border bg-white text-[#122033] dark:bg-black dark:text-white">
-        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section aria-labelledby="final-cta-heading" className="bg-white text-[#122033] dark:bg-black dark:text-white">
+        <div className="relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
           <h2 id="final-cta-heading" className="font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl">Talent is everywhere. Opportunity should be too.</h2>
           <blockquote className="mt-8 border-l-2 border-primary pl-5 text-lg leading-snug sm:text-xl">
             Talent is everywhere. Opportunity should be too. Our responsibility is to help close that gap by giving serious, curious people the chance to learn, contribute and build evidence of what they can do.
           </blockquote>
           <p className="mt-4 text-lg text-[#122033]/90 dark:text-white/90">Explore FloLabs, learn how the program works and discover the AI, robotics and research projects being built by our international teams.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="https://www.flolabs.international/internships" className="inline-flex min-h-11 items-center bg-[#122033] px-6 text-sm font-semibold text-white dark:bg-white dark:text-[#0d0f16]">Apply to join FloLabs</a>
-            <a href="https://www.flolabsinnovations.com/education" className="inline-flex min-h-11 cursor-pointer items-center border border-[#122033]/40 px-6 text-sm font-semibold text-[#122033] transition-colors duration-200 hover:bg-[#122033] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/40 dark:text-white dark:hover:bg-white dark:hover:text-[#0d0f16]">Learn how the program works</a>
-            <a href="https://www.flolabs.international/projects" className="inline-flex min-h-11 items-center border border-[#122033]/40 px-6 text-sm font-semibold text-[#122033] dark:border-white/40 dark:text-white">Explore projects</a>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a href="https://www.flolabs.international/internships" className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold bg-[#122033] text-white hover:bg-black transition-colors cursor-pointer dark:bg-[#f6f8fc] dark:text-[#0d0f16] dark:hover:bg-white">Apply to join FloLabs</a>
+            <a href="https://www.flolabs.international/projects" className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold border border-[#122033]/25 bg-white/50 text-[#122033] hover:bg-white transition-colors cursor-pointer dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20">Explore projects</a>
           </div>
         </div>
       </section>

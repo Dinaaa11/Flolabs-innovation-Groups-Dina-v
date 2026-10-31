@@ -291,6 +291,10 @@ export const FromTheStudio: React.FC = () => {
         })
       : null;
     io?.observe(canvas);
+    const kick = () => {
+      if (visible && !document.hidden && !reduced && !animId) animId = requestAnimationFrame(loop);
+    };
+    document.addEventListener('visibilitychange', kick);
 
     if (reduced) {
       gl.uniform1f(uTimeLoc, 2.0);
@@ -303,6 +307,7 @@ export const FromTheStudio: React.FC = () => {
       io?.disconnect();
       ro?.disconnect();
       window.removeEventListener('resize', resize);
+      document.removeEventListener('visibilitychange', kick);
       cancelAnimationFrame(animId);
       if (gl) {
         gl.deleteProgram(prog);
@@ -322,7 +327,7 @@ export const FromTheStudio: React.FC = () => {
       <div className="ctd-bg absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <canvas
           ref={canvasRef}
-          className="faulty-terminal-container absolute inset-0 w-full h-full object-cover invert opacity-40 dark:invert-0 dark:opacity-75"
+          className="faulty-terminal-container absolute inset-0 w-full h-full object-cover invert opacity-55 dark:invert-0 dark:opacity-75"
         />
 
         {/* Protective gradient scrim preventing text contrast interference */}
@@ -330,7 +335,7 @@ export const FromTheStudio: React.FC = () => {
           className="ctd-scrim absolute inset-0 pointer-events-none dark:hidden"
           style={{
             background:
-              'radial-gradient(120% 90% at 28% 46%, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.88) 55%, rgba(255,255,255,0.96) 100%), linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.35) 40%, rgba(255,255,255,0.7) 100%)',
+              'radial-gradient(120% 90% at 28% 46%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.68) 55%, rgba(255,255,255,0.78) 100%), linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.28) 40%, rgba(255,255,255,0.55) 100%)',
           }}
         />
         <div

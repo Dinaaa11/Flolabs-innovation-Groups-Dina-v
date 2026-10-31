@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { StickyProjectsStack } from './StickyProjectsStack';
 import { NahrDevPortfolioExact } from './NahrDevPortfolioExact';
 import { FromTheStudio } from './FromTheStudio';
@@ -11,6 +11,58 @@ interface ShowcaseContentProps {
   onOpenLogin: () => void;
 }
 
+function HeroRain() {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const drops = Array.from({ length: 80 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      len: 0.06 + Math.random() * 0.16,
+      speed: 0.0012 + Math.random() * 0.003,
+      w: 1 + Math.random() * 1.6,
+      a: 0.18 + Math.random() * 0.4,
+    }));
+    let frame = 0;
+    const draw = () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const width = rect.width;
+      const height = rect.height;
+      if (canvas.width !== Math.floor(width * dpr) || canvas.height !== Math.floor(height * dpr)) {
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+      }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+      for (const drop of drops) {
+        if (!reduce) drop.y += drop.speed;
+        if (drop.y - drop.len > 1) drop.y = -drop.len;
+        const x = drop.x * width;
+        const y = drop.y * height;
+        const top = y - drop.len * height;
+        const grad = ctx.createLinearGradient(x, top, x, y);
+        grad.addColorStop(0, 'rgba(255,255,255,0)');
+        grad.addColorStop(1, `rgba(255,255,255,${drop.a})`);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = drop.w;
+        ctx.beginPath();
+        ctx.moveTo(x, top);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      }
+      if (!reduce) frame = requestAnimationFrame(draw);
+    };
+    frame = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+  return <canvas ref={ref} aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 h-full w-full dark:hidden" />;
+}
+
 export const ShowcaseContent: React.FC<ShowcaseContentProps> = ({
   activeNav,
   onSelectNav,
@@ -21,16 +73,12 @@ export const ShowcaseContent: React.FC<ShowcaseContentProps> = ({
       {/* Hero */}
       <section
         id="home"
-        className="relative isolate overflow-hidden w-full min-h-[640px] h-[92svh] flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-36 md:pt-24 pb-16 text-white"
-        style={{
-          backgroundColor: '#0d0f16',
-          backgroundImage:
-            'radial-gradient(60% 38% at 20% 14%, rgba(70,150,205,0.85) 0%, rgba(70,150,205,0) 70%), radial-gradient(55% 34% at 52% 8%, rgba(52,98,190,0.9) 0%, rgba(52,98,190,0) 72%), radial-gradient(45% 38% at 88% 12%, rgba(86,160,215,0.75) 0%, rgba(86,160,215,0) 70%), radial-gradient(70% 40% at 48% 40%, rgba(26,52,120,0.75) 0%, rgba(26,52,120,0) 75%), linear-gradient(180deg, #1d3566 0%, #101a36 42%, #0d0f16 78%, #0d0f16 100%)',
-        }}
+        className="home-hero relative isolate overflow-hidden w-full min-h-[640px] h-[92svh] flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-36 md:pt-24 pb-16 text-[#122033] dark:text-white"
       >
+        <HeroRain />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -z-10 right-0 top-0 w-[42%] h-[48%] opacity-60"
+          className="pointer-events-none absolute -z-10 right-0 top-0 hidden w-[42%] h-[48%] opacity-60 dark:block"
           style={{
             backgroundImage: 'radial-gradient(rgba(255,255,255,0.55) 1px, transparent 1.4px)',
             backgroundSize: '9px 9px',
@@ -39,10 +87,10 @@ export const ShowcaseContent: React.FC<ShowcaseContentProps> = ({
           }}
         />
         <div className="max-w-4xl flex flex-col items-center gap-6">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.08] text-white font-['Google_Sans_Flex','Google_Sans',sans-serif]">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.08] text-[#122033] dark:text-white font-['Google_Sans_Flex','Google_Sans',sans-serif]">
             Launching AI and robotics projects for the next generation
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl text-[#b9c6dc]">
+            <p className="text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl text-[#3d5166] dark:text-[#b9c6dc]">
             FloLabs Innovations Group connects curious builders and visionary founders to real venture execution,
             autonomous systems, and world-class experiential learning programs worldwide.
           </p>
@@ -55,7 +103,7 @@ export const ShowcaseContent: React.FC<ShowcaseContentProps> = ({
                 const el = document.getElementById('nahrdev-live');
                 if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
               }}
-              className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold bg-[#f6f8fc] text-[#0d0f16] hover:bg-white transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold bg-[#122033] text-white hover:bg-black transition-colors cursor-pointer dark:bg-[#f6f8fc] dark:text-[#0d0f16] dark:hover:bg-white"
             >
               View Projects
             </a>
@@ -65,7 +113,7 @@ export const ShowcaseContent: React.FC<ShowcaseContentProps> = ({
                 e.preventDefault();
                 onSelectNav('internships');
               }}
-              className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold border border-white/30 bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold border border-[#122033]/25 bg-white/50 text-[#122033] hover:bg-white transition-colors cursor-pointer dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
             >
               Join Internships
             </a>

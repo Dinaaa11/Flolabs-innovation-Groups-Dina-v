@@ -86,6 +86,98 @@ function LogoRow({ hidden }: { hidden?: boolean }) {
   );
 }
 
+export function FutureSection() {
+  return (
+    <section aria-labelledby="about-mission-heading" className="relative mb-16 w-full overflow-x-clip sm:mb-24 lg:mb-36">
+      <div className="relative left-1/2 min-h-[560px] w-screen max-w-[100vw] -translate-x-1/2 sm:min-h-[640px]">
+        <img alt="" aria-hidden="true" src="/about/future-campus.jpg" className="absolute inset-0 h-full w-full object-cover object-center" />
+        <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
+        <div className="relative z-10 mx-auto flex min-h-[560px] w-full max-w-6xl flex-col justify-center gap-4 px-4 py-16 sm:min-h-[640px] sm:gap-5 sm:px-6 sm:py-24 md:flex-row md:items-center md:justify-between md:gap-6 lg:px-8">
+          <Reveal from="translate3d(-24px, 0, 0) scale(1)" duration={400} className="min-h-0 min-w-0 md:max-w-[58%] md:flex-1">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">FloLabs mission</p>
+            <h2 id="about-mission-heading" className="text-balance text-[clamp(1rem,2.8vw,1.875rem)] font-bold uppercase leading-[1.08] tracking-[0.14em] text-white sm:tracking-[0.16em] [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
+              Inspire, empower, and <span className="inline-block bg-white px-2 py-0.5 text-black">build the future</span>
+            </h2>
+            <div className="mt-3 space-y-2 sm:mt-4 sm:space-y-3">
+              <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Inspire and empower individuals through transformative educational experiences that foster global perspectives, innovative thinking, and practical skills.</p>
+              <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">We aim to cultivate a culture of curiosity and creativity, create jobs of the future, and build innovative solutions for a rapidly changing world.</p>
+              <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">We aspire to inspire, help as many people as possible, live long and prosper.</p>
+              <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">The Vulcan salute appears in the FloLabs identity because John believes technology and entrepreneurship should improve life.</p>
+              <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">John defines prosperity broadly to include health, knowledge, meaningful work, community, personal agency and the ability to contribute something valuable.</p>
+              <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">That is why FloLabs connects education with research and venture creation. Learning should lead somewhere. Research should inform action. Technology should serve people. Entrepreneurship should create pathways for others, not only rewards for founders.</p>
+            </div>
+          </Reveal>
+          <Reveal from="translate3d(24px, 0, 0) scale(1)" delay={100} duration={400} className="flex min-h-0 w-full shrink-0 items-center justify-center md:h-full md:w-[34%] md:justify-end">
+            <img src="/projects/icons/FloLabs_logo FloLabs International.svg" alt="" aria-hidden="true" className="h-auto w-auto max-w-full object-contain brightness-0 [max-height:min(86%,21.6vw)] md:[max-height:86%]" />
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function AimSection() {
+  return (
+    <section aria-labelledby="about-what-we-aim-heading" className="w-full overflow-x-clip bg-transparent">
+      <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pt-24">
+        <Reveal className="w-full" duration={400}>
+          <h2 id="about-what-we-aim-heading" className="text-balance text-center text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground dark:text-white sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
+            What we aim to deliver
+          </h2>
+          <h3 className="mt-8 text-balance text-center text-lg font-bold uppercase leading-[1.08] tracking-[0.12em] text-foreground dark:text-white sm:mt-10 sm:text-xl sm:tracking-[0.14em] lg:text-2xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
+            Helping people learn better
+          </h3>
+          <p className="mt-4 text-pretty text-center text-base font-normal leading-relaxed text-muted dark:text-white/82 sm:mt-5 sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
+            Our methodology is to foster collaboration and creativity.
+          </p>
+        </Reveal>
+      </div>
+      <div className="w-full bg-transparent pb-16 sm:pb-20">
+        <div className="flex flex-col justify-center gap-4 px-4 py-5 sm:gap-5 sm:px-8 sm:py-6 md:px-12 lg:px-16">
+          <div className="mx-auto w-full max-w-6xl overflow-hidden px-[1.5%] sm:px-[4%] md:px-[6.5%] lg:px-[8%]">
+            <div className="w-full [--home-marquee-duration:40s]" role="region" aria-label="Project logos">
+              <div className="home-projects-marquee-viewport relative isolate w-full">
+                <div className="home-projects-marquee-track min-h-16 sm:min-h-[4.5rem]">
+                  <LogoRow />
+                  <div className="w-6 shrink-0 self-stretch sm:w-8" aria-hidden="true" />
+                  <LogoRow hidden />
+                  <div className="w-6 shrink-0 self-stretch sm:w-8" aria-hidden="true" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mx-auto mt-6 grid w-full max-w-6xl gap-4 md:grid-cols-2 md:justify-items-center md:gap-x-7 lg:gap-x-10">
+            <Reveal duration={300} className="min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12">
+              <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Experiential Learning</h3>
+              <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Unique and immersive educational training with hands-on, real world experience.</p>
+            </Reveal>
+            <Reveal delay={80} duration={300} className="min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12">
+              <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Practical Experience</h3>
+              <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Work on innovative, marketable projects with real-world impact.</p>
+            </Reveal>
+            <Reveal delay={120} duration={300} className="min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12">
+              <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Recorded Meetings</h3>
+              <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">We record and transcribe every meeting so you can review information when necessary.</p>
+            </Reveal>
+            <Reveal delay={160} duration={300} className="min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12">
+              <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Brainwriting Exercises</h3>
+              <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Brain writing is an exercise to help the brain get into a creative and productive state.</p>
+            </Reveal>
+            <Reveal delay={200} duration={300} className="min-w-0 w-full max-w-md">
+              <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Advanced AI Tools</h3>
+              <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Language Learning Models help automate workflow, brainstorm, and advise work production.</p>
+            </Reveal>
+            <Reveal delay={240} duration={300} className="min-w-0 w-full max-w-md">
+              <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Collaborative Learning</h3>
+              <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">We teach each other and learn together through peer support, shared practice, and active teamwork.</p>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function InternationalAbout({ part = 'all' }: { part?: 'all' | 'hero' | 'intro' | 'body' }) {
   const showHero = part === 'all' || part === 'hero';
   const showIntro = part === 'all' || part === 'intro';
@@ -131,94 +223,6 @@ export function InternationalAbout({ part = 'all' }: { part?: 'all' | 'hero' | '
           </Reveal>
         </div>
       </section> : null}
-
-      {showBody ? <><section aria-labelledby="about-what-we-aim-heading" className="w-full overflow-x-clip bg-transparent">
-        <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pt-24">
-          <Reveal className="w-full" duration={400}>
-            <h2 id="about-what-we-aim-heading" className="text-balance text-center text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground dark:text-white sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
-              What we aim to deliver
-            </h2>
-          </Reveal>
-        </div>
-        <div className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2">
-          <img alt="" aria-hidden="true" src="/about/what-we-aim-background.png" className="block h-auto w-full max-w-none" />
-          <div className="absolute inset-0 z-10 flex flex-col justify-center gap-4 overflow-hidden px-4 py-5 sm:gap-5 sm:px-8 sm:py-6 md:px-12 lg:px-16">
-            <div className="mx-auto w-full max-w-6xl overflow-hidden px-[1.5%] sm:px-[4%] md:px-[6.5%] lg:px-[8%]">
-              <div className="w-full [--home-marquee-duration:40s]" role="region" aria-label="Project logos">
-                <div className="home-projects-marquee-viewport relative isolate w-full">
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-8 bg-gradient-to-r from-[#00349b] via-[#00349b]/50 to-transparent sm:w-12" />
-                  <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-8 bg-gradient-to-l from-[#00349b] via-[#00349b]/50 to-transparent sm:w-12" />
-                  <div className="home-projects-marquee-track min-h-16 sm:min-h-[4.5rem]">
-                    <LogoRow />
-                    <div className="w-6 shrink-0 self-stretch sm:w-8" aria-hidden="true" />
-                    <LogoRow hidden />
-                    <div className="w-6 shrink-0 self-stretch sm:w-8" aria-hidden="true" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mx-auto grid w-full max-w-6xl gap-4 md:grid-cols-2 md:justify-items-center md:gap-x-7 lg:gap-x-10">
-              <Reveal duration={300} className="min-w-0 w-full max-w-md">
-                <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-white sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Experiential Learning</h3>
-                <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-white/90 sm:mt-2 sm:text-base sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Unique and immersive educational training with hands-on, real world experience.</p>
-              </Reveal>
-              <Reveal delay={80} duration={300} className="min-w-0 w-full max-w-md">
-                <h3 className="text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-white sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Practical Experience</h3>
-                <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-white/90 sm:mt-2 sm:text-base sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Work on innovative, marketable projects with real-world impact.</p>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="about-mission-heading" className="relative mt-[4.8rem] w-full overflow-x-clip sm:mt-[5.4rem] lg:mt-[6rem]">
-        <div className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2">
-          <img alt="" aria-hidden="true" src="/about/future-background.png" className="block h-auto w-full max-w-none" />
-          <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
-          <div className="absolute inset-0 z-10 mx-auto flex w-full max-w-6xl min-h-0 flex-col justify-center gap-4 overflow-x-clip px-4 py-[4%] sm:gap-5 sm:px-6 md:flex-row md:items-center md:justify-between md:gap-6 lg:px-8">
-            <Reveal from="translate3d(-24px, 0, 0) scale(1)" duration={400} className="min-h-0 min-w-0 md:max-w-[58%] md:flex-1">
-              <h2 id="about-mission-heading" className="text-balance text-[clamp(1rem,2.8vw,1.875rem)] font-bold uppercase leading-[1.08] tracking-[0.14em] text-white sm:tracking-[0.16em] [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
-                Inspire, empower, and <span className="inline-block bg-white px-2 py-0.5 text-primary dark:text-[#00349b]">build the future</span>
-              </h2>
-              <div className="mt-3 space-y-2 sm:mt-4 sm:space-y-3">
-                <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">Inspire and empower individuals through transformative educational experiences that foster global perspectives, innovative thinking, and practical skills.</p>
-                <p className="text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">We aim to cultivate a culture of curiosity and creativity, create jobs of the future, and build innovative solutions for a rapidly changing world.</p>
-              </div>
-            </Reveal>
-            <Reveal from="translate3d(24px, 0, 0) scale(1)" delay={100} duration={400} className="flex min-h-0 w-full shrink-0 items-center justify-center md:h-full md:w-[34%] md:justify-end">
-              <img src="/projects/icons/FloLabs_logo FloLabs International.svg" alt="" aria-hidden="true" className="h-auto w-auto max-w-full object-contain [max-height:min(86%,21.6vw)] md:[max-height:86%]" />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="about-methodology-heading" className="w-full overflow-x-clip bg-transparent py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <Reveal duration={400} className="w-full">
-            <h2 id="about-methodology-heading" className="text-balance text-center text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground dark:text-white sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
-              Helping people learn better
-            </h2>
-            <p className="mt-4 text-pretty text-center text-base font-normal leading-relaxed text-muted dark:text-white/82 sm:mt-5 sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">
-              Our methodology is to foster collaboration and creativity.
-            </p>
-          </Reveal>
-          <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 md:grid-cols-2">
-            {[
-              ['Recorded Meetings', 'We record and transcribe every meeting so you can review information when necessary.'],
-              ['Brainwriting Exercises', 'Brain writing is an exercise to help the brain get into a creative and productive state.'],
-              ['Advanced AI Tools', 'Language Learning Models help automate workflow, brainstorm, and advise work production.'],
-              ['Collaborative Learning', 'We teach each other and learn together through peer support, shared practice, and active teamwork.'],
-            ].map(([title, copy], index) => (
-              <Reveal key={title} delay={index * 80} duration={300} from="translate3d(0, 6px, 0) scale(1)" className="h-full">
-                <article className="relative border border-border bg-card p-6 text-foreground shadow-sm transition-[border-color,background-color,box-shadow] duration-200 hover:border-primary/40 hover:shadow-md sm:p-8">
-                  <h3 className="text-balance pr-10 text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground dark:text-white sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">{title}</h3>
-                  <p className="mt-1.5 text-pretty text-sm font-normal leading-snug text-muted dark:text-white/90 sm:mt-2 sm:text-base sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]">{copy}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section></> : null}
     </div>
   );
 }
