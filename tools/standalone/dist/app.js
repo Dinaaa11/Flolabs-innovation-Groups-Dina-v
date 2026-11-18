@@ -16855,8 +16855,177 @@ void main() {
   }
 
   // src/components/AboutExperience.tsx
+  var import_react13 = __toESM(require_react(), 1);
+
+  // src/components/InternationalAbout.tsx
   var import_react12 = __toESM(require_react(), 1);
   var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
+  var LOGOS2 = [
+    "/projects/icons/FloLabs_logo MoodChanger.svg",
+    "/projects/icons/FloLabs_logo CAIPO.svg",
+    "/projects/icons/FloLabs_logo FloStudios.svg",
+    "/projects/icons/FloLabs_logo Flomad Travel.svg",
+    "/projects/icons/FloLabs_logo Bootcamp University.svg",
+    "/projects/icons/FloLabs_logo TARRL.svg",
+    "/projects/icons/Flolabs_logo Black.png",
+    "/projects/icons/FloLabs_logo MoodChanger for Pets.svg",
+    "/projects/icons/FloLabs_logo RoboCollective.svg",
+    "/projects/icons/FloLabs_logo Hephaestus.svg",
+    "/projects/icons/FloLabs_logo FloBrain.svg",
+    "/projects/icons/FloLabs_logo Connecting The Dots.svg",
+    "/projects/icons/FloLabs_logo Legal.svg",
+    "/projects/icons/FloLabs_logo Space.svg",
+    "/projects/icons/FloLabs_logo Space.svg"
+  ];
+  function Reveal({
+    children,
+    className = "",
+    delay = 0,
+    from = "translate3d(0, 12px, 0)",
+    duration = 500
+  }) {
+    const ref = (0, import_react12.useRef)(null);
+    (0, import_react12.useEffect)(() => {
+      const node = ref.current;
+      if (!node) return;
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduced) {
+        node.style.opacity = "1";
+        node.style.transform = "none";
+        return;
+      }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            node.style.opacity = "1";
+            node.style.transform = "translate3d(0, 0, 0) scale(1)";
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.2 }
+      );
+      observer.observe(node);
+      return () => observer.disconnect();
+    }, []);
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      "div",
+      {
+        ref,
+        className: `motion-reduce:opacity-100 ${className}`,
+        style: {
+          transitionProperty: "opacity, transform",
+          transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+          transitionDelay: `${delay}ms`,
+          transitionDuration: `${duration}ms`,
+          transform: from,
+          opacity: 0
+        },
+        children
+      }
+    );
+  }
+  function LogoRow({ hidden }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "home-projects-marquee-group gap-6 sm:gap-8", "aria-hidden": hidden || void 0, children: LOGOS2.map((src, index) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "flex h-16 w-[5.5rem] shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-28", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src, alt: "", className: "max-h-full max-w-full object-contain", decoding: "async" }) }, `${src}-${index}`)) });
+  }
+  function FutureSection() {
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { "aria-labelledby": "about-mission-heading", className: "relative mb-16 w-full overflow-x-clip sm:mb-24 lg:mb-36", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative left-1/2 min-h-[560px] w-screen max-w-[100vw] -translate-x-1/2 sm:min-h-[640px]", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { alt: "", "aria-hidden": "true", src: "/about/future-campus.jpg", className: "absolute inset-0 h-full w-full object-cover object-center" }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "absolute inset-0 bg-black/45", "aria-hidden": "true" }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative z-10 mx-auto flex min-h-[560px] w-full max-w-6xl flex-col justify-center gap-4 px-4 py-16 sm:min-h-[640px] sm:gap-5 sm:px-6 sm:py-24 md:flex-row md:items-center md:justify-between md:gap-6 lg:px-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { from: "translate3d(-24px, 0, 0) scale(1)", duration: 400, className: "min-h-0 min-w-0 md:max-w-[58%] md:flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "FloLabs mission" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("h2", { id: "about-mission-heading", className: "text-balance text-[clamp(1rem,2.8vw,1.875rem)] font-bold uppercase leading-[1.08] tracking-[0.14em] text-white sm:tracking-[0.16em] [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: [
+            "Inspire, empower, and ",
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "inline-block bg-white px-2 py-0.5 text-black", children: "build the future" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-3 space-y-2 sm:mt-4 sm:space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Inspire and empower individuals through transformative educational experiences that foster global perspectives, innovative thinking, and practical skills." }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "We aim to cultivate a culture of curiosity and creativity, create jobs of the future, and build innovative solutions for a rapidly changing world." }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "We aspire to inspire, help as many people as possible, live long and prosper." }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "The Vulcan salute appears in the FloLabs identity because John believes technology and entrepreneurship should improve life." }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "John defines prosperity broadly to include health, knowledge, meaningful work, community, personal agency and the ability to contribute something valuable." }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "That is why FloLabs connects education with research and venture creation. Learning should lead somewhere. Research should inform action. Technology should serve people. Entrepreneurship should create pathways for others, not only rewards for founders." })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Reveal, { from: "translate3d(24px, 0, 0) scale(1)", delay: 100, duration: 400, className: "flex min-h-0 w-full shrink-0 items-center justify-center md:h-full md:w-[34%] md:justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: "/projects/icons/FloLabs_logo FloLabs International.svg", alt: "", "aria-hidden": "true", className: "h-auto w-auto max-w-full object-contain brightness-0 [max-height:min(86%,21.6vw)] md:[max-height:86%]" }) })
+      ] })
+    ] }) });
+  }
+  function AimSection() {
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("section", { "aria-labelledby": "about-what-we-aim-heading", className: "w-full overflow-x-clip bg-transparent", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "mx-auto w-full max-w-6xl px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pt-24", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { className: "w-full", duration: 400, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id: "about-what-we-aim-heading", className: "text-balance text-center text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground dark:text-white sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "What we aim to deliver" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "mt-8 text-balance text-center text-lg font-bold uppercase leading-[1.08] tracking-[0.12em] text-foreground dark:text-white sm:mt-10 sm:text-xl sm:tracking-[0.14em] lg:text-2xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Helping people learn better" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-4 text-pretty text-center text-base font-normal leading-relaxed text-muted dark:text-white/82 sm:mt-5 sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Our methodology is to foster collaboration and creativity." })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "w-full bg-transparent pb-16 sm:pb-20", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex flex-col justify-center gap-4 px-4 py-5 sm:gap-5 sm:px-8 sm:py-6 md:px-12 lg:px-16", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "mx-auto w-full max-w-6xl overflow-hidden px-[1.5%] sm:px-[4%] md:px-[6.5%] lg:px-[8%]", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "w-full [--home-marquee-duration:40s]", role: "region", "aria-label": "Project logos", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "home-projects-marquee-viewport relative isolate w-full", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "home-projects-marquee-track min-h-16 sm:min-h-[4.5rem]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(LogoRow, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "w-6 shrink-0 self-stretch sm:w-8", "aria-hidden": "true" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(LogoRow, { hidden: true }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "w-6 shrink-0 self-stretch sm:w-8", "aria-hidden": "true" })
+        ] }) }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mx-auto mt-6 grid w-full max-w-6xl gap-4 md:grid-cols-2 md:justify-items-center md:gap-x-7 lg:gap-x-10", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { duration: 300, className: "min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Experiential Learning" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Unique and immersive educational training with hands-on, real world experience." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { delay: 80, duration: 300, className: "min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Practical Experience" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Work on innovative, marketable projects with real-world impact." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { delay: 120, duration: 300, className: "min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Recorded Meetings" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "We record and transcribe every meeting so you can review information when necessary." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { delay: 160, duration: 300, className: "min-w-0 w-full max-w-md border-b border-[#122033]/10 pb-4 dark:border-white/12", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Brainwriting Exercises" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Brain writing is an exercise to help the brain get into a creative and productive state." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { delay: 200, duration: 300, className: "min-w-0 w-full max-w-md", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Advanced AI Tools" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Language Learning Models help automate workflow, brainstorm, and advise work production." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { delay: 240, duration: 300, className: "min-w-0 w-full max-w-md", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Collaborative Learning" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "We teach each other and learn together through peer support, shared practice, and active teamwork." })
+          ] })
+        ] })
+      ] }) })
+    ] });
+  }
+  function InternationalAbout({ part = "all" }) {
+    const showHero = part === "all" || part === "hero";
+    const showIntro = part === "all" || part === "intro";
+    const showBody = part === "all" || part === "body";
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative", children: [
+      showBody ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { "aria-hidden": "true", className: "projects-scene-bg pointer-events-none fixed inset-0 -z-10" }) : null,
+      showHero ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("header", { className: "relative w-full overflow-hidden border-b border-border/50 dark:border-white/10", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "absolute inset-0", "aria-hidden": "true", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { alt: "", src: "/about/about-header-background.png", className: "absolute inset-0 h-full w-full object-cover" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "absolute inset-0 bg-black/45" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative z-10 mx-auto flex min-h-[min(50vh,32rem)] w-full max-w-6xl flex-col items-center justify-center px-4 pb-16 pt-28 text-center sm:min-h-[min(55vh,36rem)] sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pt-36", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Reveal, { from: "translate3d(0, 8px, 0) scale(0.96)", className: "flex w-full flex-col items-center", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { alt: "FloLabs logo", src: "/flolabs-logo.svg", className: "h-[10.5rem] w-[10.5rem] shrink-0 brightness-0 sm:h-48 sm:w-48 lg:h-[13.5rem] lg:w-[13.5rem] dark:invert" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Reveal, { delay: 80, className: "flex w-full flex-col items-center", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { className: "mt-6 text-balance text-[1.65rem] font-bold uppercase leading-[1.08] tracking-[0.18em] text-white sm:mt-7 sm:text-3xl sm:tracking-[0.22em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "About" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Reveal, { delay: 160, className: "flex w-full flex-col items-center", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mx-auto mt-4 max-w-2xl text-pretty text-center text-base font-normal leading-relaxed text-white sm:mt-5 sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "A FloLabs company focused on innovation in AI and robotics." }) })
+        ] })
+      ] }) : null,
+      showIntro ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { "aria-labelledby": "about-innovations-heading", className: "w-full border-b border-border bg-background py-16 text-foreground sm:py-20 lg:py-24", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mx-auto flex w-full max-w-6xl flex-col items-center gap-11 px-4 sm:gap-[3.3rem] sm:px-6 md:flex-row md:items-center md:gap-[3.85rem] lg:px-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Reveal, { from: "translate3d(-24px, 0, 0) scale(1)", duration: 400, className: "flex shrink-0 justify-center md:w-[28%] md:justify-start", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { alt: "", "aria-hidden": "true", src: "/projects/icons/Flolabs_logo Black.png", className: "h-56 w-56 object-contain sm:h-72 sm:w-72 lg:h-80 lg:w-80 dark:invert" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Reveal, { from: "translate3d(24px, 0, 0) scale(1)", delay: 80, duration: 400, className: "min-w-0 md:flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id: "about-innovations-heading", className: "text-balance text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "FloLabs Innovations Group" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-6 space-y-5 text-pretty text-base font-normal leading-relaxed text-foreground/85 sm:mt-8 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: "FloLabs Innovations Group is an incubator launching innovative projects in AI and Robotics. We enhance learning and project outcomes through teamwork, idea sharing, and innovative methods like brainstorming and LLM automation, preparing students with practical skills." }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: "We provide students, career changers, and professionals with a remote, unique, powerful, and immersive hands-on educational experience where they learn what they will use in the real world. We are not just a school, we are a community of learners who are passionate about learning and growing." })
+          ] })
+        ] })
+      ] }) }) : null
+    ] });
+  }
+
+  // src/components/AboutExperience.tsx
+  var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
   var FACTS = [
     ["Full name", "John Hazlewood"],
     ["Current role", "Founder and CEO of FloLabs Innovations Group; founding intern of FloLabs"],
@@ -16883,54 +17052,91 @@ void main() {
     ["How can someone join FloLabs?", "Prospective participants can review the program, projects and expectations, complete the application and orientation process, and speak with the FloLabs team about their interests, experience and preferred learning pathway."]
   ];
   function P({ children }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mb-6 w-full max-w-none text-base leading-[1.75] text-foreground/90", children });
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mb-6 w-full max-w-none text-base leading-[1.75] text-foreground/90", children });
   }
   function H2({ id, children }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id, className: "mb-8 font-['Outfit',sans-serif] text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-foreground sm:mb-10 sm:text-5xl", children });
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id, className: "mb-8 font-['Outfit',sans-serif] text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-foreground sm:mb-10 sm:text-5xl", children });
   }
-  function PhotoRow({ cards, still }) {
+  function PhotoRow({ cards, still, veil = "bg-gradient-to-t from-black/85 via-black/45 to-black/15" }) {
     const loop = still ? cards : [...cards, ...cards];
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: still ? "my-8" : "card-viewport my-8 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("ul", { className: still ? "grid list-none grid-cols-2 gap-4 p-0 lg:grid-cols-4" : "card-track", children: loop.map((card, i) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("li", { "data-clone": !still && i >= cards.length ? "" : void 0, "aria-hidden": !still && i >= cards.length ? true : void 0, className: `relative h-80 overflow-hidden rounded-[28px] bg-[#1a1b1e] shadow-lg ${still ? "" : "w-72 shrink-0"}`, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: card.image, alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: `absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent ${still ? "h-28" : "h-full bg-gradient-to-b from-transparent via-black/10 to-black/80"}` }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative flex h-full flex-col justify-end p-6 text-white", children: [
-        card.title ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-xl font-semibold", children: card.title }) : null,
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1 text-sm font-medium leading-snug", children: card.text })
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: still ? "my-8" : "card-viewport my-8 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("ul", { className: still ? "grid list-none grid-cols-2 gap-4 p-0 lg:grid-cols-4" : "card-track", children: loop.map((card, i) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("li", { "data-clone": !still && i >= cards.length ? "" : void 0, "aria-hidden": !still && i >= cards.length ? true : void 0, className: `photo-card relative h-80 overflow-hidden rounded-[28px] bg-[#1a1b1e] shadow-lg ${still ? "" : "w-72 shrink-0"}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: card.image, alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `absolute inset-0 ${veil}` }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative flex h-full flex-col justify-end p-6", children: [
+        card.title ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "card-title text-xl font-semibold text-white", style: { color: "#ffffff" }, children: card.title }) : null,
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1 !text-white text-sm font-medium leading-snug", children: card.text })
       ] })
     ] }, `${card.text}-${i}`)) }) });
   }
   function BenefitRail({ items }) {
     const loop = [...items, ...items];
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "about-bleed benefit-viewport my-8 overflow-hidden bg-white py-8 text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("ul", { className: "benefit-track m-0 list-none p-0", children: loop.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "about-bleed benefit-viewport my-8 overflow-hidden bg-white py-8 text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("ul", { className: "benefit-track m-0 list-none p-0", children: loop.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
       "li",
       {
         "data-clone": index >= items.length ? "" : void 0,
         "aria-hidden": index >= items.length ? true : void 0,
         className: "w-72 shrink-0 px-6 sm:w-80",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "mb-5 block h-px bg-[#122033]/25 dark:bg-white/30" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "block text-center text-sm font-semibold leading-snug sm:text-base", children: item })
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "mb-5 block h-px bg-[#122033]/25 dark:bg-white/30" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "block text-center text-sm font-semibold leading-snug sm:text-base", children: item })
         ]
       },
       `${item}-${index}`
     )) }) });
   }
-  function TextRail({ items, onPhoto }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("ul", { className: onPhoto ? "my-8 list-none divide-y divide-white/25 border-y border-white/25 p-0 text-white" : "my-8 list-none divide-y divide-[#122033]/15 border-y border-[#122033]/15 p-0 text-[#122033] dark:divide-white/20 dark:border-white/20 dark:text-white", children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("li", { className: "py-4 text-base font-semibold leading-snug sm:text-lg", children: item }, item)) });
-  }
   function Section({ id, children, alt, image, paper }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("section", { id, className: `relative overflow-hidden border-t border-border ${paper ? "bg-white text-[#122033] dark:bg-black dark:text-white [&_a]:!text-[#00349b] dark:[&_a]:!text-[#7eb6ff] [&_h2]:!text-[#122033] dark:[&_h2]:!text-white [&_h3]:!text-[#122033] dark:[&_h3]:!text-white [&_p]:!text-[#122033]/90 dark:[&_p]:!text-white/90 [&_.card-track_p]:!text-white" : image ? "text-white [&_a]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_p]:!text-white/90" : alt ? "bg-primary/5 dark:bg-card" : "bg-background"}`, children: [
-      image ? /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: image, alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "absolute inset-0 bg-black/45 dark:bg-black/65" })
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("section", { id, className: `relative overflow-hidden ${paper ? "bg-white text-[#122033] dark:bg-black dark:text-white [&_a]:!text-[#00349b] dark:[&_a]:!text-[#7eb6ff] [&_h2]:!text-[#122033] dark:[&_h2]:!text-white [&_h3:not(.card-title)]:!text-[#122033] dark:[&_h3]:!text-white [&_p]:!text-[#122033]/90 dark:[&_p]:!text-white/90 [&_.card-track_p]:!text-white [&_.photo-card_h3]:!text-white [&_.photo-card_p]:!text-white" : image ? "text-white [&_a]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_p]:!text-white/90" : alt ? "bg-primary/5 dark:bg-card" : "bg-background"}`, children: [
+      image ? /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_jsx_runtime15.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: image, alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "absolute inset-0 bg-black/45 dark:bg-black/65" })
       ] }) : null,
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "about-in relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "about-in relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children })
     ] });
   }
-  var A = ({ href, children }) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href, className: "font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary", children });
+  var A = ({ href, children }) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href, className: "font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary", children });
   function AboutExperience() {
-    const [open, setOpen] = (0, import_react12.useState)(0);
-    (0, import_react12.useEffect)(() => {
+    const [open, setOpen] = (0, import_react13.useState)(0);
+    (0, import_react13.useEffect)(() => {
+      const el = document.querySelector(".quote-ambient");
+      if (!el) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.style.setProperty("--quote-ambient-expand", "1");
+        return;
+      }
+      let lastY = window.scrollY;
+      let dir = "down";
+      let max = 0;
+      let frame = 0;
+      const tick = () => {
+        const y = window.scrollY;
+        dir = y > lastY ? "down" : y < lastY ? "up" : dir;
+        lastY = y;
+        const rect = el.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+        const ratio = rect.height > 0 ? visible / rect.height : 0;
+        let progress = ratio <= 0 ? 0 : ratio >= 0.3 ? 1 : ratio / 0.3;
+        if (dir === "up" && rect.bottom > window.innerHeight) max = progress;
+        else progress = Math.max(progress, max);
+        if (progress > max) max = progress;
+        el.style.setProperty("--quote-ambient-expand", String(progress));
+      };
+      const onScroll = () => {
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          tick();
+        });
+      };
+      tick();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+        if (frame) cancelAnimationFrame(frame);
+      };
+    }, []);
+    (0, import_react13.useEffect)(() => {
       const id = window.location.hash.replace("#", "");
       if (!id) return;
       const el = document.getElementById(decodeURIComponent(id));
@@ -16939,12 +17145,110 @@ void main() {
         window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: "smooth" });
       });
     }, []);
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("article", { className: "bg-background text-foreground", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("style", { children: `
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("article", { className: "bg-background text-foreground", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("style", { children: `
         .about-bleed { width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); }
+        section .photo-card h3, section .photo-card p { color: #fff !important; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65); }
+        .thrive-veil { background: rgba(0, 0, 0, 0.72); }
+        .john-quote { background: #f4f6fb; border-radius: 28px; opacity: var(--quote-ambient-expand, 0); transform: translateY(calc((1 - var(--quote-ambient-expand, 0)) * 40px)); }
+        @media (prefers-reduced-motion: reduce) {
+          .john-quote { opacity: 1; transform: none; }
+        }
+        .dark .john-quote { background: #14181f; }
+        .john-quote blockquote { color: #122033; font-family: Outfit, sans-serif; font-size: clamp(2.25rem, 4vw, 3.75rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
+        .dark .john-quote blockquote { color: #fff; }
+        .john-quote .quote-name { color: #3c4a5a; font-size: 0.875rem; }
+        .dark .john-quote .quote-name { color: rgba(255,255,255,.8); }
+        .john-quote .quote-role { color: #7b8794; font-size: 0.875rem; }
+        .dark .john-quote .quote-role { color: rgba(255,255,255,.55); }
+        .approach-stack { position: relative; isolation: isolate; }
+        .approach-card { position: sticky; top: 5.5rem; z-index: 1; display: flex; flex-direction: column; height: calc(100vh - 6.5rem); max-height: calc(100vh - 6.5rem); margin-bottom: 12vh; overflow: hidden; isolation: isolate; border-radius: 20px; background: #f4f6fb; color: #122033; padding: 4.5rem 2.5rem 1.5rem; box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.28); }
+        .approach-card:nth-child(1) { z-index: 1; }
+        .approach-card:nth-child(2) { z-index: 2; }
+        .approach-card:nth-child(3) { z-index: 3; }
+        .approach-card:nth-child(4) { z-index: 4; }
+        .approach-card:nth-child(5) { z-index: 5; }
+        .approach-card:nth-child(6) { z-index: 6; }
+        .approach-card:nth-child(7) { z-index: 7; }
+        .approach-watermark { position: absolute; top: 0.15rem; left: 1.5rem; right: 1.5rem; overflow: hidden; white-space: nowrap; font-family: Outfit, sans-serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 500; line-height: 1; letter-spacing: -0.03em; color: rgba(18, 32, 51, 0.06); pointer-events: none; }
+        .approach-card h3 { position: relative; flex: 0 0 auto; max-width: min(36rem, calc(100% - 20rem)); font-family: Outfit, sans-serif; font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; color: #122033; }
+        .approach-copy { position: relative; flex: 1 1 auto; max-width: min(36rem, calc(100% - 20rem)); margin-top: 1.25rem; overflow-y: auto; min-height: 0; padding-right: 0.35rem; }
+        .approach-card:nth-child(3) h3, .approach-card:nth-child(3) .approach-copy { max-width: calc(100% - 20rem); }
+        .approach-copy p { margin: 0 0 0.85rem; font-size: 1rem; line-height: 1.6; color: rgba(18, 32, 51, 0.8); }
+        .approach-bottom { position: relative; z-index: 2; flex: 0 0 auto; display: flex; align-items: end; margin-top: 1rem; pointer-events: none; }
+        .approach-num { font-family: Outfit, sans-serif; font-size: clamp(4.5rem, 8vw, 8rem); font-weight: 500; line-height: 0.8; color: rgba(18, 32, 51, 0.12); }
+        .approach-photo { position: absolute; top: 50%; right: 2.5rem; z-index: 1; width: 18rem; height: 14rem; transform: translateY(-50%); }
+        .approach-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .approach-card:nth-child(5) .approach-photo { height: 16rem; width: 20rem; }
+        .approach-card:nth-child(5) .approach-photo img { object-fit: contain; object-position: center; }
+        .approach-card:last-child .approach-photo { height: 22rem; }
+        .approach-card:last-child .approach-photo img { object-fit: contain; object-position: center; }
+        @media (max-width: 760px) {
+          .approach-card { top: 4.25rem; height: calc(100vh - 5rem); max-height: calc(100vh - 5rem); padding: 3.25rem 1.25rem 1.25rem; }
+          .approach-card h3, .approach-copy, .approach-card:nth-child(3) h3, .approach-card:nth-child(3) .approach-copy { max-width: 100%; }
+          .approach-photo { position: relative; top: auto; right: auto; width: 100%; height: 11rem; margin-top: 1rem; transform: none; flex: 0 0 auto; }
+          .approach-card:nth-child(5) .approach-photo { width: 100%; height: 11rem; }
+          .approach-card:last-child .approach-photo { height: 12rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .approach-card { position: relative; top: auto; height: auto; max-height: none; margin-bottom: 1rem; box-shadow: none; }
+          .approach-copy { overflow: visible; }
+        }
+        .expect-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 2.5rem 0; }
+        .expect-card { display: flex; align-items: flex-start; min-height: 20rem; padding: 4.5rem 3.25rem; border-radius: 4.8rem; }
+        .expect-card .expect-copy { display: block; font-family: Outfit, sans-serif; font-size: clamp(1.2rem, 1.9vw, 1.55rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.3; }
+        .expect-card.is-black { background: #000; }
+        .expect-card.is-dark { background: #122033; }
+        .expect-card.is-light { background: #eceff4; }
+        .expect-card.is-black .expect-copy { color: #fff; }
+        .expect-card.is-dark .expect-copy { color: #f4f6fb; }
+        .expect-card.is-light .expect-copy { color: #122033; }
+        html.dark .expect-card.is-black, .dark .expect-card.is-black { background: #fff; }
+        html.dark .expect-card.is-dark, .dark .expect-card.is-dark { background: #eceff4; }
+        html.dark .expect-card.is-black .expect-copy, .dark .expect-card.is-black .expect-copy { color: #000; }
+        html.dark .expect-card.is-dark .expect-copy, .dark .expect-card.is-dark .expect-copy { color: #122033; }
+        .expect-card.is-corner { border-radius: 4.8rem 4.8rem 4.8rem 12rem; }
+        @media (min-width: 900px) {
+          .expect-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; column-gap: 1.5rem; row-gap: 1.5rem; }
+          .expect-card:nth-child(3n+1) { margin-top: 6rem; }
+          .expect-card:nth-child(3n+2) { margin-top: 0; }
+          .expect-card:nth-child(3n) { margin-top: 12rem; }
+        }
+        .why-bryhel { position: relative; background: #1c1c1c; color: #f4f6fb; }
+        .why-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: 0; pointer-events: none; }
+        .why-veil { position: absolute; inset: 0; background: rgba(16,16,16,0.62); z-index: 0; pointer-events: none; }
+        .why-bryhel > .about-in { position: relative; z-index: 1; }
+        .why-bryhel p { color: rgba(244,246,251,0.9); }
+        .why-card.is-light p { color: inherit; }
+        .why-stage { position: relative; margin-top: 0; padding-bottom: clamp(8rem, 18vw, 12rem); }
+        .why-pin { position: sticky; top: 5.5rem; z-index: 0; margin: 0 0 2rem; max-width: 16ch; font-family: Outfit, sans-serif; font-size: clamp(2.75rem, 7vw, 6.5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.92; color: #efe7d6; pointer-events: none; }
+        .why-close { position: relative; z-index: 2; margin-top: 0; padding-top: 3rem; background: linear-gradient(to bottom, rgba(16,16,16,0.72) 0%, rgba(16,16,16,0.88) 40%, rgba(16,16,16,0.92) 100%); }
+        .why-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        .why-card { display: flex; flex-direction: column; min-height: 18rem; padding: 3.25rem 2.75rem; border-radius: 2.9rem; }
+        .why-card h3 { margin: 0; font-family: Outfit, sans-serif; font-size: clamp(1.6rem, 2.4vw, 2.15rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
+        .why-card h3::before { content: ''; display: inline-block; width: 0.55rem; height: 0.55rem; margin-right: 0.7rem; margin-bottom: 0.15rem; border-radius: 999px; background: currentColor; vertical-align: middle; }
+        .why-card p { margin: 1.1rem 0 0; font-size: 1rem; line-height: 1.55; opacity: 0.88; }
+        .why-card.is-dark { background: #111; color: #efe7d6; }
+        .why-card.is-light { background: #efe7d6; color: #1c1c1c; }
+        .why-card.is-corner { border-radius: 2.9rem 2.9rem 2.9rem 10.8rem; }
+        .why-lead { position: relative; z-index: 1; width: 100%; min-height: 0; margin: 0 0 1.5rem; }
+        .why-lead p { margin: 0; font-size: 1.05rem; line-height: 1.7; opacity: 0.92; }
+        .why-lead p + p { margin-top: 1.15rem; }
+        @media (min-width: 900px) {
+          .why-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+          .why-card:nth-child(3n+1) { margin-top: 6rem; }
+          .why-card:nth-child(3n+2) { margin-top: 0; }
+          .why-card:nth-child(3n) { margin-top: 11rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .why-pin { position: relative; top: auto; margin-bottom: 1.5rem; }
+          .why-stage { padding-bottom: 0; }
+          .why-close { padding-top: 1.5rem; }
+        }
         .about-in p { max-width: none; }
         @media (prefers-reduced-motion: no-preference) {
           .about-in { animation: aboutFade .65s ease both; }
+          .why-bryhel > .about-in { animation: none; opacity: 1; transform: none; }
           @keyframes aboutFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
           .card-track { display: flex; gap: 1rem; width: max-content; animation: cardSlide 42s linear infinite; }
           .card-viewport:hover .card-track, .benefit-viewport:hover .benefit-track { animation-play-state: paused; }
@@ -16957,226 +17261,226 @@ void main() {
           }
         }
       ` }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("header", { className: "border-y border-border bg-white text-foreground dark:bg-black", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mx-auto w-full max-w-none space-y-8 px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-36", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "grid gap-6 md:grid-cols-2 md:gap-12", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("h1", { className: "font-['Outfit',sans-serif] text-3xl font-medium leading-snug tracking-[-0.03em] md:text-5xl", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("header", { className: "bg-white text-foreground dark:bg-black", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mx-auto w-full max-w-none space-y-8 px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-36", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "grid gap-6 md:grid-cols-2 md:gap-12", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("h1", { className: "font-['Outfit',sans-serif] text-3xl font-medium leading-snug tracking-[-0.03em] md:text-5xl", children: [
             "John Hazlewood ",
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "text-muted", children: "Founder, CEO and founding intern." })
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "text-muted", children: "Founder, CEO and founding intern." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "space-y-4 text-base leading-relaxed text-muted", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-4 text-base leading-relaxed text-muted", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { children: [
               "John Hazlewood is the founder and CEO of ",
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { className: "text-foreground underline underline-offset-4", href: "https://www.flolabsinnovations.com/", children: "FloLabs Innovations Group" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { className: "text-foreground underline underline-offset-4", href: "https://www.flolabsinnovations.com/", children: "FloLabs Innovations Group" }),
               ", a primarily remote experiential learning, research and venture building ecosystem focused on artificial intelligence, robotics, human performance, travel, healthcare, education and the space economy."
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: "He also describes himself as FloLabs\u2019 founding intern. That title is intentional. John sees \u201Cintern\u201D as another word for \u201Clearner,\u201D and he believes even a founder should never stop learning." })
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "He also describes himself as FloLabs\u2019 founding intern. That title is intentional. John sees \u201Cintern\u201D as another word for \u201Clearner,\u201D and he believes even a founder should never stop learning." })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex flex-col gap-6 md:flex-row", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: "/about/john-hazlewood.png", alt: "John Hazlewood standing beside a humanoid robot", className: "h-80 w-full rounded-xl object-cover md:h-auto md:min-h-[34rem] md:flex-1" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex flex-1 flex-col gap-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("aside", { "aria-label": "John Hazlewood profile summary", className: "overflow-hidden rounded-xl border border-border bg-card text-foreground transition-transform duration-200 ease-out hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative h-48 overflow-hidden", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: "/about/photo-lemnos.png", alt: "", className: "h-full w-full object-cover" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card to-transparent" })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-col gap-6 md:flex-row", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "/about/john-hazlewood.png", alt: "John Hazlewood standing beside a humanoid robot", className: "h-80 w-full rounded-xl object-cover md:h-auto md:min-h-[34rem] md:flex-1" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-1 flex-col gap-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("aside", { "aria-label": "John Hazlewood profile summary", className: "overflow-hidden rounded-xl border border-border bg-card text-foreground transition-transform duration-200 ease-out hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative h-48 overflow-hidden", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "/about/photo-lemnos.png", alt: "", className: "h-full w-full object-cover" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card to-transparent" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "p-6", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { className: "text-xl font-semibold", children: "Founder and CEO of FloLabs Innovations Group" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-2 text-sm text-muted", children: "Founding Intern at FloLabs. Based on the island of Lemnos, Greece." }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: "https://www.linkedin.com/in/hazlewood/", className: "mt-4 inline-flex min-h-11 items-center border border-foreground px-4 text-sm font-semibold hover:bg-foreground hover:text-background", children: "LinkedIn profile" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "p-6", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { className: "text-xl font-semibold", children: "Founder and CEO of FloLabs Innovations Group" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-2 text-sm text-muted", children: "Founding Intern at FloLabs. Based on the island of Lemnos, Greece." }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href: "https://www.linkedin.com/in/hazlewood/", className: "mt-4 inline-flex min-h-11 items-center border border-foreground px-4 text-sm font-semibold hover:bg-foreground hover:text-background", children: "LinkedIn profile" })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative min-h-56 flex-1 overflow-hidden rounded-xl", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: "/about/photo-coast.png", alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "absolute inset-x-0 bottom-0 p-6 text-white", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { className: "text-xl font-semibold", children: "The most valuable education starts with a real problem" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-2 text-sm text-white/85", children: "Join a capable team and start building." })
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative min-h-56 flex-1 overflow-hidden rounded-xl", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "/about/photo-coast.png", alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "absolute inset-x-0 bottom-0 p-6 text-white", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { className: "text-xl font-semibold", children: "The most valuable education starts with a real problem" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-2 text-sm text-white/85", children: "Join a capable team and start building." })
               ] })
             ] })
           ] })
         ] })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("section", { "aria-labelledby": "quick-facts-heading", className: "mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id: "quick-facts-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl", children: "Quick facts about John Hazlewood" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("dl", { className: "mt-8 divide-y divide-border border-y border-border", children: FACTS.map(([term, detail]) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "grid gap-2 py-4 sm:grid-cols-[14rem_minmax(0,1fr)] sm:gap-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("dt", { className: "text-xs font-semibold uppercase tracking-[0.12em] text-primary", children: term }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("dd", { children: detail })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("section", { "aria-labelledby": "quick-facts-heading", className: "mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "quick-facts-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl", children: "Quick facts about John Hazlewood" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("dl", { className: "mt-8 divide-y divide-border border-y border-border", children: FACTS.map(([term, detail]) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "grid gap-2 py-4 sm:grid-cols-[14rem_minmax(0,1fr)] sm:gap-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("dt", { className: "text-xs font-semibold uppercase tracking-[0.12em] text-primary", children: term }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("dd", { children: detail })
         ] }, term)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { "aria-labelledby": "latest-work-heading", className: "border-t border-border bg-white text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mx-auto grid w-full max-w-none items-start gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("article", { className: "lg:sticky lg:top-24 lg:self-start", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id: "latest-work-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: "#from-caipo-to-flobrain-embodied-ai-and-robotics", className: "hover:underline", children: "John's Journey" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-4 text-sm text-[#5c6b7a] dark:text-white/70", children: "When John was living in Sofia and met George Bush when he was president" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("a", { href: "https://www.youtube.com/watch?v=mLvX3a-IU8U", className: "relative mt-8 block overflow-hidden rounded-3xl bg-black", target: "_blank", rel: "noreferrer", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: "https://i.ytimg.com/vi/mLvX3a-IU8U/hqdefault.jpg", alt: "Preview of John's Journey on YouTube", className: "aspect-video w-full object-cover" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "absolute inset-0 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "flex h-16 w-16 items-center justify-center rounded-full bg-[#ff0000] text-2xl text-white", children: "\u25B6" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { "aria-labelledby": "latest-work-heading", className: "bg-white text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mx-auto grid w-full max-w-none items-start gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("article", { className: "lg:sticky lg:top-24 lg:self-start", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "latest-work-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href: "#from-caipo-to-flobrain-embodied-ai-and-robotics", className: "hover:underline", children: "John's Journey" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-4 text-sm text-[#5c6b7a] dark:text-white/70", children: "When John was living in Sofia and met George Bush when he was president" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("a", { href: "https://www.youtube.com/watch?v=mLvX3a-IU8U", className: "relative mt-8 block overflow-hidden rounded-3xl bg-black", target: "_blank", rel: "noreferrer", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "https://i.ytimg.com/vi/mLvX3a-IU8U/hqdefault.jpg", alt: "Preview of John's Journey on YouTube", className: "aspect-video w-full object-cover" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "absolute inset-0 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "flex h-16 w-16 items-center justify-center rounded-full bg-[#ff0000] text-2xl text-white", children: "\u25B6" }) })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "divide-y divide-[#122033]/15 border-y border-[#122033]/15 dark:divide-white/15 dark:border-white/15", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "divide-y divide-[#122033]/15 border-y border-[#122033]/15 dark:divide-white/15 dark:border-white/15", children: [
           ["John with his mother and Brian Chesky the CEO and Founder of Airbnb", "October 2026", "Place", "#why-the-island-of-lemnos-matters", "/about/john-mother-brian-chesky.png"],
           ["John and Admiral Inman with an autographed book by Hillary Clinton that I met and gave to him", "October 2026", "Place", "#why-the-island-of-lemnos-matters", "/about/john-admiral-inman.png"],
           ["John and Hillary and her daughter Chelsea around the time she ran for president and lost to Donald Trump", "October 2026", "Place", "#why-the-island-of-lemnos-matters", "/about/john-hillary-chelsea.png"]
-        ].map(([title, date, topic, href, image], index) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("article", { className: "grid grid-cols-[minmax(0,1fr)_auto] items-start gap-6 py-6", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-2xl font-medium leading-snug tracking-[-0.02em]", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href, className: "hover:underline", children: title }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { className: "mt-3 text-sm text-[#5c6b7a] dark:text-white/70", children: [
+        ].map(([title, date, topic, href, image], index) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("article", { className: "grid grid-cols-[minmax(0,1fr)_auto] items-start gap-6 py-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-2xl font-medium leading-snug tracking-[-0.02em]", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href, className: "hover:underline", children: title }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "mt-3 text-sm text-[#5c6b7a] dark:text-white/70", children: [
               date,
               " ",
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "mx-2", children: topic })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "mx-2", children: topic })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("a", { href, className: "mt-2 inline-flex text-sm font-medium hover:underline", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("a", { href, className: "mt-2 inline-flex text-sm font-medium hover:underline", children: [
               "Learn more ",
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { "aria-hidden": "true", className: "ml-1", children: "\u203A" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { "aria-hidden": "true", className: "ml-1", children: "\u203A" })
             ] })
           ] }),
-          image ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href, className: "block w-[220px] shrink-0 overflow-hidden rounded-2xl", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: image, alt: "", className: "aspect-[4/3] w-[220px] object-cover" }) }) : null
+          image ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href, className: "block w-[220px] shrink-0 overflow-hidden rounded-2xl", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: image, alt: "", className: "aspect-[4/3] w-[220px] object-cover" }) }) : null
         ] }, `${title}-${index}`)) })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "a-founder-shaped-by-austin-alexandria-sofia-and-the-island-of-lemnos", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "about-bleed relative -mt-16 overflow-hidden px-4 py-16 text-white sm:px-6 sm:-mt-24 lg:px-8 [&_h2]:!text-white [&_p]:!text-white/90", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: "/about/life-of-global-experience.png", alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "absolute inset-0 bg-black/45 dark:bg-black/65" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { className: "mb-5 font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-5xl", children: "A Life of Global Experience" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John\u2019s career has crossed hospitality, international sports, travel, early internet technology, Y2K, the sharing economy, artificial intelligence and robotics. The industries have changed, but the pattern has remained consistent: identify an emerging shift, connect people who might never otherwise meet, create something practical and learn through the process of bringing it into the world." }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Today, he brings those lessons, both the successes and the difficult reinventions, to FloLabs and its global community of students, career changers, developers, researchers, citizen scientists, designers, entrepreneurs, subject matter experts and lifelong learners." })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "a-founder-shaped-by-austin-alexandria-sofia-and-the-island-of-lemnos", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "about-bleed relative -mt-16 overflow-hidden px-4 py-16 text-white sm:px-6 sm:-mt-24 lg:px-8 [&_h2]:!text-white [&_p]:!text-white/90", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "/about/life-of-global-experience.png", alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "absolute inset-0 bg-black/45 dark:bg-black/65" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { className: "mb-5 font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-5xl", children: "A Life of Global Experience" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John\u2019s career has crossed hospitality, international sports, travel, early internet technology, Y2K, the sharing economy, artificial intelligence and robotics. The industries have changed, but the pattern has remained consistent: identify an emerging shift, connect people who might never otherwise meet, create something practical and learn through the process of bringing it into the world." }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Today, he brings those lessons, both the successes and the difficult reinventions, to FloLabs and its global community of students, career changers, developers, researchers, citizen scientists, designers, entrepreneurs, subject matter experts and lifelong learners." })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "about-bleed bg-primary/10 px-4 py-12 dark:bg-card sm:px-6 lg:px-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { className: "font-['Outfit',sans-serif] text-3xl font-medium tracking-[-0.03em] text-foreground sm:text-5xl", children: "Roots and Values" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-6 grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(15rem,0.7fr)]", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-base leading-relaxed text-foreground/90", children: "John\u2019s story is rooted in four places that continue to shape his worldview: Austin, Alexandria, Sofia and the island of Lemnos." }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("ol", { className: "mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "about-bleed bg-primary/10 px-4 py-12 dark:bg-card sm:px-6 lg:px-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { className: "font-['Outfit',sans-serif] text-3xl font-medium tracking-[-0.03em] text-foreground sm:text-5xl", children: "Roots and Values" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mt-6 grid items-stretch gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(15rem,0.7fr)]", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-base leading-relaxed text-foreground/90", children: "John\u2019s story is rooted in four places that continue to shape his worldview: Austin, Alexandria, Sofia and the island of Lemnos." }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("ol", { className: "mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4", children: [
                 ["01", "Austin", "Entrepreneurship, experimentation and the courage to start."],
                 ["02", "Alexandria", "Knowledge, intellectual curiosity and the exchange of ideas across cultures."],
                 ["03", "Sofia", "Distributed technical talent and the power of international teams."],
                 ["04", "Lemnos", "Heritage, invention and the opportunity to build something globally connected from a place outside a conventional innovation hub."]
-              ].map(([num, city, detail]) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("li", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-sm font-semibold text-primary", children: num }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-3 font-semibold text-foreground", children: city }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1 text-sm leading-relaxed text-foreground/80", children: detail })
+              ].map(([num, city, detail]) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("li", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-sm font-semibold text-primary", children: num }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-3 font-semibold text-foreground", children: city }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1 text-sm leading-relaxed text-foreground/80", children: detail })
               ] }, num)) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative min-h-64 overflow-hidden rounded-2xl", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: "/about/photo-coast.png", alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("blockquote", { className: "relative m-4 rounded-2xl bg-background/85 p-5 text-foreground shadow-sm backdrop-blur-md", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "block font-['Georgia',serif] text-4xl leading-none text-muted", children: "\u201C" }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1 text-base leading-snug", children: "Each place contributed something different to how John thinks and works." }),
-                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "mt-4 block h-px w-8 bg-[#8aa0b5]" })
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative min-h-64 overflow-hidden rounded-2xl", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "/about/photo-coast.png", alt: "", className: "absolute inset-0 h-full w-full object-cover" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("blockquote", { className: "relative m-4 rounded-2xl bg-background/85 p-5 text-foreground shadow-sm backdrop-blur-md", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "block font-['Georgia',serif] text-4xl leading-none text-muted", children: "\u201C" }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1 text-base leading-snug", children: "Each place contributed something different to how John thinks and works." }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "mt-4 block h-px w-8 bg-[#8aa0b5]" })
               ] })
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-16", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "founder-story-heading", children: "A founder shaped by Austin, Alexandria, Sofia and the island of Lemnos" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PhotoRow, { still: true, cards: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mt-16", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "founder-story-heading", children: "A founder shaped by Austin, Alexandria, Sofia and the island of Lemnos" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(PhotoRow, { still: true, cards: [
             { title: "Austin", text: "Entrepreneurship & Experimentation", image: "/about/photo-austin.png" },
             { title: "Alexandria", text: "Knowledge & Cultural Exchange", image: "/about/photo-alexandria.png" },
             { title: "Sofia", text: "Distributed Talent & Global Teams", image: "/about/photo-sofia.png" },
             { title: "Lemnos", text: "Heritage & Global Innovation", image: "/about/photo-lemnos.png" }
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "He grew up in Austin, Texas, in a family where entrepreneurship was part of daily life. His father died when John was young, and his mother operated restaurants and a travel agency. John and his siblings helped in the family businesses, giving him an early education in service, establishing a hard work ethic, responsibility, customer relationships and the realities of running a company." }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "His mother was Greek, born and raised in Alexandria, Egypt, once one of the world\u2019s great crossroads of knowledge, science, commerce and culture. His family\u2019s heritage also reaches back to the island of Lemnos in the northern Aegean, where he spent summers as a child. FloLabs plans to establish its future headquarters, campus and AI and robotics laboratory there, with systems that will also support remote participation." }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John also lived for many years in Sofia, Bulgaria, where he built and managed international technology teams. That experience reinforced a conviction that now sits at the center of FloLabs: exceptional talent is not confined to the usual technology capitals." }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Each place contributed something different to how John thinks and works." }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John\u2019s connection to education is also personal. According to his family history, his great grandfather was a philanthropist who helped fund a school in the village of Sardes on the island of Lemnos and another in Alexandria. John is carrying that commitment forward through a learning community designed for AI, remote collaboration and continuous technological change." })
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "He grew up in Austin, Texas, in a family where entrepreneurship was part of daily life. His father died when John was young, and his mother operated restaurants and a travel agency. John and his siblings helped in the family businesses, giving him an early education in service, establishing a hard work ethic, responsibility, customer relationships and the realities of running a company." }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "His mother was Greek, born and raised in Alexandria, Egypt, once one of the world\u2019s great crossroads of knowledge, science, commerce and culture. His family\u2019s heritage also reaches back to the island of Lemnos in the northern Aegean, where he spent summers as a child. FloLabs plans to establish its future headquarters, campus and AI and robotics laboratory there, with systems that will also support remote participation." }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John also lived for many years in Sofia, Bulgaria, where he built and managed international technology teams. That experience reinforced a conviction that now sits at the center of FloLabs: exceptional talent is not confined to the usual technology capitals." }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Each place contributed something different to how John thinks and works." }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John\u2019s connection to education is also personal. According to his family history, his great grandfather was a philanthropist who helped fund a school in the village of Sardes on the island of Lemnos and another in Alexandria. John is carrying that commitment forward through a learning community designed for AI, remote collaboration and continuous technological change." })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "why-the-island-of-lemnos-matters", image: "/about/photo-lemnos.png", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "lemnos-heading", children: "Why the island of Lemnos matters" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "People have lived on the island of Lemnos for thousands of years. Excavations near Hephaistia at Ouriakos found evidence of a hunting camp from the eleventh millennium BC, around 10,000 BC. Hephaistia became one of the island\u2019s two principal cities and an important center for the worship of Hephaestus." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Ancient Greek tradition places Hephaestus and his workshop on the island of Lemnos at volcanic Mount Mosychlos. He was the god of fire, blacksmiths, metalworking, craftsmanship, invention and innovation. Ancient accounts also credit him with creating Talos, a bronze humanoid robot, and Pandora, whom John views as an early description of an intelligent artificial being. The story of Pandora is associated with what is commonly called Pandora's Box." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John believes these accounts may be rooted in real events and may preserve memories of advanced craftsmanship and technology that later generations described in the language available to them. He does not see them simply as made up stories." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "why-the-island-of-lemnos-matters", image: "/about/photo-lemnos.png", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "lemnos-heading", children: "Why the island of Lemnos matters" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "People have lived on the island of Lemnos for thousands of years. Excavations near Hephaistia at Ouriakos found evidence of a hunting camp from the eleventh millennium BC, around 10,000 BC. Hephaistia became one of the island\u2019s two principal cities and an important center for the worship of Hephaestus." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Ancient Greek tradition places Hephaestus and his workshop on the island of Lemnos at volcanic Mount Mosychlos. He was the god of fire, blacksmiths, metalworking, craftsmanship, invention and innovation. Ancient accounts also credit him with creating Talos, a bronze humanoid robot, and Pandora, whom John views as an early description of an intelligent artificial being. The story of Pandora is associated with what is commonly called Pandora's Box." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John believes these accounts may be rooted in real events and may preserve memories of advanced craftsmanship and technology that later generations described in the language available to them. He does not see them simply as made up stories." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
           "FloLabs plans to establish its future headquarters, campus and AI and robotics laboratory on the island of Lemnos. The campus and its remote systems will allow people from around the world to study, collaborate and build together. This work is part of ",
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://hephaestus.international/", children: "Hephaestus.International" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://hephaestus.international/", children: "Hephaestus.International" }),
           " and connects the island\u2019s long history of craftsmanship and invention with the technologies shaping the future."
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "learning-entrepreneurship-by-doing-it", image: "/about/about-header-background.png", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "learning-heading", children: "Learning entrepreneurship by doing it" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "learning-entrepreneurship-by-doing-it", image: "/about/about-header-background.png", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "learning-heading", children: "Learning entrepreneurship by doing it" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
           "John studied hotel and restaurant management at the ",
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://www.uh.edu/hilton-college/", children: "University of Houston" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://www.uh.edu/hilton-college/", children: "University of Houston" }),
           ", but his most formative education came from building businesses."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "His first ventures involved practical work. He helped start an import and export business moving used clothing to Honduras and mahogany furniture to the United States. He cofounded a landscape maintenance company, operated crews and trucks, and later opened a travel agency near the University of Texas campus in Austin." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Those experiences taught him lessons that rarely fit neatly into a textbook: how to earn trust, sell a service, manage cash flow, solve operational problems, recover from mistakes and keep moving when the original plan does not work." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "They also created unexpected opportunities." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John and his brother first met the president of a women\u2019s professional basketball team in Milan, Italy, when he came into their travel agency to buy an airline ticket. That chance meeting led them to help recruit a University of Texas player for the team. They later founded Agex International, a sports agency focused on representing American women\u2019s basketball players in Europe and other international leagues. At the time, the United States did not yet have an established women\u2019s professional league. Their clients played in Italy, Spain, France, Turkey, Japan and more than 20 other countries." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John and his brother later invested proceeds from the basketball business in the Austin Soccadillos, a semiprofessional soccer franchise that John helped operate for two seasons. Ahead of the 1994 FIFA World Cup, he helped bring the Bulgarian national team to Austin for its training camp before the tournament and represented the delegation during its stay." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "These experiences taught John how to connect talented people with international opportunities and turn unexpected meetings into practical ventures." })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "His first ventures involved practical work. He helped start an import and export business moving used clothing to Honduras and mahogany furniture to the United States. He cofounded a landscape maintenance company, operated crews and trucks, and later opened a travel agency near the University of Texas campus in Austin." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Those experiences taught him lessons that rarely fit neatly into a textbook: how to earn trust, sell a service, manage cash flow, solve operational problems, recover from mistakes and keep moving when the original plan does not work." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "They also created unexpected opportunities." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John and his brother first met the president of a women\u2019s professional basketball team in Milan, Italy, when he came into their travel agency to buy an airline ticket. That chance meeting led them to help recruit a University of Texas player for the team. They later founded Agex International, a sports agency focused on representing American women\u2019s basketball players in Europe and other international leagues. At the time, the United States did not yet have an established women\u2019s professional league. Their clients played in Italy, Spain, France, Turkey, Japan and more than 20 other countries." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John and his brother later invested proceeds from the basketball business in the Austin Soccadillos, a semiprofessional soccer franchise that John helped operate for two seasons. Ahead of the 1994 FIFA World Cup, he helped bring the Bulgarian national team to Austin for its training camp before the tournament and represented the delegation during its stay." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "These experiences taught John how to connect talented people with international opportunities and turn unexpected meetings into practical ventures." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "entering-internet-travel-before-online-booking-was-normal", paper: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "travel-heading", children: "Entering internet travel before online booking was normal" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "In the mid 1990s, while operating his travel agency, John began working with technologist and particle physicist Linas Vepstas on an early prototype that allowed travelers to search for and book flights through the internet." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "At the time, persuading people to enter a credit card number online was itself a frontier problem. Much of the infrastructure now taken for granted, including mature APIs, cloud platforms, simple payment integrations and modern web development frameworks, did not yet exist." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John recognized that online travel would become a major market, but the company still needed capital, technical talent and time to rebuild its systems as the market changed." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "entering-internet-travel-before-online-booking-was-normal", paper: true, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "travel-heading", children: "Entering internet travel before online booking was normal" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "In the mid 1990s, while operating his travel agency, John began working with technologist and particle physicist Linas Vepstas on an early prototype that allowed travelers to search for and book flights through the internet." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "At the time, persuading people to enter a credit card number online was itself a frontier problem. Much of the infrastructure now taken for granted, including mature APIs, cloud platforms, simple payment integrations and modern web development frameworks, did not yet exist." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John recognized that online travel would become a major market, but the company still needed capital, technical talent and time to rebuild its systems as the market changed." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
           "After more than a year of approaching potential investors, John secured backing from ",
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://www.nsa.gov/History/Cryptologic-History/Historical-Figures/Historical-Figures-View/Article/1620368/adm-bobby-r-inman-usn/", children: "Admiral Bobby R. Inman" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://www.nsa.gov/History/Cryptologic-History/Historical-Figures/Historical-Figures-View/Article/1620368/adm-bobby-r-inman-usn/", children: "Admiral Bobby R. Inman" }),
           ", the former director of the U.S. National Security Agency and former deputy director of the CIA, who had gone on to become an investor and technology leader in Austin. Inman would become a long term adviser to John across multiple ventures."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John established a development operation in Sofia, Bulgaria, building an international technology organization around internet travel and enterprise software. An early company and its Sofia team were acquired by the German travel technology company iFAO, which was later acquired by Amadeus, while John retained the travel booking code and continued building." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "He later launched TravelStoreMaker with investment from Worldspan, a global distribution system for travel, and additional backing from Admiral Inman. The platform provided private label internet booking technology, fulfillment and customer support to travel businesses in multiple countries. Thousands of small and midsized websites used the technology, including travel agencies and airlines. In today\u2019s language, John describes the model as an early \u201CShopify for travel.\u201D" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "After the September 11 attacks disrupted global travel and Worldspan stopped making additional investments, John and his team had to support the business from its own revenue. They adapted the model and ultimately served travel businesses in more than 20 countries through sites available in more than 20 languages. The experience taught John that a capable team can survive disruption by conserving resources, changing direction and continuing to build." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "At its peak, the Sofia operation grew to more than 130 team members." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John established a development operation in Sofia, Bulgaria, building an international technology organization around internet travel and enterprise software. An early company and its Sofia team were acquired by the German travel technology company iFAO, which was later acquired by Amadeus, while John retained the travel booking code and continued building." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "He later launched TravelStoreMaker with investment from Worldspan, a global distribution system for travel, and additional backing from Admiral Inman. The platform provided private label internet booking technology, fulfillment and customer support to travel businesses in multiple countries. Thousands of small and midsized websites used the technology, including travel agencies and airlines. In today\u2019s language, John describes the model as an early \u201CShopify for travel.\u201D" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "After the September 11 attacks disrupted global travel and Worldspan stopped making additional investments, John and his team had to support the business from its own revenue. They adapted the model and ultimately served travel businesses in more than 20 countries through sites available in more than 20 languages. The experience taught John that a capable team can survive disruption by conserving resources, changing direction and continuing to build." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "At its peak, the Sofia operation grew to more than 130 team members." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
           "The architecture behind TravelStoreMaker also created a direct technical connection to ",
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://www.flobrain.ai/", children: "FloBrain" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://www.flobrain.ai/", children: "FloBrain" }),
           ". John\u2019s teams integrated global distribution systems, more than 50 low cost carriers, hotels, rental cars and travel package services through a middleware platform that allowed clients to choose APIs and build their own interfaces. FloBrain applies a related orchestration mindset to AI models, data, tools and interfaces. The technologies are different, but the problem solving pattern is familiar: connect fragmented systems and make them useful through one experience."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
           "During this period, John also served for two years as a research analyst for ",
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://www.phocuswright.com/", children: "Phocuswright" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://www.phocuswright.com/", children: "Phocuswright" }),
           ", studying online travel trends in Central and Eastern Europe. He organized an online travel summit and, the following year, an online travel and space summit featuring astronaut Story Musgrave as keynote speaker. Musgrave flew six missions across all five Space Shuttle orbiters, and John witnessed three of his launches, two at night and one during the day, as well as a shuttle landing at Edwards Air Force Base. Those experiences formed an early bridge among travel, technology, research and space, connections that later reappeared in FloLabs\u2019 space, robotics and citizen science initiatives."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "The travel technology years showed John how quickly new infrastructure, customer needs, investor priorities and outside events can change a business." })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "The travel technology years showed John how quickly new infrastructure, customer needs, investor priorities and outside events can change a business." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "setbacks-reinvention-and-the-value-of-changing-direction", image: "/about/photo-coast.png", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "setbacks-heading", children: "Setbacks, reinvention and the value of changing direction" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John does not present entrepreneurship as a sequence of victories. He speaks openly about layoffs, failed fundraising efforts, difficult pivots and the emotional weight of watching a business contract." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Around 2011, as major customers changed direction and the travel technology market evolved, he had to reduce the size of the Sofia team. Letting go of colleagues he had worked with for years was one of the most difficult periods of his career." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "In 2012, during that period of uncertainty, John joined 11 Bulgarian cyclists on a 55 day journey of more than 3,000 kilometers from Sofia to London. The group crossed 13 countries and arrived shortly before the London Summer Olympics." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Along the way, the riders used Couchsurfing and the then emerging Airbnb platform. The experience gave John a firsthand view of the sharing economy and inspired his next venture." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "After returning to Austin, he founded sharingXchange, initially conceived as a metasearch platform for sharing economy accommodation and boat rental marketplaces. The company later evolved into a property listing and management service that helped owners distribute and support their properties across multiple booking channels. It grew to approximately 600 properties, primarily in Europe." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Then the COVID pandemic stopped international travel and devastated the business." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John adapted again. A houseboat he owned on Lake Travis became the prototype for a water based hospitality concept combining houseboat stays, events and glamping. That experience led to a broader resort concept, but after nearly two years of partnership and funding discussions, the project did not secure the support required to move forward." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John\u2019s work also extended into nonprofit and social impact initiatives. He cofounded Face to Face Bulgaria with a friend to combat sex trafficking and forced prostitution. In 2022, he cofounded GR4UA with members of his family to help Ukrainians living in Greece find employment after the war began. These efforts reflect a commitment to practical help that predates FloLabs and now informs its wider mission." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "The experience helped John decide where to focus next. He asked which field could create the greatest long term impact. His answer was artificial intelligence." })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "setbacks-reinvention-and-the-value-of-changing-direction", image: "/about/austin.jpg", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "setbacks-heading", children: "Setbacks, reinvention and the value of changing direction" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John does not present entrepreneurship as a sequence of victories. He speaks openly about layoffs, failed fundraising efforts, difficult pivots and the emotional weight of watching a business contract." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Around 2011, as major customers changed direction and the travel technology market evolved, he had to reduce the size of the Sofia team. Letting go of colleagues he had worked with for years was one of the most difficult periods of his career." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "In 2012, during that period of uncertainty, John joined 11 Bulgarian cyclists on a 55 day journey of more than 3,000 kilometers from Sofia to London. The group crossed 13 countries and arrived shortly before the London Summer Olympics." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Along the way, the riders used Couchsurfing and the then emerging Airbnb platform. The experience gave John a firsthand view of the sharing economy and inspired his next venture." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "After returning to Austin, he founded sharingXchange, initially conceived as a metasearch platform for sharing economy accommodation and boat rental marketplaces. The company later evolved into a property listing and management service that helped owners distribute and support their properties across multiple booking channels. It grew to approximately 600 properties, primarily in Europe." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Then the COVID pandemic stopped international travel and devastated the business." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John adapted again. A houseboat he owned on Lake Travis became the prototype for a water based hospitality concept combining houseboat stays, events and glamping. That experience led to a broader resort concept, but after nearly two years of partnership and funding discussions, the project did not secure the support required to move forward." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John\u2019s work also extended into nonprofit and social impact initiatives. He cofounded Face to Face Bulgaria with a friend to combat sex trafficking and forced prostitution. In 2022, he cofounded GR4UA with members of his family to help Ukrainians living in Greece find employment after the war began. These efforts reflect a commitment to practical help that predates FloLabs and now informs its wider mission." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "The experience helped John decide where to focus next. He asked which field could create the greatest long term impact. His answer was artificial intelligence." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "becoming-a-learner-again", image: "/about/john-hazlewood.png", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "learner-heading", children: "Becoming a learner again" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John entered AI with decades of experience in technology and entrepreneurship, but without pretending to be an AI expert." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "He approached the transition as an intensive independent apprenticeship. For months, he spent 12 hours a day studying artificial intelligence, deep learning, emerging tools, recorded conferences, research, online courses and technical meetups. He attended AI communities in Austin and remotely followed events in San Francisco and elsewhere." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "becoming-a-learner-again", image: "/about/john-hazlewood.png", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "learner-heading", children: "Becoming a learner again" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John entered AI with decades of experience in technology and entrepreneurship, but without pretending to be an AI expert." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "He approached the transition as an intensive independent apprenticeship. For months, he spent 12 hours a day studying artificial intelligence, deep learning, emerging tools, recorded conferences, research, online courses and technical meetups. He attended AI communities in Austin and remotely followed events in San Francisco and elsewhere." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
           "As John studied AI, he reconnected with Linas Vepstas, the particle physicist and technology cofounder who had helped him build the early internet travel systems. Vepstas later served as a lead developer for ",
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://opencog.org/", children: "OpenCog" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://opencog.org/", children: "OpenCog" }),
           ", an open source application framework for artificial general intelligence, or AGI, and as head of research for the AI behind Hanson Robotics\u2019 Sophia. Their conversations helped John see how his experience connecting software and operating systems could apply to robotics."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John encourages people not to let a previous degree, title or industry become a box. Experience does not make someone less capable of starting again; it creates a larger foundation from which to connect new ideas. He compares that accumulation to an expanding AI dataset: the richer the foundation, the easier it can become to learn and make new connections. His own transition from travel technology into AI, robotics, neuroscience, physics and biology is the evidence behind that belief." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "That experience exposed a gap that would later become central to FloLabs." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "The internet contains an extraordinary amount of knowledge. A motivated learner can access university lectures, research papers, certification programs, technical tutorials, open source software and expert discussions from almost anywhere. What remains difficult to obtain is the environment around the information: meaningful projects, capable collaborators, structured accountability, feedback, context and the chance to apply knowledge to something real." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John did not need another collection of disconnected courses. He needed a reason to connect the dots." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "That insight became both a product philosophy and an educational philosophy." })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John encourages people not to let a previous degree, title or industry become a box. Experience does not make someone less capable of starting again; it creates a larger foundation from which to connect new ideas. He compares that accumulation to an expanding AI dataset: the richer the foundation, the easier it can become to learn and make new connections. His own transition from travel technology into AI, robotics, neuroscience, physics and biology is the evidence behind that belief." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "That experience exposed a gap that would later become central to FloLabs." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "The internet contains an extraordinary amount of knowledge. A motivated learner can access university lectures, research papers, certification programs, technical tutorials, open source software and expert discussions from almost anywhere. What remains difficult to obtain is the environment around the information: meaningful projects, capable collaborators, structured accountability, feedback, context and the chance to apply knowledge to something real." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John did not need another collection of disconnected courses. He needed a reason to connect the dots." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "That insight became both a product philosophy and an educational philosophy." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "from-caipo-to-flobrain-embodied-ai-and-robotics", paper: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "ai-heading", children: "From CAIPO to FloBrain, embodied AI and robotics" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "from-caipo-to-flobrain-embodied-ai-and-robotics", paper: true, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "ai-heading", children: "From CAIPO to FloBrain, embodied AI and robotics" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
           "John\u2019s first concept in this new chapter was ",
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://www.caipo.ai/", children: "CAIPO" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://www.caipo.ai/", children: "CAIPO" }),
           ", originally derived from \u201CChief AI and Productivity Officer.\u201D He envisioned an AI layer that could help organizations connect fragmented information, understand meetings and conversations, make knowledge usable and help people become more productive."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "The idea expanded into an AI wearable with a microphone, speaker, camera and sensors, an interface intended to provide context aware assistance in the physical world. John then returned to his roots in travel, imagining a conversational AI travel planner and travel companion that could understand preferences, build itineraries and eventually power a robotic hotel concierge." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Those ideas led to FloBrain, a multimodal AI and contextual intelligence platform that brings together language models, voice, vision, sensor data, memory, tools and specialized AI buddies. FloLabs is developing it as a shared intelligence layer for software, wearables and robots." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(P, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(A, { href: "https://cosmosintelligence.org/", children: "Cosmos Intelligence" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "The idea expanded into an AI wearable with a microphone, speaker, camera and sensors, an interface intended to provide context aware assistance in the physical world. John then returned to his roots in travel, imagining a conversational AI travel planner and travel companion that could understand preferences, build itineraries and eventually power a robotic hotel concierge." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Those ideas led to FloBrain, a multimodal AI and contextual intelligence platform that brings together language models, voice, vision, sensor data, memory, tools and specialized AI buddies. FloLabs is developing it as a shared intelligence layer for software, wearables and robots." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(P, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(A, { href: "https://cosmosintelligence.org/", children: "Cosmos Intelligence" }),
           " is one example. FloLabs is developing this conversational Space Buddy to combine NASA and other open data with artificial intelligence so people can explore the universe and ask questions naturally. John wants it to make the knowledge, discovery and wonder of space available to people everywhere, including those who may never travel there physically."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "From that core, FloLabs teams have explored and developed initiatives in areas including:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(BenefitRail, { items: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "From that core, FloLabs teams have explored and developed initiatives in areas including:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(BenefitRail, { items: [
           "Conversational and multimodal artificial intelligence.",
           "AI wearables and human computer interfaces.",
           "Assistive, hospitality and humanoid robotics.",
@@ -17187,107 +17491,122 @@ void main() {
           "Open source research, advanced computing and emerging technologies.",
           "Entrepreneurship, venture creation and future of work education."
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John also spent several months living in China, including time in Hangzhou, Shanghai, Shenzhen, and Hong Kong meeting robotics companies and studying the supply chain, commercialization and rapid development of humanoids and other robotic systems. One experience made that transition tangible: a hotel service robot rode the elevator to John\u2019s floor, rang his doorbell and delivered a room key. For John, it was a small but revealing example of AI and robotics moving beyond demonstrations and into everyday hospitality. The broader experience strengthened his view that the most valuable learning happens when software, hardware, research, operations and market reality meet." })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John also spent several months living in China, including time in Hangzhou, Shanghai, Shenzhen, and Hong Kong meeting robotics companies and studying the supply chain, commercialization and rapid development of humanoids and other robotic systems. One experience made that transition tangible: a hotel service robot rode the elevator to John\u2019s floor, rang his doorbell and delivered a room key. For John, it was a small but revealing example of AI and robotics moving beyond demonstrations and into everyday hospitality. The broader experience strengthened his view that the most valuable learning happens when software, hardware, research, operations and market reality meet." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "why-john-created-flolabs", image: "/about/future-background.png", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "why-heading", children: "Why John created FloLabs" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "FloLabs began with a practical startup problem: ambitious AI and robotics projects required a team." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John initially considered a conventional internship model. But an earlier experience recruiting interns at a university career event had shown him the limitations of unstructured internships. Many people joined enthusiastically, few continued, and some later listed months of experience without having completed meaningful work." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "He wanted to build something more serious for the participant and for the organization." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "FloLabs started with a small group of approximately 10 interns and grew into a global community spanning more than 20 countries. What began as a way to form project teams now combines:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(TextRail, { onPhoto: true, items: [
-          "Experiential learning, where participants learn through relevant work.",
-          "Structured masterclasses, aligned with the tools and knowledge a team actually uses.",
-          "Applied research, connecting emerging ideas with practical experiments.",
-          "A startup and venture studio, where ideas move from research and design toward development, testing and launch.",
-          "International collaboration, bringing together people across disciplines, cultures and experience levels.",
-          "Longer term pathways, including apprenticeship, fellowship, scholar, Masters, PhD and entrepreneurship tracks for participants who want to continue."
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "FloLabs is designed to help as many people as possible move their careers forward. Participants gain practical experience, build portfolios and work with people from other fields and countries. The program is also FloLabs\u2019 primary talent acquisition platform. FloLabs plans to fill future roles with people who have completed the internship and demonstrated through their work that they are a strong fit. The company does not plan to hire anyone who has not first completed the internship. Completion does not guarantee a job, but it gives participants the opportunity to be evaluated through real contributions instead of only a r\xE9sum\xE9 or interview." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Participants learn the full working cycle, from ideation and research through planning, design, development, testing, launch, user feedback and revision. They encounter ambiguity, work with teammates, adjust when an idea fails and see how technical decisions affect customers and society." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "FloLabs combines structured learning with real work inside a venture building environment. Education and production support each other. It can complement university study or provide another path for career changers, independent learners and people whose talent has not yet been matched with opportunity. Participants may also qualify for paid work as they advance through the program, with plans to offer stock options in the future." })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("section", { id: "why-john-created-flolabs", className: "why-bryhel", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "/about/thrive-builders.jpg", alt: "", className: "why-bg" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "why-veil", "aria-hidden": "true" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "about-in relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "why-stage", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "why-heading", className: "why-pin", children: "Why John created FloLabs" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("article", { className: "why-card why-lead is-dark", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "FloLabs began with a practical startup problem: ambitious AI and robotics projects required a team." }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "John initially considered a conventional internship model. But an earlier experience recruiting interns at a university career event had shown him the limitations of unstructured internships. Many people joined enthusiastically, few continued, and some later listed months of experience without having completed meaningful work." }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "He wanted to build something more serious for the participant and for the organization." }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "FloLabs started with a small group of approximately 10 interns and grew into a global community spanning more than 20 countries. What began as a way to form project teams now combines:" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "why-grid", children: [
+              ["Experiential learning", "Participants learn through relevant work. Education and production support each other.", "is-dark"],
+              ["Structured masterclasses", "Structured learning aligned with the tools and knowledge a team actually uses.", "is-light is-corner"],
+              ["Applied research", "connecting emerging ideas with practical experiments.", "is-dark"],
+              ["Startup and venture studio", "Inside a venture building environment, ideas move from research and design toward development, testing and launch.", "is-dark"],
+              ["International collaboration", "bringing together people across disciplines, cultures and experience levels.", "is-light is-corner"],
+              ["Longer term pathways", "Including apprenticeship, fellowship, scholar, Masters, PhD and entrepreneurship tracks for participants who want to continue. It can complement university study or provide another path for career changers, independent learners and people whose talent has not yet been matched with opportunity. Participants may also qualify for paid work as they advance through the program, with plans to offer stock options in the future.", "is-light"]
+            ].map(([title, text, tone]) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("article", { className: `why-card ${tone}`, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { children: title }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: text })
+            ] }, title)) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "why-close", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "FloLabs is designed to help as many people as possible move their careers forward. Participants gain practical experience, build portfolios and work with people from other fields and countries. The program is also FloLabs\u2019 primary talent acquisition platform. FloLabs plans to fill future roles with people who have completed the internship and demonstrated through their work that they are a strong fit. The company does not plan to hire anyone who has not first completed the internship. Completion does not guarantee a job, but it gives participants the opportunity to be evaluated through real contributions instead of only a r\xE9sum\xE9 or interview." }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Participants learn the full working cycle, from ideation and research through planning, design, development, testing, launch, user feedback and revision. They encounter ambiguity, work with teammates, adjust when an idea fails and see how technical decisions affect customers and society." })
+          ] })
+        ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { id: "johns-approach-to-learning-and-leadership", className: "border-t border-white/10 bg-black text-white", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "about-in mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id: "philosophy-heading", className: "mb-8 font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] text-white sm:text-6xl", children: "John\u2019s approach to learning and leadership" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "space-y-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { id: "johns-approach-to-learning-and-leadership", className: "bg-black text-white", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "about-in mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "philosophy-heading", className: "mb-8 font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] text-white sm:text-6xl", children: "John\u2019s approach to learning and leadership" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "approach-stack", children: [
           ["Learn only what you can connect to action", "https://www.flostudios.ai/assets/caipo-card.webp", ["FloLabs masterclasses are aligned with the work of each team. A participant learning AWS, Figma, data engineering, multimodal perception, automation or AI assisted development should have an opportunity to apply that knowledge to a relevant task.", "The goal is to build evidence of ability rather than collect certificates."]],
-          ["Work with a buddy", "/about/photo-sofia.png", ["FloLabs uses a buddy system because people generally learn faster and produce stronger work when they plan, build and review together. Participants break projects into tasks, agree on responsibilities, document the process and bring results back to the wider team.", "The buddy system builds technical skill while improving communication, reliability, project planning, peer learning and accountability."]],
-          ["Develop integrity and reliability alongside technical ability", "/about/photo-coast.png", ["John believes education should develop character and professional habits as deliberately as it develops technical ability. FloLabs therefore places a strong emphasis on hard work, integrity and reliability, qualities that build trust and remain valuable in every industry, role and stage of a career.", "At FloLabs, integrity means being honest about what you know and do not know, giving others appropriate credit, representing your work accurately, acknowledging mistakes and allowing evidence to guide conclusions. In research, it also means stating uncertainty clearly and never exaggerating a result or making a claim before the evidence supports it.", "Reliability means showing up prepared, honoring commitments, communicating early when something is delayed or blocked, supporting teammates and completing agreed work to an appropriate standard. Intelligence and technical skill may create an opportunity, but integrity and reliability determine whether other people will trust someone with greater responsibility.", "Participants practice these values through documented work, transparent collaboration, the buddy system, peer accountability and consistent follow through. John tells participants to focus on hard work, integrity and reliability because all else will follow."]],
+          ["Work with a buddy", "/about/approach-buddy.jpg", ["FloLabs uses a buddy system because people generally learn faster and produce stronger work when they plan, build and review together. Participants break projects into tasks, agree on responsibilities, document the process and bring results back to the wider team.", "The buddy system builds technical skill while improving communication, reliability, project planning, peer learning and accountability."]],
+          ["Develop integrity and reliability alongside technical ability", "/about/approach-integrity.jpg", ["John believes education should develop character and professional habits as deliberately as it develops technical ability. FloLabs therefore places a strong emphasis on hard work, integrity and reliability, qualities that build trust and remain valuable in every industry, role and stage of a career.", "At FloLabs, integrity means being honest about what you know and do not know, giving others appropriate credit, representing your work accurately, acknowledging mistakes and allowing evidence to guide conclusions. In research, it also means stating uncertainty clearly and never exaggerating a result or making a claim before the evidence supports it.", "Reliability means showing up prepared, honoring commitments, communicating early when something is delayed or blocked, supporting teammates and completing agreed work to an appropriate standard. Intelligence and technical skill may create an opportunity, but integrity and reliability determine whether other people will trust someone with greater responsibility.", "Participants practice these values through documented work, transparent collaboration, the buddy system, peer accountability and consistent follow through. John tells participants to focus on hard work, integrity and reliability because all else will follow."]],
           ["See how a startup really works", "https://www.flostudios.ai/assets/carousel/bootcamp.png", ["John wants participants to see how a startup works beyond their own department. When appropriate, they may join conversations with advisers, partners, prospective customers and domain experts. They see how ideas are evaluated, why priorities change and what happens after a product launches."]],
           ["Build in public and connect the dots", "https://www.flostudios.ai/assets/carousel/flotravel.png", ["FloLabs works in the open whenever it can. Its approach combines open source software, open science and open learning. Participants see how ideas are researched, challenged, built, tested and improved. The Connecting the Dots podcast shares selected team discussions so others can follow the work."]],
           ["Remain a learner at every level", "/about/john-hazlewood.png", ["Calling himself the founding intern is John\u2019s reminder that leadership does not place someone above the learning process. The technologies FloLabs works with change too quickly for static expertise. Curiosity, humility, discernment and the ability to learn continuously are strategic advantages."]],
           ["Pursue work with meaning and purpose", "https://www.flostudios.ai/assets/robocollective-card.png", ["John focuses on AI and robotics because he believes they can expand human capability, improve health, increase access, create opportunity and solve useful problems."]]
-        ].map(([title, image, paragraphs]) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("details", { className: "group relative overflow-hidden rounded-2xl border border-white/15", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src: image, alt: "", className: "absolute inset-0 h-full w-full object-cover object-top" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "absolute inset-0 bg-black/60 group-open:bg-black/50" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("summary", { className: "relative flex min-h-24 cursor-pointer list-none items-end justify-between gap-4 px-5 py-4 text-xl font-semibold [&::-webkit-details-marker]:hidden", children: [
-            title,
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { "aria-hidden": "true", className: "text-white/70 group-open:hidden", children: "+" }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { "aria-hidden": "true", className: "hidden text-white/70 group-open:inline", children: "\u2013" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "relative space-y-3 px-5 pb-5 text-base leading-relaxed text-white/90", children: paragraphs.map((paragraph) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: paragraph }, paragraph)) })
+        ].map(([title, image, paragraphs], index) => /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("article", { className: "approach-card", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "approach-watermark", "aria-hidden": "true", children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "approach-copy", children: paragraphs.map((paragraph) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: paragraph }, paragraph)) }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "approach-photo", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: image, alt: "" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "approach-bottom", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("p", { className: "approach-num", "aria-hidden": "true", children: [
+            "(",
+            String(index + 1).padStart(2, "0"),
+            ")"
+          ] }) })
         ] }, title)) })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "what-participants-can-expect-from-the-founder", paper: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "expect-heading", children: "What participants can expect from the founder" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "FloLabs gives participants direct access to its leadership. During the company\u2019s early growth, John participates in meetings across all technical, design, data, research, marketing, legal, space and operations teams. He also meets all new participants, learns about their backgrounds and asks what they want to become capable of doing." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Participants are expected to contribute, communicate and follow through. The program is flexible and primarily remote, but the work still carries responsibilities and deadlines. Outcomes are not guaranteed." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Participants can expect:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(TextRail, { items: [
-          "Exposure to ambitious, multidisciplinary AI, robotics, research and venture projects.",
-          "Pathways based on interests, readiness and demonstrated commitment.",
-          "Work with international teammates from different cultures and disciplines.",
-          "A culture that deliberately develops integrity, reliability, accountability and professional follow through.",
-          "Project specific learning resources and masterclasses.",
-          "Experience with modern AI, collaboration, design, development and research tools.",
-          "Opportunities to build a portfolio and documented evidence of contribution.",
-          "An honest view of startup uncertainty, iteration and product development.",
-          "Consideration for future roles when there is a strong mutual fit. FloLabs intends to recruit future hires from people who have completed the internship, but completion does not guarantee employment."
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "what-participants-can-expect-from-the-founder", paper: true, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "expect-heading", children: "What participants can expect from the founder" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "FloLabs gives participants direct access to its leadership. During the company\u2019s early growth, John participates in meetings across all technical, design, data, research, marketing, legal, space and operations teams. He also meets all new participants, learns about their backgrounds and asks what they want to become capable of doing." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Participants are expected to contribute, communicate and follow through. The program is flexible and primarily remote, but the work still carries responsibilities and deadlines. Outcomes are not guaranteed." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "Participants can expect:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "expect-grid", children: [
+          ["Exposure to ambitious, multidisciplinary AI, robotics, research and venture projects.", "is-black"],
+          ["Pathways based on interests, readiness and demonstrated commitment.", "is-light is-corner"],
+          ["Work with international teammates from different cultures and disciplines.", "is-dark"],
+          ["A culture that deliberately develops integrity, reliability, accountability and professional follow through.", "is-dark"],
+          ["Project specific learning resources and masterclasses.", "is-black"],
+          ["Experience with modern AI, collaboration, design, development and research tools.", "is-light is-corner"],
+          ["Opportunities to build a portfolio and documented evidence of contribution.", "is-light is-corner"],
+          ["An honest view of startup uncertainty, iteration and product development.", "is-dark"],
+          ["Consideration for future roles when there is a strong mutual fit. FloLabs intends to recruit future hires from people who have completed the internship, but completion does not guarantee employment.", "is-black"]
+        ].map(([text, tone]) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("article", { className: `expect-card ${tone}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "expect-copy", children: text }) }, text)) }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John wants applicants to understand both the opportunity and the expectations so they can decide whether FloLabs is the right fit." })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "who-is-likely-to-thrive-at-flolabs", paper: true, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "thrive-heading", children: "Who is likely to thrive at FloLabs?" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "John built FloLabs for people with relentless curiosity who want to take part in shaping the future." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "That can include:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(PhotoRow, { veil: "thrive-veil", cards: [
+          { title: "University students", text: "University students seeking substantial experience beyond the classroom.", image: "/about/thrive-students.jpg" },
+          { title: "Career changers", text: "Career changers who need credible, applied work rather than another isolated course.", image: "/about/thrive-career.jpg" },
+          { title: "Builders", text: "Developers, engineers, researchers and designers who want to work across disciplines.", image: "/about/thrive-builders.jpg" },
+          { title: "Researchers", text: "PhD candidates, postdoctoral researchers and subject matter experts seeking ambitious collaborative projects.", image: "/about/thrive-research.jpg" },
+          { title: "Prospective founders", text: "Prospective founders who want to understand how ideas become ventures.", image: "/about/thrive-founders.jpg" },
+          { title: "Citizen scientists", text: "Citizen scientists and open source contributors motivated by discovery and impact.", image: "/about/thrive-opensource.jpg" },
+          { title: "Lifelong learners", text: "Lifelong learners who want community, challenge, meaning and purpose.", image: "/about/thrive-learners.jpg" }
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John wants applicants to understand both the opportunity and the expectations so they can decide whether FloLabs is the right fit." })
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "People join from many countries, schools and career stages. What matters is their willingness to learn, contribute, collaborate and take responsibility for their development." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "who-is-likely-to-thrive-at-flolabs", paper: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "thrive-heading", children: "Who is likely to thrive at FloLabs?" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John built FloLabs for people with relentless curiosity who want to take part in shaping the future." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "That can include:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "University students seeking substantial experience beyond the classroom." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Career changers who need credible, applied work rather than another isolated course." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Developers, engineers, researchers and designers who want to work across disciplines." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "PhD candidates, postdoctoral researchers and subject matter experts seeking ambitious collaborative projects." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Prospective founders who want to understand how ideas become ventures." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Citizen scientists and open source contributors motivated by discovery and impact." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "Lifelong learners who want community, challenge, meaning and purpose." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "People join from many countries, schools and career stages. What matters is their willingness to learn, contribute, collaborate and take responsibility for their development." })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(FutureSection, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(AimSection, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Section, { id: "a-personal-invitation-from-john", paper: true, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(H2, { id: "invite-heading", children: "A personal invitation from John" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "I have spent my career moving between industries, countries and technology cycles. I have built companies, raised investment, managed international teams, watched ventures grow and experienced the pain of having to start again." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "The most important lesson I have learned is that no one ever reaches a point where learning is finished." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "When I entered artificial intelligence, I had decades of experience in technology, but I was a beginner again. I spent months studying, joining communities and trying to connect what I was learning to real problems. That experience helped me understand what is missing from much of education today. Knowledge is available everywhere, but meaningful opportunities to apply it are not." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "FloLabs is our attempt to change that." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "We are building a global community where serious learners can work with one another on ideas at the frontier of AI, robotics, research and entrepreneurship. Some participants will use the experience to strengthen a university education. Some will change careers. Some will become researchers, engineers or founders. Others will join because they want to contribute to projects that give them meaning and purpose." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "The program requires real work and does not guarantee a job. It offers a place to develop practical ability and join a community building useful technology." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(P, { children: "If you are relentlessly curious, willing to contribute and ready to learn by doing, I invite you to explore FloLabs." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "the-flolabs-mission", paper: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "mission-heading", children: "The FloLabs mission" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "FloLabs\u2019 mission is:" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "We aspire to inspire, help as many people as possible, live long and prosper." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "The Vulcan salute appears in the FloLabs identity because John believes technology and entrepreneurship should improve life." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "John defines prosperity broadly to include health, knowledge, meaningful work, community, personal agency and the ability to contribute something valuable." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "That is why FloLabs connects education with research and venture creation. Learning should lead somewhere. Research should inform action. Technology should serve people. Entrepreneurship should create pathways for others, not only rewards for founders." })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Section, { id: "a-personal-invitation-from-john", paper: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H2, { id: "invite-heading", children: "A personal invitation from John" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "I have spent my career moving between industries, countries and technology cycles. I have built companies, raised investment, managed international teams, watched ventures grow and experienced the pain of having to start again." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "The most important lesson I have learned is that no one ever reaches a point where learning is finished." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "When I entered artificial intelligence, I had decades of experience in technology, but I was a beginner again. I spent months studying, joining communities and trying to connect what I was learning to real problems. That experience helped me understand what is missing from much of education today. Knowledge is available everywhere, but meaningful opportunities to apply it are not." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "FloLabs is our attempt to change that." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "We are building a global community where serious learners can work with one another on ideas at the frontier of AI, robotics, research and entrepreneurship. Some participants will use the experience to strengthen a university education. Some will change careers. Some will become researchers, engineers or founders. Others will join because they want to contribute to projects that give them meaning and purpose." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "The program requires real work and does not guarantee a job. It offers a place to develop practical ability and join a community building useful technology." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(P, { children: "If you are relentlessly curious, willing to contribute and ready to learn by doing, I invite you to explore FloLabs." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-8 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-2xl leading-snug sm:text-3xl", children: "Talent is everywhere. Opportunity should be too." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-6 text-lg", children: "Live long and prosper. \u{1F596}" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-2 font-semibold", children: "John Hazlewood" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: "Founder and CEO, FloLabs Innovations Group" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: "Founding Intern, FloLabs" })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { id: "frequently-asked-questions", "aria-labelledby": "faq-heading", className: "border-t border-border bg-white text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id: "faq-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl", children: "Frequently asked questions" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "mt-8 divide-y divide-black/15 border-y border-black/15 dark:divide-white/20 dark:border-white/20", children: FAQ.map(([question, answer], index) => {
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { "aria-label": "John Hazlewood", className: "bg-white px-4 py-16 text-[#122033] dark:bg-black dark:text-white sm:px-6 sm:py-24 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("figure", { className: "john-quote quote-ambient mx-auto max-w-5xl px-8 py-12 sm:px-14 sm:py-16", "data-animation": "quote-ambient", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("blockquote", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "\u201CTalent is everywhere. Opportunity should be too.\u201D" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-8", children: "\u201CLive long and prosper.\u201D" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("figcaption", { className: "mt-10", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "quote-name", children: "John Hazlewood" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "quote-role", children: "Founder and CEO, FloLabs Innovations Group" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "quote-role", children: "Founding Intern, FloLabs" })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { id: "frequently-asked-questions", "aria-labelledby": "faq-heading", className: "bg-white text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "faq-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl", children: "Frequently asked questions" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mt-8 divide-y divide-black/15 border-y border-black/15 dark:divide-white/20 dark:border-white/20", children: FAQ.map(([question, answer], index) => {
           const expanded = open === index;
-          return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+          return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
               "button",
               {
                 type: "button",
@@ -17296,208 +17615,23 @@ void main() {
                 className: "flex w-full items-center justify-between gap-4 py-4 text-left text-base font-semibold text-[#122033] sm:text-lg dark:text-white",
                 children: [
                   question,
-                  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { "aria-hidden": "true", className: "text-primary", children: expanded ? "\u2013" : "+" })
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { "aria-hidden": "true", className: "text-primary", children: expanded ? "\u2013" : "+" })
                 ]
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: `grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "w-full max-w-none pb-4 leading-[1.75] text-[#122033]/90 dark:text-white/90", children: answer }) }) })
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: `grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "w-full max-w-none pb-4 leading-[1.75] text-[#122033]/90 dark:text-white/90", children: answer }) }) })
           ] }, question);
         }) })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { "aria-labelledby": "final-cta-heading", className: "border-t border-border bg-white text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { id: "final-cta-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl", children: "Talent is everywhere. Opportunity should be too." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("blockquote", { className: "mt-8 border-l-2 border-primary pl-5 text-lg leading-snug sm:text-xl", children: "Talent is everywhere. Opportunity should be too. Our responsibility is to help close that gap by giving serious, curious people the chance to learn, contribute and build evidence of what they can do." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-4 text-lg text-[#122033]/90 dark:text-white/90", children: "Explore FloLabs, learn how the program works and discover the AI, robotics and research projects being built by our international teams." }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-8 flex flex-wrap gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: "https://www.flolabs.international/internships", className: "inline-flex min-h-11 items-center bg-[#122033] px-6 text-sm font-semibold text-white dark:bg-white dark:text-[#0d0f16]", children: "Apply to join FloLabs" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: "https://www.flolabsinnovations.com/education", className: "inline-flex min-h-11 cursor-pointer items-center border border-[#122033]/40 px-6 text-sm font-semibold text-[#122033] transition-colors duration-200 hover:bg-[#122033] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-white/40 dark:text-white dark:hover:bg-white dark:hover:text-[#0d0f16]", children: "Learn how the program works" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("a", { href: "https://www.flolabs.international/projects", className: "inline-flex min-h-11 items-center border border-[#122033]/40 px-6 text-sm font-semibold text-[#122033] dark:border-white/40 dark:text-white", children: "Explore projects" })
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { "aria-labelledby": "final-cta-heading", className: "bg-white text-[#122033] dark:bg-black dark:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative mx-auto w-full max-w-none px-4 py-16 sm:px-6 sm:py-24 lg:px-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "final-cta-heading", className: "font-['Outfit',sans-serif] text-4xl font-medium tracking-[-0.03em] sm:text-6xl", children: "Talent is everywhere. Opportunity should be too." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("blockquote", { className: "mt-8 border-l-2 border-primary pl-5 text-lg leading-snug sm:text-xl", children: "Talent is everywhere. Opportunity should be too. Our responsibility is to help close that gap by giving serious, curious people the chance to learn, contribute and build evidence of what they can do." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-4 text-lg text-[#122033]/90 dark:text-white/90", children: "Explore FloLabs, learn how the program works and discover the AI, robotics and research projects being built by our international teams." }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mt-8 flex flex-wrap items-center gap-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href: "https://www.flolabs.international/internships", className: "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold bg-[#122033] text-white hover:bg-black transition-colors cursor-pointer dark:bg-[#f6f8fc] dark:text-[#0d0f16] dark:hover:bg-white", children: "Apply to join FloLabs" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href: "https://www.flolabs.international/projects", className: "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold border border-[#122033]/25 bg-white/50 text-[#122033] hover:bg-white transition-colors cursor-pointer dark:border-white/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20", children: "Explore projects" })
         ] })
       ] }) })
-    ] });
-  }
-
-  // src/components/InternationalAbout.tsx
-  var import_react13 = __toESM(require_react(), 1);
-  var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
-  var LOGOS2 = [
-    "/projects/icons/FloLabs_logo MoodChanger.svg",
-    "/projects/icons/FloLabs_logo CAIPO.svg",
-    "/projects/icons/FloLabs_logo FloStudios.svg",
-    "/projects/icons/FloLabs_logo Flomad Travel.svg",
-    "/projects/icons/FloLabs_logo Bootcamp University.svg",
-    "/projects/icons/FloLabs_logo TARRL.svg",
-    "/projects/icons/Flolabs_logo Black.png",
-    "/projects/icons/FloLabs_logo MoodChanger for Pets.svg",
-    "/projects/icons/FloLabs_logo RoboCollective.svg",
-    "/projects/icons/FloLabs_logo Hephaestus.svg",
-    "/projects/icons/FloLabs_logo FloBrain.svg",
-    "/projects/icons/FloLabs_logo Connecting The Dots.svg",
-    "/projects/icons/FloLabs_logo Legal.svg",
-    "/projects/icons/FloLabs_logo Space.svg",
-    "/projects/icons/FloLabs_logo Space.svg"
-  ];
-  function Reveal({
-    children,
-    className = "",
-    delay = 0,
-    from = "translate3d(0, 12px, 0)",
-    duration = 500
-  }) {
-    const ref = (0, import_react13.useRef)(null);
-    (0, import_react13.useEffect)(() => {
-      const node = ref.current;
-      if (!node) return;
-      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduced) {
-        node.style.opacity = "1";
-        node.style.transform = "none";
-        return;
-      }
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries.some((entry) => entry.isIntersecting)) {
-            node.style.opacity = "1";
-            node.style.transform = "translate3d(0, 0, 0) scale(1)";
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.2 }
-      );
-      observer.observe(node);
-      return () => observer.disconnect();
-    }, []);
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
-      "div",
-      {
-        ref,
-        className: `motion-reduce:opacity-100 ${className}`,
-        style: {
-          transitionProperty: "opacity, transform",
-          transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-          transitionDelay: `${delay}ms`,
-          transitionDuration: `${duration}ms`,
-          transform: from,
-          opacity: 0
-        },
-        children
-      }
-    );
-  }
-  function AimCutout() {
-    const ref = (0, import_react13.useRef)(null);
-    (0, import_react13.useEffect)(() => {
-      const canvas = ref.current;
-      if (!canvas) return;
-      const img = new Image();
-      img.src = "/about/what-we-aim-background.png";
-      img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-        ctx.drawImage(img, 0, 0);
-        const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const px = frame.data;
-        for (let i = 0; i < px.length; i += 4) {
-          const r = px[i];
-          const g = px[i + 1];
-          const b = px[i + 2];
-          if (b > 90 && b > r + 40 && b > g + 20 && r < 90) px[i + 3] = 0;
-        }
-        ctx.putImageData(frame, 0, 0);
-      };
-    }, []);
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("canvas", { ref, "aria-hidden": "true", className: "block h-auto w-full" });
-  }
-  function LogoRow({ hidden }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "home-projects-marquee-group gap-6 sm:gap-8", "aria-hidden": hidden || void 0, children: LOGOS2.map((src, index) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex h-16 w-[5.5rem] shrink-0 items-center justify-center sm:h-[4.5rem] sm:w-28", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src, alt: "", className: "max-h-full max-w-full object-contain", decoding: "async" }) }, `${src}-${index}`)) });
-  }
-  function InternationalAbout({ part = "all" }) {
-    const showHero = part === "all" || part === "hero";
-    const showIntro = part === "all" || part === "intro";
-    const showBody = part === "all" || part === "body";
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative", children: [
-      showBody ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { "aria-hidden": "true", className: "projects-scene-bg pointer-events-none fixed inset-0 -z-10" }) : null,
-      showHero ? /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("header", { className: "relative w-full overflow-hidden border-b border-border/50 dark:border-white/10", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "absolute inset-0", "aria-hidden": "true", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { alt: "", src: "/about/about-header-background.png", className: "absolute inset-0 h-full w-full object-cover" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "absolute inset-0 bg-black/45" })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative z-10 mx-auto flex min-h-[min(50vh,32rem)] w-full max-w-6xl flex-col items-center justify-center px-4 pb-16 pt-28 text-center sm:min-h-[min(55vh,36rem)] sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pt-36", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Reveal, { from: "translate3d(0, 8px, 0) scale(0.96)", className: "flex w-full flex-col items-center", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { alt: "FloLabs logo", src: "/flolabs-logo.svg", className: "h-[10.5rem] w-[10.5rem] shrink-0 brightness-0 sm:h-48 sm:w-48 lg:h-[13.5rem] lg:w-[13.5rem] dark:invert" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Reveal, { delay: 80, className: "flex w-full flex-col items-center", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { className: "mt-6 text-balance text-[1.65rem] font-bold uppercase leading-[1.08] tracking-[0.18em] text-white sm:mt-7 sm:text-3xl sm:tracking-[0.22em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "About" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Reveal, { delay: 160, className: "flex w-full flex-col items-center", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mx-auto mt-4 max-w-2xl text-pretty text-center text-base font-normal leading-relaxed text-white sm:mt-5 sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "A FloLabs company focused on innovation in AI and robotics." }) })
-        ] })
-      ] }) : null,
-      showIntro ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { "aria-labelledby": "about-innovations-heading", className: "w-full border-b border-border bg-background py-16 text-foreground sm:py-20 lg:py-24", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mx-auto flex w-full max-w-6xl flex-col items-center gap-11 px-4 sm:gap-[3.3rem] sm:px-6 md:flex-row md:items-center md:gap-[3.85rem] lg:px-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Reveal, { from: "translate3d(-24px, 0, 0) scale(1)", duration: 400, className: "flex shrink-0 justify-center md:w-[28%] md:justify-start", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { alt: "", "aria-hidden": "true", src: "/projects/icons/Flolabs_logo Black.png", className: "h-56 w-56 object-contain sm:h-72 sm:w-72 lg:h-80 lg:w-80 dark:invert" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Reveal, { from: "translate3d(24px, 0, 0) scale(1)", delay: 80, duration: 400, className: "min-w-0 md:flex-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "about-innovations-heading", className: "text-balance text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "FloLabs Innovations Group" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mt-6 space-y-5 text-pretty text-base font-normal leading-relaxed text-foreground/85 sm:mt-8 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "FloLabs Innovations Group is an incubator launching innovative projects in AI and Robotics. We enhance learning and project outcomes through teamwork, idea sharing, and innovative methods like brainstorming and LLM automation, preparing students with practical skills." }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { children: "We provide students, career changers, and professionals with a remote, unique, powerful, and immersive hands-on educational experience where they learn what they will use in the real world. We are not just a school, we are a community of learners who are passionate about learning and growing." })
-          ] })
-        ] })
-      ] }) }) : null,
-      showBody ? /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_jsx_runtime15.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("section", { "aria-labelledby": "about-what-we-aim-heading", className: "w-full overflow-x-clip bg-transparent", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mx-auto w-full max-w-6xl px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-8 lg:pt-24", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Reveal, { className: "w-full", duration: 400, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "about-what-we-aim-heading", className: "text-balance text-center text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground dark:text-white sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "What we aim to deliver" }) }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative w-full bg-transparent", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(AimCutout, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "absolute inset-0 z-10 flex flex-col justify-center gap-4 px-4 py-5 sm:gap-5 sm:px-8 sm:py-6 md:px-12 lg:px-16", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mx-auto w-full max-w-6xl overflow-hidden px-[1.5%] sm:px-[4%] md:px-[6.5%] lg:px-[8%]", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-full [--home-marquee-duration:40s]", role: "region", "aria-label": "Project logos", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "home-projects-marquee-viewport relative isolate w-full", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "home-projects-marquee-track min-h-16 sm:min-h-[4.5rem]", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(LogoRow, {}),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-6 shrink-0 self-stretch sm:w-8", "aria-hidden": "true" }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(LogoRow, { hidden: true }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-6 shrink-0 self-stretch sm:w-8", "aria-hidden": "true" })
-              ] }) }) }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mx-auto mt-6 grid w-full max-w-6xl gap-4 md:grid-cols-2 md:justify-items-center md:gap-x-7 lg:gap-x-10", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Reveal, { duration: 300, className: "min-w-0 w-full max-w-md", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Experiential Learning" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Unique and immersive educational training with hands-on, real world experience." })
-                ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Reveal, { delay: 80, duration: 300, className: "min-w-0 w-full max-w-md", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-balance text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground sm:text-lg dark:text-white [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Practical Experience" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-foreground/80 sm:mt-2 sm:text-base sm:leading-relaxed dark:text-white/90 [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Work on innovative, marketable projects with real-world impact." })
-                ] })
-              ] })
-            ] })
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { "aria-labelledby": "about-mission-heading", className: "relative mt-[4.8rem] w-full overflow-x-clip sm:mt-[5.4rem] lg:mt-[6rem]", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { alt: "", "aria-hidden": "true", src: "/about/future-background.png", className: "block h-auto w-full max-w-none" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "absolute inset-0 bg-black/45", "aria-hidden": "true" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "absolute inset-0 z-10 mx-auto flex w-full max-w-6xl min-h-0 flex-col justify-center gap-4 overflow-x-clip px-4 py-[4%] sm:gap-5 sm:px-6 md:flex-row md:items-center md:justify-between md:gap-6 lg:px-8", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Reveal, { from: "translate3d(-24px, 0, 0) scale(1)", duration: 400, className: "min-h-0 min-w-0 md:max-w-[58%] md:flex-1", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("h2", { id: "about-mission-heading", className: "text-balance text-[clamp(1rem,2.8vw,1.875rem)] font-bold uppercase leading-[1.08] tracking-[0.14em] text-white sm:tracking-[0.16em] [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: [
-                "Inspire, empower, and ",
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "inline-block bg-white px-2 py-0.5 text-primary dark:text-[#00349b]", children: "build the future" })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mt-3 space-y-2 sm:mt-4 sm:space-y-3", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Inspire and empower individuals through transformative educational experiences that foster global perspectives, innovative thinking, and practical skills." }),
-                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-pretty text-[clamp(0.8125rem,1.6vw,1rem)] font-normal leading-snug text-white/90 sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "We aim to cultivate a culture of curiosity and creativity, create jobs of the future, and build innovative solutions for a rapidly changing world." })
-              ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Reveal, { from: "translate3d(24px, 0, 0) scale(1)", delay: 100, duration: 400, className: "flex min-h-0 w-full shrink-0 items-center justify-center md:h-full md:w-[34%] md:justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: "/projects/icons/FloLabs_logo FloLabs International.svg", alt: "", "aria-hidden": "true", className: "h-auto w-auto max-w-full object-contain [max-height:min(86%,21.6vw)] md:[max-height:86%]" }) })
-          ] })
-        ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("section", { "aria-labelledby": "about-methodology-heading", className: "w-full overflow-x-clip bg-transparent py-16 sm:py-20 lg:py-24", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Reveal, { duration: 400, className: "w-full", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { id: "about-methodology-heading", className: "text-balance text-center text-2xl font-bold uppercase leading-[1.08] tracking-[0.14em] text-foreground dark:text-white sm:text-3xl sm:tracking-[0.16em] lg:text-4xl [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Helping people learn better" }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-4 text-pretty text-center text-base font-normal leading-relaxed text-muted dark:text-white/82 sm:mt-5 sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: "Our methodology is to foster collaboration and creativity." })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mt-10 grid gap-6 sm:mt-12 sm:gap-8 md:grid-cols-2", children: [
-            ["Recorded Meetings", "We record and transcribe every meeting so you can review information when necessary."],
-            ["Brainwriting Exercises", "Brain writing is an exercise to help the brain get into a creative and productive state."],
-            ["Advanced AI Tools", "Language Learning Models help automate workflow, brainstorm, and advise work production."],
-            ["Collaborative Learning", "We teach each other and learn together through peer support, shared practice, and active teamwork."]
-          ].map(([title, copy], index) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Reveal, { delay: index * 80, duration: 300, from: "translate3d(0, 6px, 0) scale(1)", className: "h-full", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("article", { className: "relative border border-border bg-card p-6 text-foreground shadow-sm transition-[border-color,background-color,box-shadow] duration-200 hover:border-primary/40 hover:shadow-md sm:p-8", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-balance pr-10 text-base font-bold uppercase leading-snug tracking-[0.14em] text-foreground dark:text-white sm:text-lg [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: title }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1.5 text-pretty text-sm font-normal leading-snug text-muted dark:text-white/90 sm:mt-2 sm:text-base sm:leading-relaxed [font-family:var(--font-inter),Arial,Helvetica,sans-serif]", children: copy })
-          ] }) }, title)) })
-        ] }) })
-      ] }) : null
     ] });
   }
 
@@ -17507,17 +17641,65 @@ void main() {
   function thumb(id) {
     return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "";
   }
+  function IconPlay({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("svg", { className, viewBox: "0 0 24 24", fill: "currentColor", "aria-hidden": true, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M8 5.14v13.72L19 12 8 5.14z" }) });
+  }
+  function IconCalendar({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("svg", { className, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.8", "aria-hidden": true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("rect", { x: "3.5", y: "5", width: "17", height: "15.5", rx: "2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M8 3.5v3M16 3.5v3M3.5 10h17" })
+    ] });
+  }
+  function IconClock({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("svg", { className, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.8", "aria-hidden": true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("circle", { cx: "12", cy: "12", r: "8.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M12 8v4.5l3 1.5" })
+    ] });
+  }
+  function IconUsers({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("svg", { className, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.8", "aria-hidden": true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("circle", { cx: "9", cy: "8", r: "3" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("circle", { cx: "16.5", cy: "9", r: "2.2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M3.5 18.5c1.2-3 3.4-4.5 5.5-4.5s4.3 1.5 5.5 4.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M14 14.2c1.2-.5 2.6-.4 4 .8 1 .9 1.7 2.2 2 3.5" })
+    ] });
+  }
+  function IconShare({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("svg", { className, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.8", "aria-hidden": true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("circle", { cx: "18", cy: "5", r: "2.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("circle", { cx: "6", cy: "12", r: "2.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("circle", { cx: "18", cy: "19", r: "2.5" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M8.3 10.8l7.4-4.1M8.3 13.2l7.4 4.1" })
+    ] });
+  }
+  function IconBookmark({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("svg", { className, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.8", "aria-hidden": true, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M7 4.5h10a1 1 0 0 1 1 1V20l-6-3.2L6 20V5.5a1 1 0 0 1 1-1z" }) });
+  }
+  function IconDoc({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("svg", { className, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.8", "aria-hidden": true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M14 3.5V8h4.5M8.5 12h7M8.5 16h5" })
+    ] });
+  }
+  function IconChat({ className = "h-4 w-4" }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("svg", { className, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.8", "aria-hidden": true, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { d: "M5 6.5h14a1.5 1.5 0 0 1 1.5 1.5v7A1.5 1.5 0 0 1 19 16.5H11l-4 3v-3H5A1.5 1.5 0 0 1 3.5 15V8A1.5 1.5 0 0 1 5 6.5z" }) });
+  }
   function MeetingsExperience({ meetings, selected }) {
     const [query, setQuery] = (0, import_react14.useState)("");
-    const [date, setDate] = (0, import_react14.useState)("all");
-    const [filtersOpen, setFiltersOpen] = (0, import_react14.useState)(false);
-    const [tab, setTab] = (0, import_react14.useState)("overview");
+    const [tab, setTab] = (0, import_react14.useState)("about");
     const [start, setStart] = (0, import_react14.useState)(0);
     const [transcriptQuery, setTranscriptQuery] = (0, import_react14.useState)("");
+    const [shareNote, setShareNote] = (0, import_react14.useState)("");
+    const [saved, setSaved] = (0, import_react14.useState)(false);
+    const [email, setEmail] = (0, import_react14.useState)("");
     const [detail, setDetail] = (0, import_react14.useState)(null);
     (0, import_react14.useEffect)(() => {
       let cancel = false;
       setDetail(null);
+      setStart(0);
+      setTab("about");
+      setTranscriptQuery("");
+      setShareNote("");
       fetch(`/api/meetings/${selected.id}`).then((response) => response.ok ? response.json() : null).then((payload) => {
         if (!cancel && payload?.cues) setDetail(payload);
       }).catch(() => {
@@ -17526,22 +17708,26 @@ void main() {
         cancel = true;
       };
     }, [selected.id]);
+    (0, import_react14.useEffect)(() => {
+      try {
+        const raw = localStorage.getItem("flolabs-watch-later") || "[]";
+        const ids = JSON.parse(raw);
+        setSaved(ids.includes(selected.id));
+      } catch {
+        setSaved(false);
+      }
+    }, [selected.id]);
     const cuesSource = detail?.cues ?? selected.cues;
     const speakers = detail?.speakers ?? selected.speakers;
     const durationLabel = detail?.durationLabel || selected.durationLabel;
-    const dates = (0, import_react14.useMemo)(
-      () => [...new Set(meetings.map((meeting) => meeting.date).filter(Boolean))],
-      [meetings]
-    );
     const visible = (0, import_react14.useMemo)(() => {
       const needle = query.trim().toLowerCase();
+      if (!needle) return meetings;
       return meetings.filter((meeting) => {
-        if (date !== "all" && meeting.date !== date) return false;
-        if (!needle) return true;
         const haystack = [meeting.title, meeting.date, meeting.summary, ...meeting.highlights].join(" ").toLowerCase();
         return haystack.includes(needle);
       });
-    }, [meetings, query, date]);
+    }, [meetings, query]);
     const cues = (0, import_react14.useMemo)(() => {
       const needle = transcriptQuery.trim().toLowerCase();
       if (!needle) return cuesSource;
@@ -17549,60 +17735,83 @@ void main() {
         (cue) => `${cue.speaker} ${cue.text}`.toLowerCase().includes(needle)
       );
     }, [cuesSource, transcriptQuery]);
-    const totalSeconds = meetings.reduce((sum, meeting) => {
-      const parts = meeting.durationLabel.split(":").map(Number);
-      if (parts.length === 3) return sum + parts[0] * 3600 + parts[1] * 60 + parts[2];
-      if (parts.length === 2) return sum + parts[0] * 60 + parts[1];
-      return sum;
-    }, 0);
-    const totalHours = Math.floor(totalSeconds / 3600);
-    const totalMinutes = Math.floor(totalSeconds % 3600 / 60);
     const localFile = typeof window !== "undefined" && window.location.protocol === "file:";
     const origin = typeof window !== "undefined" && window.location.protocol.startsWith("http") ? `&origin=${encodeURIComponent(window.location.origin)}` : "";
     const embed = selected.youtubeId ? `https://www.youtube.com/embed/${selected.youtubeId}?start=${start}&rel=0${origin}` : "";
     const watchUrl = selected.youtubeId ? `https://www.youtube.com/watch?v=${selected.youtubeId}${start ? `&t=${start}s` : ""}` : "";
-    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-background text-foreground", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("section", { className: "border-b border-border bg-[#0d1424] text-white", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mx-auto max-w-6xl px-4 pb-8 pt-28 sm:px-6 lg:px-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-xs font-semibold uppercase tracking-[0.18em] text-[#7eb6ff]", children: "FloLabs Conversations" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h1", { className: "mt-3 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-4xl font-medium tracking-tight sm:text-5xl", children: "Conversations" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-3 max-w-2xl text-base text-[#b9c6dc] sm:text-lg", children: "Ideas, perspectives, and conversations shaping the future of technology." })
-      ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col gap-3 sm:flex-row sm:items-center", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "relative min-w-0 flex-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "sr-only", children: "Search meetings" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-              "input",
-              {
-                value: query,
-                onChange: (event) => setQuery(event.target.value),
-                placeholder: "Search meetings, topics, or speakers...",
-                className: "w-full rounded-full border border-border bg-white dark:bg-[#061626] px-5 py-3 text-sm outline-none ring-primary/30 placeholder:text-muted focus:ring-2"
-              }
-            )
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-            "button",
-            {
-              type: "button",
-              onClick: () => setFiltersOpen((open) => !open),
-              className: "inline-flex items-center justify-center rounded-full border border-border bg-white dark:bg-[#061626] px-5 py-3 text-sm font-semibold",
-              children: "Filter"
+    const related = meetings.filter((meeting) => meeting.id !== selected.id).slice(0, 6);
+    async function onShare() {
+      const url = typeof window !== "undefined" ? window.location.href : "";
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: selected.title, url });
+          setShareNote("Shared");
+        } else {
+          await navigator.clipboard.writeText(url);
+          setShareNote("Link copied");
+        }
+      } catch {
+        setShareNote("");
+      }
+      window.setTimeout(() => setShareNote(""), 2e3);
+    }
+    function onWatchLater() {
+      try {
+        const raw = localStorage.getItem("flolabs-watch-later") || "[]";
+        const ids = new Set(JSON.parse(raw));
+        if (ids.has(selected.id)) ids.delete(selected.id);
+        else ids.add(selected.id);
+        localStorage.setItem("flolabs-watch-later", JSON.stringify([...ids]));
+        setSaved(ids.has(selected.id));
+      } catch {
+        setSaved(false);
+      }
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-[#f6f8fc] text-foreground dark:bg-background dark:text-foreground", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("style", { children: `
+        .meet-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .meet-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(13,20,36,0.08); }
+        .meet-thumb img { transition: transform 0.35s ease; }
+        .meet-card:hover .meet-thumb img { transform: scale(1.03); }
+        .meet-btn { transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease; }
+        .meet-btn:hover { transform: translateY(-1px); }
+        .meet-btn:active { transform: translateY(1px); }
+        .meet-play-item { transition: background-color 0.15s ease, border-color 0.15s ease; }
+        .meet-speakers { display: grid; gap: 0.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (min-width: 768px) {
+          .meet-speakers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .meet-card, .meet-btn, .meet-thumb img { transition: none !important; transform: none !important; }
+        }
+      ` }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("section", { className: "relative overflow-hidden bg-[#0d1424] text-white", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+          "div",
+          {
+            "aria-hidden": true,
+            className: "pointer-events-none absolute inset-0",
+            style: {
+              background: "radial-gradient(ellipse 55% 70% at 8% 40%, rgba(126,182,255,0.28), transparent 60%), radial-gradient(ellipse 45% 55% at 92% 15%, rgba(126,182,255,0.14), transparent 55%), radial-gradient(ellipse 40% 50% at 70% 90%, rgba(126,182,255,0.08), transparent 50%)"
             }
-          )
-        ] }),
-        filtersOpen && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-3 rounded-2xl border border-border bg-white dark:bg-[#061626] p-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-xs font-semibold uppercase tracking-[0.12em] text-muted", children: "Date" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-3 flex flex-wrap gap-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(FilterChip, { active: date === "all", onClick: () => setDate("all"), label: "All dates" }),
-            dates.map((value) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(FilterChip, { active: date === value, onClick: () => setDate(value), label: value }, value))
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(260px,0.85fr)]", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "overflow-hidden rounded-3xl border border-border bg-black shadow-[0_24px_60px_rgba(0,0,0,0.18)]", children: embed && localFile ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("a", { href: watchUrl, target: "_blank", rel: "noreferrer", className: "relative block", children: [
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "relative mx-auto max-w-6xl px-4 pb-10 pt-28 sm:px-6 sm:pb-12 lg:px-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("h1", { className: "max-w-[16ch] font-['Outfit',sans-serif] text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-[3.5rem]", children: [
+            "Conversations that shape the",
+            " ",
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-[#7eb6ff]", children: "work" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-4 max-w-2xl font-['Google_Sans_Flex','Google_Sans',sans-serif] text-base text-[#b9c6dc] sm:text-lg", children: "Ideas, perspectives, and recorded meetings from FloLabs teams building across AI, robotics, and research." })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "grid items-start gap-5 lg:grid-cols-[minmax(0,1.55fr)_minmax(300px,0.9fr)]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "overflow-hidden rounded-[1.5rem] border border-[#d8e0ec] bg-[#0d1424] shadow-[0_24px_60px_rgba(13,20,36,0.18)] dark:border-border", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "relative", children: [
+            (selected.date || durationLabel) && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "pointer-events-none absolute left-3 top-3 z-10 rounded-full bg-[#0d1424]/75 px-3 py-1 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-xs font-medium text-white backdrop-blur", children: [selected.date, durationLabel].filter(Boolean).join(" \xB7 ") }),
+            embed && localFile ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("a", { href: watchUrl, target: "_blank", rel: "noreferrer", className: "relative block", children: [
               /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("img", { src: thumb(selected.youtubeId), alt: "", className: "aspect-video w-full object-cover" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "absolute inset-0 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "rounded-full bg-[#ff0000] px-4 py-2 text-sm font-semibold text-white", children: "Watch on YouTube" }) })
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "absolute inset-0 flex items-center justify-center bg-[#0d1424]/35", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "meet-btn inline-flex h-16 w-16 items-center justify-center rounded-full bg-white text-black shadow-lg", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconPlay, { className: "h-7 w-7" }) }) })
             ] }) : embed ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
               "iframe",
               {
@@ -17614,74 +17823,41 @@ void main() {
                 allowFullScreen: true
               },
               `${selected.id}-${start}`
-            ) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex aspect-video items-center justify-center text-sm text-white/70", children: "Video not available for this conversation." }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "mt-5 text-2xl font-semibold tracking-tight sm:text-3xl", children: selected.title }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted", children: [
-              selected.date && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: selected.date }),
-              durationLabel && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: durationLabel })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-6 flex gap-2 border-b border-border", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TabButton, { active: tab === "overview", onClick: () => setTab("overview"), label: "Overview" }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TabButton, { active: tab === "transcript", onClick: () => setTab("transcript"), label: "Transcript" })
-            ] }),
-            tab === "overview" ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "py-6", children: [
-              selected.summary ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "whitespace-pre-line text-base leading-relaxed text-foreground/90", children: selected.summary }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-muted", children: "No overview available for this conversation." }),
-              selected.highlights.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-8", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-sm font-semibold uppercase tracking-[0.14em] text-muted", children: "Key topics" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "mt-3 flex flex-wrap gap-2", children: selected.highlights.map((topic) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { className: "rounded-full border border-border bg-white dark:bg-[#061626] px-3 py-1.5 text-sm", children: topic }, topic)) })
+            ) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex aspect-video items-center justify-center text-sm text-white/70", children: "Video not available for this conversation." })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("aside", { className: "flex max-h-[min(70vh,560px)] flex-col overflow-hidden rounded-[1.5rem] border border-[#d8e0ec] bg-white shadow-[0_16px_40px_rgba(13,20,36,0.06)] dark:border-border dark:bg-[#061626]", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "border-b border-[#e6ecf4] px-4 py-4 dark:border-border sm:px-5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between gap-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "font-['Outfit',sans-serif] text-lg font-medium tracking-[-0.02em]", children: "Playlist" }),
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "rounded-full bg-[#0d1424]/06 px-2.5 py-1 text-xs font-semibold text-[#0d1424] dark:bg-white/10 dark:text-white", children: visible.length })
               ] }),
-              speakers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-8", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-sm font-semibold uppercase tracking-[0.14em] text-muted", children: "Speakers" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "mt-3 grid gap-2 sm:grid-cols-2", children: speakers.map((speaker) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { className: "rounded-2xl border border-border bg-white dark:bg-[#061626] px-4 py-3 text-sm font-medium", children: speaker }, speaker)) })
-              ] })
-            ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "py-6", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-lg font-semibold", children: "Transcript" }),
-              cuesSource.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-4 text-muted", children: detail ? "Transcript not available for this conversation." : "Loading transcript..." }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "mt-3 block", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "sr-only", children: "Search playlist" }),
                 /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
                   "input",
                   {
-                    value: transcriptQuery,
-                    onChange: (event) => setTranscriptQuery(event.target.value),
-                    placeholder: "Search transcript...",
-                    className: "mt-4 w-full rounded-full border border-border bg-white dark:bg-[#061626] px-5 py-3 text-sm outline-none ring-primary/30 focus:ring-2"
+                    value: query,
+                    onChange: (event) => setQuery(event.target.value),
+                    placeholder: "Search meetings...",
+                    className: "w-full rounded-full border border-[#d8e0ec] bg-[#f6f8fc] px-4 py-2.5 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-sm outline-none ring-[#7eb6ff]/40 placeholder:text-muted focus:ring-2 dark:border-border dark:bg-[#0d1424]"
                   }
-                ),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ol", { className: "mt-4 max-h-[540px] space-y-4 overflow-y-auto pr-1", children: cues.map((cue, index) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("li", { className: "grid grid-cols-[4.5rem_minmax(0,1fr)] gap-3", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-                    "button",
-                    {
-                      type: "button",
-                      onClick: () => setStart(cue.startSeconds),
-                      className: "pt-0.5 text-left text-sm font-semibold text-primary",
-                      children: cue.startLabel
-                    }
-                  ),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-                    cue.speaker && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-sm font-semibold", children: cue.speaker }),
-                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-sm leading-relaxed text-foreground/85", children: cue.text })
-                  ] })
-                ] }, `${cue.startSeconds}-${index}`)) })
+                )
               ] })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("aside", { className: "rounded-3xl border border-border bg-white dark:bg-[#061626] p-4 sm:p-5", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "text-lg font-semibold", children: "Series" }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "mt-1 text-sm text-muted", children: [
-              meetings.length,
-              " meetings",
-              (totalHours > 0 || totalMinutes > 0) && ` \xB7 ${totalHours}h ${totalMinutes}m`
             ] }),
-            visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-4 text-sm text-muted", children: "No conversations match this search." }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ol", { className: "mt-4 max-h-[70vh] space-y-1 overflow-y-auto lg:max-h-[640px]", children: visible.map((meeting, index) => {
+            visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "px-4 py-6 text-sm text-muted sm:px-5", children: "No conversations match this search. Try another title or topic." }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ol", { className: "flex-1 space-y-1 overflow-y-auto p-2", children: visible.map((meeting) => {
               const active = meeting.id === selected.id;
               return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
                 Link,
                 {
                   href: `/conversations/${meeting.id}`,
-                  className: `flex gap-3 rounded-2xl px-3 py-3 transition ${active ? "bg-primary/10" : "hover:bg-muted/10"}`,
+                  className: `meet-play-item flex gap-3 rounded-2xl border px-2.5 py-2.5 ${active ? "border-[#7eb6ff]/45 bg-[#7eb6ff]/15 dark:bg-[#7eb6ff]/20" : "border-transparent hover:bg-[#f0f4fa] dark:hover:bg-white/5"}`,
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `w-6 shrink-0 pt-0.5 text-xs font-semibold ${active ? "text-primary" : "text-muted"}`, children: String(index + 1).padStart(2, "0") }),
-                    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "min-w-0", children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `block text-sm font-semibold ${active ? "text-primary" : ""}`, children: meeting.title }),
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "meet-thumb relative h-[3.35rem] w-[5.5rem] shrink-0 overflow-hidden rounded-xl bg-[#0d1424]", children: [
+                      meeting.youtubeId ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("img", { src: thumb(meeting.youtubeId), alt: "", className: "h-full w-full object-cover" }) : null,
+                      active && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "absolute inset-0 flex items-center justify-center bg-[#0d1424]/35", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-black", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconPlay, { className: "h-3.5 w-3.5" }) }) })
+                    ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "min-w-0 flex-1 py-0.5", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `block text-sm font-semibold leading-snug ${active ? "text-[#0d1424] dark:text-[#7eb6ff]" : ""}`, children: meeting.title }),
                       /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "mt-1 block text-xs text-muted", children: [meeting.date, meeting.durationLabel].filter(Boolean).join(" \xB7 ") })
                     ] })
                   ]
@@ -17690,46 +17866,222 @@ void main() {
             }) })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("section", { className: "mt-14", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "text-2xl font-semibold tracking-tight", children: "Related conversations" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: meetings.filter((meeting) => meeting.id !== selected.id).map((meeting) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-7 flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "min-w-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "font-['Outfit',sans-serif] text-2xl font-medium tracking-[-0.03em] sm:text-3xl", children: selected.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("ul", { className: "mt-4 flex flex-wrap gap-x-5 gap-y-2 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-sm text-muted", children: [
+              selected.date && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("li", { className: "inline-flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconCalendar, {}),
+                selected.date
+              ] }),
+              durationLabel && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("li", { className: "inline-flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconClock, {}),
+                durationLabel
+              ] }),
+              speakers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("li", { className: "inline-flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconUsers, {}),
+                speakers.length,
+                " speakers"
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-wrap gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: onShare,
+                className: "meet-btn inline-flex min-h-11 items-center gap-2 rounded-full border border-[#d8e0ec] bg-white px-4 py-2.5 text-sm font-semibold dark:border-border dark:bg-[#061626]",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconShare, {}),
+                  shareNote || "Share"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: onWatchLater,
+                className: `meet-btn inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold ${saved ? "border border-[#7eb6ff] bg-[#7eb6ff]/15 text-[#0d1424] dark:text-[#7eb6ff]" : "bg-[#0d1424] text-white dark:bg-[#7eb6ff] dark:text-[#0d1424]"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconBookmark, {}),
+                  saved ? "Saved" : "Watch Later"
+                ]
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-8 inline-flex flex-wrap gap-1 rounded-2xl border border-[#d8e0ec] bg-white p-1 dark:border-border dark:bg-[#061626]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TabButton, { active: tab === "about", onClick: () => setTab("about"), label: "About", icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconDoc, {}) }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TabButton, { active: tab === "transcript", onClick: () => setTab("transcript"), label: "Transcript", icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconDoc, {}) }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TabButton, { active: tab === "discussion", onClick: () => setTab("discussion"), label: "Discussion", icon: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconChat, {}) })
+        ] }),
+        tab === "about" && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-6 rounded-[1.35rem] border border-[#d8e0ec] bg-white p-5 sm:p-6 dark:border-border dark:bg-[#061626]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "font-['Outfit',sans-serif] text-lg font-medium tracking-[-0.02em]", children: "About this meeting" }),
+          selected.summary ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-3 whitespace-pre-line font-['Google_Sans_Flex','Google_Sans',sans-serif] text-sm leading-relaxed text-foreground/85 sm:text-base", children: selected.summary }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-3 text-sm text-muted", children: "No overview available for this conversation." }),
+          selected.highlights.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "mt-5 flex flex-wrap gap-2", children: selected.highlights.map((topic) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+            "li",
+            {
+              className: "rounded-full border border-[#d8e0ec] bg-[#f6f8fc] px-3 py-1.5 text-sm dark:border-border dark:bg-[#0d1424]",
+              children: topic
+            },
+            topic
+          )) })
+        ] }),
+        tab === "transcript" && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-6 rounded-[1.35rem] border border-[#d8e0ec] bg-white p-5 sm:p-6 dark:border-border dark:bg-[#061626]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "font-['Outfit',sans-serif] text-lg font-medium tracking-[-0.02em]", children: "Transcript" }),
+          cuesSource.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-4 text-muted", children: detail ? "Transcript not available for this conversation." : "Loading transcript..." }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "mt-4 block", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "sr-only", children: "Search transcript" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                "input",
+                {
+                  value: transcriptQuery,
+                  onChange: (event) => setTranscriptQuery(event.target.value),
+                  placeholder: "Search transcript...",
+                  className: "w-full rounded-full border border-[#d8e0ec] bg-[#f6f8fc] px-5 py-3 text-sm outline-none ring-[#7eb6ff]/40 focus:ring-2 dark:border-border dark:bg-[#0d1424]"
+                }
+              )
+            ] }),
+            cues.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-4 text-sm text-muted", children: "No transcript lines match this search." }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ol", { className: "mt-4 max-h-[540px] space-y-1 overflow-y-auto pr-1", children: cues.map((cue, index) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: () => setStart(cue.startSeconds),
+                className: "grid w-full grid-cols-[4.5rem_minmax(0,1fr)] gap-3 rounded-xl px-2 py-3 text-left transition hover:bg-[#7eb6ff]/10",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "pt-0.5 text-sm font-semibold text-primary", children: cue.startLabel }),
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { children: [
+                    cue.speaker && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "block text-sm font-semibold", children: cue.speaker }),
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "block text-sm leading-relaxed text-foreground/85", children: cue.text })
+                  ] })
+                ]
+              }
+            ) }, `${cue.startSeconds}-${index}`)) })
+          ] })
+        ] }),
+        tab === "discussion" && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-6 rounded-[1.35rem] border border-[#d8e0ec] bg-white p-5 sm:p-6 dark:border-border dark:bg-[#061626]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "font-['Outfit',sans-serif] text-lg font-medium tracking-[-0.02em]", children: "Discussion topics" }),
+          selected.highlights.length === 0 && speakers.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-3 text-sm text-muted", children: "No discussion notes for this conversation yet." }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mt-4 space-y-6", children: [
+            selected.highlights.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-muted", children: "Key topics" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2", children: selected.highlights.map((topic) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { className: "rounded-2xl border border-[#d8e0ec] px-4 py-3 text-sm dark:border-border", children: topic }, topic)) })
+            ] }),
+            speakers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-muted", children: "Speakers" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("ul", { className: "meet-speakers mt-3", children: speakers.map((speaker) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("li", { className: "rounded-2xl border border-[#d8e0ec] px-4 py-3 text-sm font-medium dark:border-border", children: speaker }, speaker)) })
+            ] })
+          ] })
+        ] }),
+        related.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("section", { className: "mt-14", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-wrap items-end justify-between gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "font-['Outfit',sans-serif] text-2xl font-medium tracking-[-0.03em] sm:text-3xl", children: "Related Meetings" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+              Link,
+              {
+                href: "/conversations",
+                className: "inline-flex items-center gap-1 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-sm font-semibold text-[#0d1424] dark:text-[#7eb6ff]",
+                children: [
+                  "View all",
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { "aria-hidden": true, children: "\u2192" })
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: related.map((meeting) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
             Link,
             {
               href: `/conversations/${meeting.id}`,
-              className: "overflow-hidden rounded-3xl border border-border bg-white dark:bg-[#061626] transition hover:-translate-y-0.5",
+              className: "meet-card meet-thumb overflow-hidden rounded-[1.25rem] border border-[#d8e0ec] bg-white dark:border-border dark:bg-[#061626]",
               children: [
-                meeting.youtubeId ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("img", { src: thumb(meeting.youtubeId), alt: "", className: "aspect-video w-full object-cover" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "aspect-video bg-[#0d1424]" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-4", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "font-semibold leading-snug", children: meeting.title }),
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-2 text-xs text-muted", children: [meeting.date, meeting.durationLabel].filter(Boolean).join(" \xB7 ") })
-                ] })
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "relative overflow-hidden", children: [
+                  meeting.youtubeId ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("img", { src: thumb(meeting.youtubeId), alt: "", className: "aspect-video w-full object-cover" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "aspect-video bg-[#0d1424]" }),
+                  meeting.durationLabel && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "absolute right-2 top-2 rounded-md bg-[#0d1424]/80 px-2 py-0.5 text-[11px] font-semibold text-white", children: meeting.durationLabel })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "p-4", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start gap-3", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white dark:bg-white dark:text-black", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconPlay, { className: "h-3.5 w-3.5" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "font-['Outfit',sans-serif] font-medium leading-snug tracking-[-0.02em]", children: meeting.title }),
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-2 flex flex-wrap gap-x-3 gap-y-1 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-xs text-muted", children: meeting.date && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "inline-flex items-center gap-1", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(IconCalendar, { className: "h-3.5 w-3.5" }),
+                      meeting.date
+                    ] }) })
+                  ] })
+                ] }) })
               ]
             },
             meeting.id
           )) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("section", { className: "relative mt-14 overflow-hidden rounded-[1.5rem] border border-[#7eb6ff]/25 bg-[#7eb6ff]/12 px-5 py-8 sm:px-8 dark:bg-[#7eb6ff]/10", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+            "div",
+            {
+              "aria-hidden": true,
+              className: "pointer-events-none absolute -left-6 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-[#7eb6ff]/20"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "max-w-xl", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "font-['Outfit',sans-serif] text-2xl font-medium tracking-[-0.03em]", children: "Stay connected" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "mt-2 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-sm text-foreground/80 sm:text-base", children: "Get notified when the next FloLabs tech meeting drops." })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+              "form",
+              {
+                className: "flex w-full max-w-md flex-col gap-2 sm:flex-row",
+                onSubmit: (event) => {
+                  event.preventDefault();
+                  setEmail("");
+                },
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "min-w-0 flex-1", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "sr-only", children: "Email address" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                      "input",
+                      {
+                        type: "email",
+                        required: true,
+                        value: email,
+                        onChange: (event) => setEmail(event.target.value),
+                        placeholder: "you@example.com",
+                        className: "w-full rounded-full border border-white/80 bg-white px-4 py-3 text-sm outline-none ring-[#7eb6ff]/40 focus:ring-2 dark:border-border dark:bg-[#061626]"
+                      }
+                    )
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                    "button",
+                    {
+                      type: "submit",
+                      className: "meet-btn inline-flex min-h-11 items-center justify-center rounded-full bg-black px-5 py-3 text-sm font-semibold text-white dark:bg-white dark:text-black",
+                      children: "Subscribe"
+                    }
+                  )
+                ]
+              }
+            )
+          ] })
         ] })
       ] })
     ] });
   }
-  function FilterChip({ active, label, onClick }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+  function TabButton({
+    active,
+    label,
+    icon,
+    onClick
+  }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
       "button",
       {
         type: "button",
         onClick,
-        className: `rounded-full px-3 py-1.5 text-sm ${active ? "bg-primary text-white" : "border border-border"}`,
-        children: label
-      }
-    );
-  }
-  function TabButton({ active, label, onClick }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-      "button",
-      {
-        type: "button",
-        onClick,
-        className: `border-b-2 px-3 py-2 text-sm font-semibold ${active ? "border-primary text-primary" : "border-transparent text-muted"}`,
-        children: label
+        className: `inline-flex min-h-11 items-center gap-2 rounded-xl px-4 py-2.5 font-['Google_Sans_Flex','Google_Sans',sans-serif] text-sm font-semibold transition ${active ? "bg-[#7eb6ff]/18 text-[#0d1424] dark:text-[#7eb6ff]" : "text-muted hover:text-foreground"}`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: active ? "text-[#0d1424] dark:text-[#7eb6ff]" : "", children: icon }),
+          label
+        ]
       }
     );
   }
