@@ -93,10 +93,16 @@ postcss([tailwind()])
   .process(cssSource, { from: path.join(app, 'src', 'index.css') })
   .then((result) => {
     let js = fs.readFileSync(path.join(outDir, 'app.js'), 'utf8');
-    const asset = 'uploads/flolabs-library1/public';
+    // Project Pages lives under /<repo>/; root paths like /logos/* 404 without this base.
+    const boot = `window.__FLO_ASSET_BASE__=(function(){try{var h=location.hostname,s=location.pathname.split("/").filter(Boolean);if(/github\\.io$/i.test(h)&&s.length)return"/"+s[0];}catch(e){}return""})();`;
+    js = `${boot}\n${js}`;
     js = js.replace(
-      /(["'`])(\/(?:about|logos|projects|verticals)\/[^"'`]+|\/[A-Za-z0-9_.-]+\.(?:png|svg|webp|jpe?g|gif))/g,
-      (_, quote, file) => `${quote}${asset}${file}`
+      /(["'])(\/(?:about|logos|projects|verticals)\/[^"']+)\1/g,
+      (_, quote, file) => `(window.__FLO_ASSET_BASE__||"")+${quote}${file}${quote}`
+    );
+    js = js.replace(
+      /(["'])(\/[A-Za-z0-9_.-]+\.(?:png|svg|webp|jpe?g|gif|jfif))\1/g,
+      (_, quote, file) => `(window.__FLO_ASSET_BASE__||"")+${quote}${file}${quote}`
     );
     const html = `<!DOCTYPE html>
 <html lang="en">
@@ -104,7 +110,9 @@ postcss([tailwind()])
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flolabs innovation Group</title>
-<link rel="icon" href="${asset}/logos/logo-87ef29e9.png" />
+<script>${boot}</script>
+<link rel="icon" href="logos/logo-87ef29e9.png" id="flo-favicon" />
+<script>document.getElementById("flo-favicon").href=(window.__FLO_ASSET_BASE__||"")+"/logos/logo-87ef29e9.png";</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
