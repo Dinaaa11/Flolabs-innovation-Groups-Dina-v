@@ -99,8 +99,11 @@ ${js}
 </body>
 </html>
 `;
-    const target = path.join(root, 'flolabs-standalone.html');
+    const siteDir = path.join(root, 'site');
+    fs.mkdirSync(siteDir, { recursive: true });
+    const target = path.join(siteDir, 'flolabs-standalone.html');
     fs.writeFileSync(target, html);
+    fs.writeFileSync(path.join(siteDir, 'index.html'), html);
     console.log('wrote', target, html.length);
   })
   .catch((error) => {
