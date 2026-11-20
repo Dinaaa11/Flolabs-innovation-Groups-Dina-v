@@ -243,13 +243,14 @@ export function AboutExperience() {
         }
         .why-bryhel { position: relative; background: #1c1c1c; color: #f4f6fb; }
         .why-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: 0; pointer-events: none; }
-        .why-veil { position: absolute; inset: 0; background: rgba(16,16,16,0.62); z-index: 0; pointer-events: none; }
+        .why-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(16,16,16,0.62) 0%, rgba(16,16,16,0.5) 55%, rgba(16,16,16,0.18) 82%, transparent 100%); z-index: 0; pointer-events: none; }
         .why-bryhel > .about-in { position: relative; z-index: 1; }
         .why-bryhel p { color: rgba(244,246,251,0.9); }
         .why-card.is-light p { color: inherit; }
         .why-stage { position: relative; margin-top: 0; padding-bottom: clamp(8rem, 18vw, 12rem); }
         .why-pin { position: sticky; top: 5.5rem; z-index: 0; margin: 0 0 2rem; max-width: 16ch; font-family: Outfit, sans-serif; font-size: clamp(2.75rem, 7vw, 6.5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.92; color: #efe7d6; pointer-events: none; }
-        .why-close { position: relative; z-index: 2; margin-top: 0; padding-top: 3rem; background: transparent; }
+        .why-close { position: relative; z-index: 2; margin-top: 0; padding-top: 3rem; background: none; background-color: transparent; box-shadow: none; }
+        .why-close p { color: #f4f6fb !important; text-shadow: 0 1px 18px rgba(0,0,0,0.45); }
         .why-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
         .why-card { display: flex; flex-direction: column; min-height: 18rem; padding: 3.25rem 2.75rem; border-radius: 2.9rem; }
         .why-card h3 { margin: 0; font-family: Outfit, sans-serif; font-size: clamp(1.6rem, 2.4vw, 2.15rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
