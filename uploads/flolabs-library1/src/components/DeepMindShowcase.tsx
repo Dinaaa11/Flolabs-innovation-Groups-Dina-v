@@ -88,8 +88,9 @@ const PROMO_CARDS: PromoCard[] = [
     subtitle: 'We are on the cusp of a revolution.',
     videoSrc:
       'https://res.cloudinary.com/ee4fc3o3/video/upload/v1791000104/robot_l5r0mh.webm',
+    // First frame of the same Cloudinary clip — avoids DeepMind poster flash while video loads.
     posterSrc:
-      'https://lh3.googleusercontent.com/sILaSdIzu5XraA6U7t26JH98KgsZNCG3T0nIjJ0wmrZu5VBv5fh6ruPmyhRLt_TXzw2clBDyzHskiws_ocNEIYvJcAmB2LcInywK6tlT2Ha8MNzyiA=w1440',
+      'https://res.cloudinary.com/ee4fc3o3/video/upload/so_0,f_jpg,q_auto,w_900/v1791000104/robot_l5r0mh.jpg',
     href: 'https://deepmind.google/science/',
     buttons: [
       {
@@ -106,7 +107,7 @@ const PROMO_CARDS: PromoCard[] = [
     videoSrc:
       'https://res.cloudinary.com/ee4fc3o3/video/upload/v1791000190/space_maudke.webm',
     posterSrc:
-      'https://lh3.googleusercontent.com/TA6G2uPlHmdizvOiRbsA_rFtaP03Sh2h3_lOVyL07fZkwrCuijoLWRECyOgjvFpA3OyNBkh5iKZZam0vU-0iOmFfzsqHcaxobrJzQNGvSNDyEUnI-XQ=w1440',
+      'https://res.cloudinary.com/ee4fc3o3/video/upload/so_0,f_jpg,q_auto,w_900/v1791000190/space_maudke.jpg',
     href: 'https://deepmind.google/technologies/gemma/',
     buttons: [
       {
@@ -214,12 +215,14 @@ export const DeepMindShowcase: React.FC<{ children?: React.ReactNode }> = ({ chi
               <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 {card.videoSrc ? (
                   <video
+                    key={card.videoSrc}
                     src={card.videoSrc}
                     poster={card.posterSrc}
                     autoPlay
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : card.imageSrc ? (

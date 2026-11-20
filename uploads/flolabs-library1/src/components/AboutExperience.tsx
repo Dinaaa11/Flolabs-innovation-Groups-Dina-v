@@ -249,7 +249,7 @@ export function AboutExperience() {
         .why-card.is-light p { color: inherit; }
         .why-stage { position: relative; margin-top: 0; padding-bottom: clamp(8rem, 18vw, 12rem); }
         .why-pin { position: sticky; top: 5.5rem; z-index: 0; margin: 0 0 2rem; max-width: 16ch; font-family: Outfit, sans-serif; font-size: clamp(2.75rem, 7vw, 6.5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.92; color: #efe7d6; pointer-events: none; }
-        .why-close { position: relative; z-index: 2; margin-top: 0; padding-top: 3rem; background: linear-gradient(to bottom, rgba(16,16,16,0.72) 0%, rgba(16,16,16,0.88) 40%, rgba(16,16,16,0.92) 100%); }
+        .why-close { position: relative; z-index: 2; margin-top: 0; padding-top: 3rem; background: transparent; }
         .why-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
         .why-card { display: flex; flex-direction: column; min-height: 18rem; padding: 3.25rem 2.75rem; border-radius: 2.9rem; }
         .why-card h3 { margin: 0; font-family: Outfit, sans-serif; font-size: clamp(1.6rem, 2.4vw, 2.15rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
