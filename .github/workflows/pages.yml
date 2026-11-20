@@ -37,6 +37,12 @@ jobs:
           cp -R uploads/flolabs-library1/public/about _site/about
           cp -R uploads/flolabs-library1/public/projects _site/projects
           cp uploads/flolabs-library1/public/flolabs-logo.svg _site/flolabs-logo.svg
+          # Breakthrough Technologies promo cards + root public media (webp/svg)
+          shopt -s nullglob
+          for f in uploads/flolabs-library1/public/*.{webp,svg,png,jpg,jpeg,gif,jfif,mp4,webm}; do
+            cp "$f" "_site/$(basename "$f")"
+            cp "$f" "_site/uploads/flolabs-library1/public/$(basename "$f")"
+          done
           cp -R uploads/flolabs-library1/public/about _site/uploads/flolabs-library1/public/about
           cp -R uploads/flolabs-library1/public/verticals _site/uploads/flolabs-library1/public/verticals
           cp -R uploads/flolabs-library1/public/projects _site/uploads/flolabs-library1/public/projects
